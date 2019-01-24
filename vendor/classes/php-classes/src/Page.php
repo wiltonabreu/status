@@ -4,7 +4,7 @@ namespace Classes;
 
 use Rain\Tpl;
 
-class PageAdmin{
+class Page{
 
 	private $tpl;
 	private $options = [];

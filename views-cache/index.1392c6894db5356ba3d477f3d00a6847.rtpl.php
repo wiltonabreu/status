@@ -1,7 +1,4 @@
-<?php include_once("header.php");?>
-
-
-<section>           
+<?php if(!class_exists('Rain\Tpl')){exit;}?><section>           
 
   <div class="row clearfix">
       <div class="col-md-12 column">
@@ -207,8 +204,6 @@
 
 </section>
 
-
-<?php include_once("footer.php");?>	
 
 </body>
 </html>
