@@ -1,0 +1,143 @@
+@media (max-width: 1110px){
+
+	header #logotipo {
+    position: absolute;
+    top: 20px;
+    z-index: 3;
+    left: 50px;
+ }
+
+ @media (max-width: 810px){
+
+	header #logotipo {
+	    position: absolute;
+	    top: 20px;
+	    z-index: 3;
+	    left: 120px;
+ 	}
+
+	header .header h1 {
+	    text-align: center;
+	    margin-top: 73px;
+	    font-size: 25px;
+	}
+
+}
+
+
+@media (max-width: 480px){
+
+	
+	header #logotipo {
+	    position: absolute;
+	    top: 20px;
+	    z-index: 3;
+	    left: 120px;
+	}
+
+	header .header h1 {
+	    text-align: center;
+	    margin-top: 73px;
+	    font-size: 25px;
+	}
+
+	.plesks{
+	    font-size: 15px;
+	    position: absolute;
+	    left: 24px;
+	}
+
+	.ipLin1 {
+	    
+	    top: 102px;
+	}
+
+	.ipLin3{
+	    
+	    top: 162px;
+	}
+	.ipWin{
+	    
+	    top: 222px;
+	}
+
+	.hospedagem p{
+		    position: absolute;
+	    left: 57px;
+	}
+
+	td .plesk{    
+		font-size: 16px;
+	    position: absolute;
+	    left: 28px;
+	    margin-top: -11px;
+	}
+
+	.plesk h5{    
+		font-size: 17px;
+	    
+	}
+
+	th, td {
+	  padding-bottom: 25px;
+	  text-align: left;
+	  width: 105px;    
+	}
+
+
+	footer .list-socials {
+	    top: 70px;
+	    position: absolute;
+	    font-size: 95px;
+
+	}
+
+	footer .row-fluid .email {
+	    position: absolute;
+	    left: 178px;
+	    padding-left: 0px;
+	    z-index: 2;
+	}
+
+	footer .telefone {
+	    top: 55px;
+	    position: absolute;
+	    z-index: 2;
+	}
+
+	footer .col-get-in-touch address {
+	    color: #666;
+	    font-family: Arial;
+	    font-size: 14px;
+	    margin-bottom: 0;
+	    top: 0px;
+	    position: inherit;
+	    z-index: 2;
+	}
+
+	footer .text-left{
+	    color: #666;
+	    font-family: 'OpenSans';
+	    font-size: 14px;
+	    position: absolute;
+	    left: 22%;
+	    margin: -5px;
+	    
+	}
+
+	footer .row p  {
+	        
+	    display: inherit;
+	    position: absolute;
+	    top: 103px;
+	}
+
+	footer .row .text-copyright{
+		position: inherit;
+	    color: #666;
+	    font-size: 14px;
+	        margin-bottom: 0;
+
+	}
+
+}
