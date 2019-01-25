@@ -7,8 +7,7 @@ class Sql {
         private $conn;
 
         public function __construct(){
-			$this->conn = new \PDO("mysql:host=localhost;dbname=$bd,$user, $pass);
-			$this->conn->exec("set names utf8");
+			
         }
 
 	private function setParams($statement, $parameters = array())
