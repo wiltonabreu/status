@@ -7,7 +7,7 @@ class Sql {
         private $conn;
 
         public function __construct(){
-			
+#nodata
         }
 
 	private function setParams($statement, $parameters = array())
