@@ -11,7 +11,7 @@ $app = new \Slim\Slim();
 
 $app->get('/',function () {
       
-/* AAAAAAAAA
+/* 
 		$sql = new Classes\DB\Sql();
 
 		$results = $sql->select("SELECT * from emails limit 1;");
