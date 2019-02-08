@@ -1,28 +1,65 @@
-@media (max-width: 1110px){
+@font-face {
+	font-family: 'OpenSans';
+	src: url("../fonts/open_sans/OpenSans-Regular.ttf");
+	font-size: 1em;	
+}
 
-	header #logotipo {
-    position: absolute;
-    top: 20px;
-    z-index: 3;
-    left: 50px;
- }
+@font-face {
+	font-family: 'OpenSans-Light';
+	src: url("../fonts/open_sans/OpenSans-Light.ttf");
+	font-size: 1em;	
+}
 
- @media (max-width: 810px){
+
+@media (max-width: 1200px){
+
+	header .list-unstyled{
+		float: left;
+		position: absolute;
+		top: 10px;
+		left: 47%;
+	    
+	}
+
+	
+
+}
+
+@media (max-width: 991px){
+
+	header .list-unstyled{
+		float: left;
+		position: absolute;
+		top: 10px;
+		left: 29%;
+	    
+	}
+
+	
+
+
+}
+
+@media (max-width: 768px){
+
+	header .list-unstyled{
+		float: left;
+		position: absolute;
+		top: 10px;
+		left: 5%;
+	    
+	}
 
 	header #logotipo {
 	    position: absolute;
-	    top: 20px;
-	    z-index: 3;
-	    left: 120px;
- 	}
-
-	header .header h1 {
-	    text-align: center;
-	    margin-top: 73px;
-	    font-size: 25px;
+	    top: 15px;
+	    left: 200px;
 	}
 
+	
+
 }
+
 
 
 @media (max-width: 480px){

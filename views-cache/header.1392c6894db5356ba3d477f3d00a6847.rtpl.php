@@ -21,24 +21,85 @@
 	<body>
 	  <header> 
 
+	  	<div class="header-white-small">
+				
+				<div class="container container-white-small">
+					<div class="row row-cont">
 
-		  <div class="container">
-			  
-		      <div class="row header">
-		        <div class="col-md-12">
-		          <h1> MAV Tecnologia Status</h1>
-		        </div>
-		      </div>
+						<ul class="list-unstyled list-socials">
+							<li>
+								<a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+							</li>
+							<li>
+								<a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+							</li>
+							
+							<li>
+								<a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+							</li>
+							<li>
+								<a href="#"  target="_blank"><i class="fab fa-linkedin-in"></i></a>
+							</li>
+						</ul>
+						
+						 
 
+						
+					    <div class="vl vl-list-socials"></div>
+						
+						<div class="contact">
+							<a href="#">Contato</a>
 
-		  </div>
+						</div>
 
-		  <div class="container" container-logo>
+						<div class="vl vl-client"></div>
+
+						<div class="client">
+							<a href="#">Area do Cliente</a>
+						</div>
+
+			    	</div>
+			    </div>					
+							
+		</div>
+			
+		   
+		  
+			<div class="container">
+
+					<div class="row">
+						
+
+					</div>
+
+					
+							
+			</div>
+
+		  <div class="container container-logo">
+		  		<h1>Status de Seviços</h1>
 
 				<img id="logotipo" src="img/mav.png" alt="Logotipo">
 				
+					<nav id="menu" class="float-right">
+						<ul>
+							<li><a href="services/email">E-MAIL</a></li>
+							<li><a href="services/hospedagem">HOSPEDAGEM WEB</a></li>
+							<li><a href="services/backup">BACKUP</a></li>
+												
+						</ul>
+					</nav>
+				
+				
+				
 		  </div>
 
+		  
+		   
+		   <div class="row-gray">
+				 		
+			</div>
+			
 
 
 	  </header>
