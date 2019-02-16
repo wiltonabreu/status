@@ -16,6 +16,24 @@
   <!-- Custom JavaScript for this theme -->
   <script src="/res/email/js/scrolling-nav.js"></script>
 
+  <script>
+  angular.module("em",[]).controller("email_controller",function($scope, $http){
+
+    $scope.emails = [];
+    
+
+    $http({
+      method: 'GET',
+      url: 'services/email'
+    }).then(function successCallback(response) {
+       $scope.emails = response.data;
+
+      }, function errorCallback(response) {
+        
+      });
+  });
+</script>
+
 </body>
 
 </html>

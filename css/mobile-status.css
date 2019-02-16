@@ -56,7 +56,9 @@
 	    left: 200px;
 	}
 
-	
+	html, body {
+		overflow-x:unset;
+	}
 
 }
 

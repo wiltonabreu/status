@@ -119,3 +119,24 @@
 <i class="far fa-envelope"></i>contato@mav.com.br 
 -->
 </footer>
+
+<script>
+	angular.module("principal",[]).controller("incidentes_controller",function($scope, $http){
+
+		$scope.incidentes = [];
+		
+		$http({
+		  method: 'GET',
+		  url: '/'
+		}).then(function successCallback(response) {
+		    $scope.incidentes = response.data;
+		  }, function errorCallback(response) {
+		    
+		  });
+
+		
+
+
+		
+	});
+</script>

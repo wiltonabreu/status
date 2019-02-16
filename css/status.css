@@ -393,3 +393,22 @@ footer .list-socials i {
 
 }
 
+@media (max-width: 768px){
+
+	header .list-unstyled{
+		float: left;
+		position: absolute;
+		top: 10px;
+		left: 5%;
+	    
+	}
+
+	header #logotipo {
+	    position: absolute;
+	    top: 15px;
+	    left: 200px;
+	}
+
+	
+
+}

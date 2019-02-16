@@ -1,6 +1,8 @@
 <?php
-
+session_start();
 require_once("vendor/autoload.php");
+
+
 use \Classes\Page;
 use \Classes\PageAdmin;
 use \Classes\PageServices;
@@ -20,7 +22,7 @@ $app->get('/',function () {
 
 	//exit;
 		
-
+	
 		$page = new Page();
 		$page->setTpl("index");
 		
@@ -72,6 +74,7 @@ $app->get('/services/backup',function () {
 
 $app->get('/admin',function () {
       
+		User::verifylogin();
 
 		$page = new PageAdmin();
 		$page->setTpl("index");
@@ -97,6 +100,14 @@ $app->post('/admin/login',function () {
 		exit;
     }
 );
+
+$app->get('/admin/logout',function () {
+      
+	User::logout();
+	header("Location: /admin/login");
+	exit;
+	
+});
 
 $app->run();
 ?>

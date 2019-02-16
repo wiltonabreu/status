@@ -7,6 +7,8 @@ use \Classes\Model;
 	
 	class User extends Model{
 
+		const SESSION = "User";
+
 		public static function login($login, $password){
 
 						
@@ -28,9 +30,11 @@ use \Classes\Model;
 				
 				$user = new User();
 
-				$user->setidusuario($data["iduser"]);
+				$user->setData($data);
 
-				exit();
+				$_SESSION[User::SESSION] = $user->getValue();
+
+				return $user;
 
 			}else{
 
@@ -39,5 +43,28 @@ use \Classes\Model;
 			}
 		}
 
+		public static function verifylogin($inadmin = true){
+
+			if(
+				!isset($_SESSION[User::SESSION])
+				|| 
+				!$_SESSION[User::SESSION]
+				||
+				!(int)$_SESSION[User::SESSION]["iduser"] > 0
+				||
+				(bool)$_SESSION[User::SESSION]["inadmin"] !== $inadmin
+			  )
+			  {
+				header("Location: /admin/login");
+				exit;
+			  }
+
+		}
+
+		public static function logout(){
+
+			$_SESSION[User::SESSION] = NULL;
+
+		}
 	}
 ?>

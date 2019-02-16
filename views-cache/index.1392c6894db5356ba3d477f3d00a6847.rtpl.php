@@ -171,21 +171,20 @@
 <section>
 
 	  
-	<div class="container">
+	<div class="container" id="incidentes-service" ng-controller="incidentes_controller">
 		<div class="row fundo">
 			<div class="col-md-6 noticias">
 				<h2>Incidentes</h2>
-				<ul class="timeline">
+				<ul class="timeline" ng-repeat="incidente in incidentes track by incidente.id">
 
 					<li>
-						<a href="services/hospedagem">01/02/2019</a>						
+						<a href="services/{{incidente.service}}">{{incidente.dt_criacao}}</a>						
 						
 						<p>
-							Hospedagem Web Teste- ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-							tempor incididunt ut labore et dolore magna aliqua. 
+							{{incidente.descricao}}
 						</p>
 					</li>
-					
+					<!--
 					<li>
 						<a href="services/email">22/01/2019</a>						
 						
@@ -200,7 +199,7 @@
 						<p>Backup -	ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 							tempor incididunt ut labore et dolore magna aliqua. 
 						</p>
-					</li>
+					</li> -->
 					
 				</ul>
 			</div>
