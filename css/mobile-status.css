@@ -21,6 +21,12 @@
 	    
 	}
 
+	header .container-logo h1 {
+		
+		left: 16%;
+		
+	}
+
 	
 
 }
@@ -179,4 +185,75 @@
 
 	}
 
+	header #logotipo {		
+		left: -19px;
+	}
+
+	header .container-logo h1 {
+		top: 39px;
+		left: 30%;
+		font-size: 27px;
+	}
+
+	#menu {
+		display: none;
+	}
+
+	header .row-gray {
+		display: none;
+	}
+
+	header .contact {
+		
+		right: 151px;
+		
+	}
+
+	header .client {
+		
+		right: 20px;
+		
+	}
+
+	header .vl-client {
+		right: 133px;
+	}
+
+	footer {
+		margin-top: 0px;
+	}
+
+	footer .horario {
+		top: -20px;
+		left: 201px;
+	}
+
+	footer .telefone {
+		left: -2px;
+		top: 31px;
+	}
+
+	footer .email {
+		
+		left: 179px;
+		
+		top: 31px;
+	}
+
+	footer .skype {
+		
+		top: 56px;
+		left: 179px;
+	}
+
+	footer .whatsapp {
+		position: absolute;
+		top: 56px;
+		left: -2px;
+	}
+
+	footer .row-cols h4 {
+		top: -20px;
+		left: 53px;
+	}
 }

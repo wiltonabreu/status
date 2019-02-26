@@ -18,55 +18,54 @@ $app->get('/',function () {
 
 		$results = $sql->select("SELECT * from tb_status;");
 
-		//echo json_encode($results);
-
-	//exit;
+		
 		
 	
-		$page = new Page();
-		$page->setTpl("index");
+		$page = new Page([			
+			"data"=>[
+						"servico" => "",
+						"mensagem1" => "Incidentes ocorridos nos serviços de e-mail"
+					]
+		]);
+		$page->setTpl("index",array(
+			"results"=>$results
+		));
 		
     }
 );
 
-$app->get('/services/email',function () {
-  		$page = new PageServices([
-			"header"=> true,
-			"footer"=> true,
+$app->get('/email',function () {
+  		$page = new Page([			
 			"data"=>[
 						"servico" => "E-mail",
 						"mensagem1" => "Incidentes ocorridos nos serviços de e-mail"
 					]
 		]);
-		$page->setTpl("index");
+		$page->setTpl("services");
 		
     }
 );
 
-$app->get('/services/hospedagem',function () {
-  		$page = new PageServices([
-			"header"=> true,
-			"footer"=> true,
+$app->get('/hospedagem',function () {
+  		$page = new Page([
 			"data"=>[
 						"servico" => "Hospedagem Web",
 						"mensagem1" => "Incidentes ocorridos nos serviços de Hospedagem Web"
 					]
 		]);
-		$page->setTpl("index");
+		$page->setTpl("services");
 		
     }
 );
  	
-$app->get('/services/backup',function () {
-  		$page = new PageServices([
-			"header"=> true,
-			"footer"=> true,
+$app->get('/backup',function () {
+  		$page = new Page([
 			"data"=>[
 						"servico" => "Backup",
 						"mensagem1" => "Incidentes ocorridos nos serviços de Backup"
 					]
 		]);
-		$page->setTpl("index");
+		$page->setTpl("services");
 		
     }
 );

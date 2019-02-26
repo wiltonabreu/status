@@ -110,7 +110,6 @@ header .row-gray{
     width: 100%;
     background-color: #EEE;
     top: 117px;
-    display: list-item;
     height: 50px;
 }
 
@@ -152,7 +151,8 @@ html, body {
     margin: 16px;
     position: absolute;
     left: 45%;
-    top: 24px; 
+    top: 24px;
+    width: 700px;
 }
 
 #menu li {
@@ -177,6 +177,23 @@ html, body {
     margin-bottom: -1px;
     background-color: #fff;
     border: none;
+}
+.services-gray{
+    top: 133px !important;
+   
+}
+.services-gray h2 {
+    font-size: 27px;
+    position: relative;
+    top: 10px;
+    text-align: center;
+    color: #ff7e00;
+}
+
+
+#about {
+    position: relative;
+    top: 54px;
 }
 
 table{
@@ -221,18 +238,18 @@ footer .row-white{
     border-top: 1px solid #f2f2f2;
 }
 
-footer .row-orange{
+footer .row-orange {
     height: 60px;
     background-color: #ff6f00;
     margin-left: 0px;
-    
+    margin-bottom: 0;
 }
 footer .text-copyright {
     color: #FFF;
     font-family: 'Arial';
     font-size: 17px;
-    position: absolute;    
-    left: 39%;    
+    position: relative;    
+    left: 33%;    
     display: flex;
     margin-top: 4px;
 }
@@ -393,6 +410,12 @@ footer .list-socials i {
 
 }
 
+
+section .mx-auto h2 {
+    font-size: 29px;
+    margin-bottom: 42px;
+}
+
 @media (max-width: 768px){
 
 	header .list-unstyled{
@@ -412,3 +435,4 @@ footer .list-socials i {
 	
 
 }
+

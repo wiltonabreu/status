@@ -171,66 +171,48 @@
 <section>
 
 	  
-	<div class="container" id="incidentes-service" ng-controller="incidentes_controller">
+	<div class="container">
 		<div class="row fundo">
 			<div class="col-md-6 noticias">
 				<h2>Incidentes</h2>
-				<ul class="timeline" ng-repeat="incidente in incidentes track by incidente.id">
+				<ul class="timeline">
+
+					<?php $counter1=-1;  if( isset($results) && ( is_array($results) || $results instanceof Traversable ) && sizeof($results) ) foreach( $results as $key1 => $value1 ){ $counter1++; ?>
 
 					<li>
-						<a href="services/{{incidente.service}}">{{incidente.dt_criacao}}</a>						
-						
+						<a href="services/<?php echo htmlspecialchars( $value1["service"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $value1["dt_criacao"], ENT_COMPAT, 'UTF-8', FALSE ); ?></a>						
+						<!--
+							Criar classe para tratar esses dados para serem apresentados no Template
+							<p>&lt;?php echo substr($linha[descricao], 0, 400) ?&gt;</p>
+						-->
 						<p>
-							{{incidente.descricao}}
+								<?php echo htmlspecialchars( $value1["descricao"], ENT_COMPAT, 'UTF-8', FALSE ); ?>
+
 						</p>
 					</li>
-					<!--
-					<li>
-						<a href="services/email">22/01/2019</a>						
-						
-						<p>
-							Servidor de e-mail - ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-							tempor incididunt ut labore et dolore magna aliqua. 
-						</p>
-					</li>
-					<li>
-						<a href="services/backup">21/01/2019</a>						
-						
-						<p>Backup -	ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-							tempor incididunt ut labore et dolore magna aliqua. 
-						</p>
-					</li> -->
-					
+				  <?php } ?>
+
+										
 				</ul>
 			</div>
 
 			<div class="col-md-6 avisos">
 				<h2>Comunicados</h2>
+
 				<ul class="timeline">
+				
+					<?php $counter1=-1;  if( isset($results) && ( is_array($results) || $results instanceof Traversable ) && sizeof($results) ) foreach( $results as $key1 => $value1 ){ $counter1++; ?>
+
 					<li>
-						<a href="services/email">23/01/2019</a>						
-						
+						<a href="services/<?php echo htmlspecialchars( $value1["service"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $value1["dt_criacao"], ENT_COMPAT, 'UTF-8', FALSE ); ?></a>						
+						<!--<p>&lt;?php echo substr($linha[descricao], 0, 400) ?&gt;</p>-->
 						<p>
-							ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-							tempor incididunt ut labore et dolore magna aliqua. 
+								<?php echo htmlspecialchars( $value1["descricao"], ENT_COMPAT, 'UTF-8', FALSE ); ?>
+
 						</p>
 					</li>
-					<li>
-						<a target="_blank" href="/">22/01/2019</a>						
-						
-						<p>						
-							quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-							consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse.
-							
-						</p>
-					</li>
-					<li>
-						<a target="_blank" href="/">21/01/2019</a>						
-						
-						<p> Excepteur sint occaecat cupidatat non
-							proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-						</p>
-					</li>
+				  <?php } ?>
+
 					
 				</ul>
 			</div>

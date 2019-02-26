@@ -104,10 +104,7 @@
 		
 		
 		<div class="container copyright-mobile" >
-			<p class="text-copyright"><i class="far fa-copyright"></i> MAV Tecnologia. 2018 All rights reserved.</p>
-			<h1 style="font-size: 5px"><a href="https://follow3rs.com" rel="dofollow" style="color:#ff6f00 !important;">Free Twitter Followers</a></h1>
-			<h2 style="font-size: 5px"><a href="https://takipciyurdu.com" rel="dofollow" style="color:#ff6f00;">Twitter Takipçi</a></h2>
-			<h3 style="font-size: 5px"><a href="https://instagram.sosyalmedya.store/takipci" rel="dofollow" style="color:#ff6f00;">İnstagram Takipçi Hilesi</a></h3>
+			<p class="text-copyright"><i class="far fa-copyright"></i> MAV Tecnologia. 2018 All rights reserved.</p>			
 		</div>
 
 	</div>
@@ -122,20 +119,5 @@
 -->
 </footer>
 
-<script>
-	angular.module("principal",[]).controller("incidentes-controller",function($scope, $http){
-
-		$scope.incidentes = [];
-		
-
-		$http({
-		  method: 'GET',
-		  url: '/'
-		}).then(function successCallback(response) {
-		   $scope.incidentes = response.data;
-
-		  }, function errorCallback(response) {
-		    
-		  });
-	});
-</script>
+</body>
+</html>

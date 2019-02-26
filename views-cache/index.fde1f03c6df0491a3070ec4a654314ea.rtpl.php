@@ -1,44 +1,10 @@
 <?php if(!class_exists('Rain\Tpl')){exit;}?>  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark-top fixed-top" id="mainNav">
-    <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="#page-top">Servidores de <?php echo htmlspecialchars( $servico, ENT_COMPAT, 'UTF-8', FALSE ); ?></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="/">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="email">E-mail</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="hospedagem">Hospedagem</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="backup">Backup</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <header class="bg-primary text-white">
-    <div class="container text-center-top">
-      <h1><?php echo htmlspecialchars( $servico, ENT_COMPAT, 'UTF-8', FALSE ); ?></h1>
-      <p class="leadp"><?php echo htmlspecialchars( $mensagem1, ENT_COMPAT, 'UTF-8', FALSE ); ?></p>
-    </div>
-  </header>
-
   <section id="about">
-    <div class="container" >
+    <div class="container">
       <div class="row">
-        <div class="col-lg-8 mx-auto" ng-controller="email_controller" ng-repeat="email in emails">
+        <div class="col-lg-8 mx-auto">
           <h2>About this page</h2>
-          <p class="lead" ng-repeat="email in emails" >
-              {{email.descricao}}
-        </p>
+          <p class="lead">This is a great place to talk about your webpage. This template is purposefully unstyled so you can use it as a boilerplate or starting point for you own landing page designs! This template features:</p>
           <ul>
             <li>Clickable nav links that smooth scroll to page sections</li>
             <li>Responsive behavior when clicking nav links perfect for a one page website</li>
@@ -49,7 +15,7 @@
       </div>
     </div>
   </section>
-
+<!--
   <section id="services" class="bg-light">
     <div class="container">
       <div class="row">
@@ -60,14 +26,5 @@
       </div>
     </div>
   </section>
-
-  <section id="contact">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 mx-auto">
-          <h2>Contact us</h2>
-          <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero odio fugiat voluptatem dolor, provident officiis, id iusto! Obcaecati incidunt, qui nihil beatae magnam et repudiandae ipsa exercitationem, in, quo totam.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+-->
+  

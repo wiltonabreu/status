@@ -1,4 +1,4 @@
-<?php if(!class_exists('Rain\Tpl')){exit;}?><html ng-app="principal">
+<?php if(!class_exists('Rain\Tpl')){exit;}?><html>
 
 <head>
 	<meta charset="utf-8">
@@ -16,7 +16,8 @@
 		
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
-	<script src="lib/angular/angular.min.js"></script>	
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
+	
 </head>
 
 	<body>
@@ -82,11 +83,12 @@
 
 				<img id="logotipo" src="img/mav.png" alt="Logotipo">
 				
-					<nav id="menu" class="float-right">
+				<nav id="menu" class="float-right">
 						<ul>
-							<li><a href="services/email">E-MAIL</a></li>
-							<li><a href="services/hospedagem">HOSPEDAGEM WEB</a></li>
-							<li><a href="services/backup">BACKUP</a></li>
+						<li><a href="/">Home</a></li>
+							<li><a href="email">E-MAIL</a></li>
+							<li><a href="hospedagem">HOSPEDAGEM WEB</a></li>
+							<li><a href="backup">BACKUP</a></li>
 												
 						</ul>
 					</nav>
@@ -97,8 +99,8 @@
 
 		  
 		   
-		   <div class="row-gray">
-				 		
+		   <div class="row-gray services-gray">
+					<h2><?php echo htmlspecialchars( $servico, ENT_COMPAT, 'UTF-8', FALSE ); ?></h2>
 			</div>
 			
 
