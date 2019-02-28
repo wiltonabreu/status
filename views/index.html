@@ -27,7 +27,7 @@
 				    <td><h5><span class="cluster-email">Email</span></h5></td>
 				    <td>
 				    	<span class="badge badge-success">Operational</span>
-				    	<a href="services/email">						
+				    	<a href="email">						
 				  	    	<i class="fas fa-plus-circle" title="Saiba mais" data-toggle="tooltip" data-placement="bottom" ></i>
 				  	    </a>
 				    </td>
@@ -40,7 +40,7 @@
 				    <td>
 				    	<span class="badge badge-warning" >Warning</span>			    
 					    <!--<td><span class="badge badge-success">Operational</span></td> -->
-					    <a href="services/hospedagem">
+					    <a href="hospedagem">
 					    	<i class="fas fa-plus-circle" title="Saiba mais" data-toggle="tooltip" data-placement="bottom" ></i>
 					    </a>
 
@@ -53,7 +53,7 @@
 				    <td><h5><span class="cluster-email">Backup</span></h5></td>
 				    <td>
 				    	<span class="badge badge-success">Operational</span>
-				    	<a href="services/backup">
+				    	<a href="backup">
 						    <!--<td><span class="badge badge-warning">Warning</span></td>-->
 						    <i class="fas fa-plus-circle" title="Saiba mais" data-toggle="tooltip" data-placement="bottom" ></i>
 					    </a>
@@ -177,17 +177,17 @@
 				<h2>Incidentes</h2>
 				<ul class="timeline">
 
-					{loop="$results"}
-					<li>
-						<a href="services/{$value.service}">{$value.dt_criacao}</a>						
-						<!--
-							Criar classe para tratar esses dados para serem apresentados no Template
-							<p><?php echo substr($linha[descricao], 0, 400) ?></p>
-						-->
-						<p>
-								{$value.descricao}
-						</p>
-					</li>
+					{loop="$incidentes"}
+						<li>
+							<a href="{$value.category}/{$value.id}">{$value.dt_criacao}</a>						
+							<!--
+								Criar classe para tratar esses dados para serem apresentados no Template
+								<p><?php echo substr($linha[descricao], 0, 400) ?></p>
+							-->
+							<p>
+									{$value.descricao}
+							</p>
+						</li>
 				  {/loop}
 										
 				</ul>
@@ -198,14 +198,14 @@
 
 				<ul class="timeline">
 				
-					{loop="$results"}
-					<li>
-						<a href="services/{$value.service}">{$value.dt_criacao}</a>						
-						<!--<p><?php echo substr($linha[descricao], 0, 400) ?></p>-->
-						<p>
-								{$value.descricao}
-						</p>
-					</li>
+					{loop="$comunicados"}
+						<li>
+							<a href="#">{$value.dt_criacao}</a>						
+							<!--<p><?php echo substr($linha[descricao], 0, 400) ?></p>-->
+							<p>
+									{$value.descricao}
+							</p>
+						</li>
 				  {/loop}
 					
 				</ul>

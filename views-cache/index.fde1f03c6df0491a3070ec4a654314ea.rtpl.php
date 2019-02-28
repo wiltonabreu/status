@@ -1,30 +1,35 @@
-<?php if(!class_exists('Rain\Tpl')){exit;}?>  <!-- Navigation -->
-  <section id="about">
+<?php if(!class_exists('Rain\Tpl')){exit;}?><section id="about">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto">
-          <h2>About this page</h2>
-          <p class="lead">This is a great place to talk about your webpage. This template is purposefully unstyled so you can use it as a boilerplate or starting point for you own landing page designs! This template features:</p>
-          <ul>
-            <li>Clickable nav links that smooth scroll to page sections</li>
-            <li>Responsive behavior when clicking nav links perfect for a one page website</li>
-            <li>Bootstrap's scrollspy feature which highlights which section of the page you're on in the navbar</li>
-            <li>Minimal custom CSS so you are free to explore your own unique design options</li>
-          </ul>
+          
+          <?php $counter1=-1;  if( isset($result) && ( is_array($result) || $result instanceof Traversable ) && sizeof($result) ) foreach( $result as $key1 => $value1 ){ $counter1++; ?>
+
+            <div class="incidentes-email">
+            <p class="titulo">
+                <span><?php echo htmlspecialchars( $value1["dt_criacao"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+                
+                <h3><?php echo htmlspecialchars( $value1["title"], ENT_COMPAT, 'UTF-8', FALSE ); ?></h3>  
+                
+            </p>
+
+            <p class="status"> Status: Resolvido</p>
+
+            <p class="lead">
+                
+                <?php echo htmlspecialchars( $value1["descricao"], ENT_COMPAT, 'UTF-8', FALSE ); ?>
+
+            </p>
+
+            <p class="previsao"> Previsão: <?php echo htmlspecialchars( $value1["previsao"], ENT_COMPAT, 'UTF-8', FALSE ); ?></p>
+            
+              <br>
+            </div>
+          <?php } ?>
+
+          
         </div>
       </div>
     </div>
-  </section>
-<!--
-  <section id="services" class="bg-light">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 mx-auto">
-          <h2>Services we offer</h2>
-          <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut optio velit inventore, expedita quo laboriosam possimus ea consequatur vitae, doloribus consequuntur ex. Nemo assumenda laborum vel, labore ut velit dignissimos.</p>
-        </div>
-      </div>
-    </div>
-  </section>
--->
+</section>
   

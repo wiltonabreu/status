@@ -27,7 +27,7 @@
 				    <td><h5><span class="cluster-email">Email</span></h5></td>
 				    <td>
 				    	<span class="badge badge-success">Operational</span>
-				    	<a href="services/email">						
+				    	<a href="email">						
 				  	    	<i class="fas fa-plus-circle" title="Saiba mais" data-toggle="tooltip" data-placement="bottom" ></i>
 				  	    </a>
 				    </td>
@@ -40,7 +40,7 @@
 				    <td>
 				    	<span class="badge badge-warning" >Warning</span>			    
 					    <!--<td><span class="badge badge-success">Operational</span></td> -->
-					    <a href="services/hospedagem">
+					    <a href="hospedagem">
 					    	<i class="fas fa-plus-circle" title="Saiba mais" data-toggle="tooltip" data-placement="bottom" ></i>
 					    </a>
 
@@ -53,7 +53,7 @@
 				    <td><h5><span class="cluster-email">Backup</span></h5></td>
 				    <td>
 				    	<span class="badge badge-success">Operational</span>
-				    	<a href="services/backup">
+				    	<a href="backup">
 						    <!--<td><span class="badge badge-warning">Warning</span></td>-->
 						    <i class="fas fa-plus-circle" title="Saiba mais" data-toggle="tooltip" data-placement="bottom" ></i>
 					    </a>
@@ -177,19 +177,19 @@
 				<h2>Incidentes</h2>
 				<ul class="timeline">
 
-					<?php $counter1=-1;  if( isset($results) && ( is_array($results) || $results instanceof Traversable ) && sizeof($results) ) foreach( $results as $key1 => $value1 ){ $counter1++; ?>
+					<?php $counter1=-1;  if( isset($incidentes) && ( is_array($incidentes) || $incidentes instanceof Traversable ) && sizeof($incidentes) ) foreach( $incidentes as $key1 => $value1 ){ $counter1++; ?>
 
-					<li>
-						<a href="services/<?php echo htmlspecialchars( $value1["service"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $value1["dt_criacao"], ENT_COMPAT, 'UTF-8', FALSE ); ?></a>						
-						<!--
-							Criar classe para tratar esses dados para serem apresentados no Template
-							<p>&lt;?php echo substr($linha[descricao], 0, 400) ?&gt;</p>
-						-->
-						<p>
-								<?php echo htmlspecialchars( $value1["descricao"], ENT_COMPAT, 'UTF-8', FALSE ); ?>
+						<li>
+							<a href="<?php echo htmlspecialchars( $value1["category"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/<?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $value1["dt_criacao"], ENT_COMPAT, 'UTF-8', FALSE ); ?></a>						
+							<!--
+								Criar classe para tratar esses dados para serem apresentados no Template
+								<p>&lt;?php echo substr($linha[descricao], 0, 400) ?&gt;</p>
+							-->
+							<p>
+									<?php echo htmlspecialchars( $value1["descricao"], ENT_COMPAT, 'UTF-8', FALSE ); ?>
 
-						</p>
-					</li>
+							</p>
+						</li>
 				  <?php } ?>
 
 										
@@ -201,16 +201,16 @@
 
 				<ul class="timeline">
 				
-					<?php $counter1=-1;  if( isset($results) && ( is_array($results) || $results instanceof Traversable ) && sizeof($results) ) foreach( $results as $key1 => $value1 ){ $counter1++; ?>
+					<?php $counter1=-1;  if( isset($comunicados) && ( is_array($comunicados) || $comunicados instanceof Traversable ) && sizeof($comunicados) ) foreach( $comunicados as $key1 => $value1 ){ $counter1++; ?>
 
-					<li>
-						<a href="services/<?php echo htmlspecialchars( $value1["service"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $value1["dt_criacao"], ENT_COMPAT, 'UTF-8', FALSE ); ?></a>						
-						<!--<p>&lt;?php echo substr($linha[descricao], 0, 400) ?&gt;</p>-->
-						<p>
-								<?php echo htmlspecialchars( $value1["descricao"], ENT_COMPAT, 'UTF-8', FALSE ); ?>
+						<li>
+							<a href="#"><?php echo htmlspecialchars( $value1["dt_criacao"], ENT_COMPAT, 'UTF-8', FALSE ); ?></a>						
+							<!--<p>&lt;?php echo substr($linha[descricao], 0, 400) ?&gt;</p>-->
+							<p>
+									<?php echo htmlspecialchars( $value1["descricao"], ENT_COMPAT, 'UTF-8', FALSE ); ?>
 
-						</p>
-					</li>
+							</p>
+						</li>
 				  <?php } ?>
 
 					

@@ -85,10 +85,11 @@
 				
 				<nav id="menu" class="float-right">
 						<ul>
-						<li><a href="/">Home</a></li>
+						<li><a href="/">HOME</a></li>
 							<li><a href="email">E-MAIL</a></li>
 							<li><a href="hospedagem">HOSPEDAGEM WEB</a></li>
 							<li><a href="backup">BACKUP</a></li>
+							<li><a href="todos">TODOS</a></li>
 												
 						</ul>
 					</nav>

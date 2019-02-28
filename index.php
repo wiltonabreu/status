@@ -6,21 +6,26 @@ require_once("vendor/autoload.php");
 use \Classes\Page;
 use \Classes\PageAdmin;
 use \Classes\PageServices;
+use Classes\DB\Sql;
 use \Classes\Model\User;
+use \Classes\Model\Incidentes;
 
 $app = new \Slim\Slim();
 
 
 $app->get('/',function () {
-      
-
-		$sql = new Classes\DB\Sql();
-
-		$results = $sql->select("SELECT * from tb_status;");
-
 		
 		
+	  $a = new Incidentes();
+
+		$incidentes = $a->processesIncidents();
 	
+		
+
+		$b = new Incidentes();
+		$comunicados = $b->processesCommunication();
+
+			
 		$page = new Page([			
 			"data"=>[
 						"servico" => "",
@@ -28,7 +33,8 @@ $app->get('/',function () {
 					]
 		]);
 		$page->setTpl("index",array(
-			"results"=>$results
+			"incidentes"=>$incidentes,
+			"comunicados"=>$comunicados
 		));
 		
     }
@@ -37,23 +43,104 @@ $app->get('/',function () {
 $app->get('/email',function () {
   		$page = new Page([			
 			"data"=>[
-						"servico" => "E-mail",
-						"mensagem1" => "Incidentes ocorridos nos serviços de e-mail"
+						"servico" => "E-mail"
 					]
-		]);
-		$page->setTpl("services");
+			]);
+
+		
+		$filtro = "email";
+
+	  $a = new Incidentes();
+
+		$incidentes = $a->processesAllIncidents($filtro);
+	
+
+
+		$page->setTpl("services",array(
+			"incidentes"=>$incidentes
+		));
 		
     }
 );
 
+
+$app->get('/email/:id', function($id){
+
+	$page = new PageServices([			
+		"data"=>[
+					"servico" => "E-mail"
+				]
+		]);
+	
+	$a = new Incidentes();
+
+	$result = $a->getIncident((int)$id);
+
+	$page->setTpl("index",array(
+		"result"=>$result
+	));
+
+
+});
+
+$app->get('/hospedagem/:id', function($id){
+
+	$page = new PageServices([			
+		"data"=>[
+					"servico" => "Hospedagem Web"
+				]
+		]);
+	
+	$a = new Incidentes();
+
+	$result = $a->getIncident((int)$id);
+
+	$page->setTpl("index",array(
+		"result"=>$result
+	));
+
+
+});
+
+$app->get('/backup/:id', function($id){
+
+	$page = new PageServices([			
+		"data"=>[
+					"servico" => "Backup"
+				]
+		]);
+	
+	$a = new Incidentes();
+
+	$result = $a->getIncident((int)$id);
+
+	$page->setTpl("index",array(
+		"result"=>$result
+	));
+
+
+});
+
+
+
+
 $app->get('/hospedagem',function () {
   		$page = new Page([
 			"data"=>[
-						"servico" => "Hospedagem Web",
-						"mensagem1" => "Incidentes ocorridos nos serviços de Hospedagem Web"
+						"servico" => "Hospedagem Web"
 					]
 		]);
-		$page->setTpl("services");
+
+		$filtro = "hospedagem";
+
+	  $a = new Incidentes();
+
+		$incidentes = $a->processesAllIncidents($filtro);
+	
+
+		$page->setTpl("services",array(
+			"incidentes"=>$incidentes
+		));
 		
     }
 );
@@ -61,13 +148,38 @@ $app->get('/hospedagem',function () {
 $app->get('/backup',function () {
   		$page = new Page([
 			"data"=>[
-						"servico" => "Backup",
-						"mensagem1" => "Incidentes ocorridos nos serviços de Backup"
+						"servico" => "Backup"
 					]
 		]);
-		$page->setTpl("services");
+		
+		$filtro = "backup";
+
+	  $a = new Incidentes();
+
+		$incidentes = $a->processesAllIncidents($filtro);
+
+		$page->setTpl("services",array(
+			"incidentes"=>$incidentes
+		));
 		
     }
+);
+
+$app->get('/todos',function () {
+	$page = new Page([
+	"data"=>[
+				"servico" => "Todos incedentes"
+			]
+]);
+
+$a = new Incidentes();
+		$incidentes = $a->getAllIncidents();
+
+$page->setTpl("services",array(
+	"incidentes"=>$incidentes
+));
+
+}
 );
 
 

@@ -152,7 +152,7 @@ html, body {
     position: absolute;
     left: 45%;
     top: 24px;
-    width: 700px;
+    width: 845px;
 }
 
 #menu li {
@@ -416,6 +416,26 @@ section .mx-auto h2 {
     margin-bottom: 42px;
 }
 
+.incidentes-email{
+    border-bottom: 3px solid #f2f2f2;
+    margin-bottom: 23px;
+}
+
+.incidentes-email h3{
+    font-weight: bold;
+}
+
+.incidentes-email span{
+    text-decoration: underline;
+}
+
+.incidentes-email h3 a {
+    color: #000;
+    text-decoration: none;
+    background-color: transparent;
+    
+    
+}
 @media (max-width: 768px){
 
 	header .list-unstyled{
