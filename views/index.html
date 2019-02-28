@@ -179,7 +179,8 @@
 
 					{loop="$incidentes"}
 						<li>
-							<a href="{$value.category}/{$value.id}">{$value.dt_criacao}</a>						
+							<a href="{$value.category}/{$value.id}">{$value.title}</a>
+							<p>{$value.dt_criacao}</p>					
 							<!--
 								Criar classe para tratar esses dados para serem apresentados no Template
 								<p><?php echo substr($linha[descricao], 0, 400) ?></p>
@@ -200,7 +201,8 @@
 				
 					{loop="$comunicados"}
 						<li>
-							<a href="{$value.category}/{$value.id}">{$value.dt_criacao}</a>						
+							<a href="{$value.category}/{$value.id}">{$value.title}</a>
+							<p>{$value.dt_criacao}</p>					
 							<!--<p><?php echo substr($linha[descricao], 0, 400) ?></p>-->
 							<p>
 									{$value.descricao}

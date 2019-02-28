@@ -30,17 +30,17 @@
 
 						<ul class="list-unstyled list-socials">
 							<li>
-								<a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+								<a href="https://pt-br.facebook.com/mavtecnologia/" target="_blank"><i class="fab fa-facebook"></i></a>
 							</li>
 							<li>
-								<a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+								<a href="https://www.instagram.com/mavtecnologia/" target="_blank"><i class="fab fa-instagram"></i></a>
 							</li>
 							
 							<li>
-								<a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+								<a href="https://www.youtube.com/channel/UCYpQOySZDuLEcD7-Ent_neA" target="_blank"><i class="fab fa-youtube"></i></a>
 							</li>
 							<li>
-								<a href="#"  target="_blank"><i class="fab fa-linkedin-in"></i></a>
+								<a href="https://pt.linkedin.com/company/mavtecnologiabr"  target="_blank"><i class="fab fa-linkedin-in"></i></a>
 							</li>
 						</ul>
 						
@@ -57,7 +57,7 @@
 						<div class="vl vl-client"></div>
 
 						<div class="client">
-							<a href="#">Area do Cliente</a>
+							<a href="https://clientes.mav.com.br"target="_blank">Area do Cliente</a>
 						</div>
 
 			    	</div>
