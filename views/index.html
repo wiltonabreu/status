@@ -10,15 +10,7 @@
 
 			  	<table>
 				  <tr>
-				    <th>
-				    	
-	              		Serviço
-	              		<!-- <a href="#"  data-toggle="tooltip" data-placement="bottom" title="Access database server and execute queries"> 
-	                	<i class="fa fa-question-circle"></i> 
-	              		</a>-->
-                		
-                	</th>
-
+				    <th>Serviço</th>
 				    <th>Status</th>
 				    <th>Previsão</th>
 				  </tr>
@@ -34,7 +26,6 @@
 				    <td>0 minutos</td>
 				  </tr>
 
-
 				  <tr>
 				    <td><h5><span class="cluster-email">Hospedagem Web</span></h5></td>
 				    <td>
@@ -47,7 +38,6 @@
 				     </td>	
 				    <td>0 minutos</td>
 				  </tr>
-
 
 				  <tr>
 				    <td><h5><span class="cluster-email">Backup</span></h5></td>
@@ -179,15 +169,13 @@
 
 					{loop="$incidentes"}
 						<li>
+
 							<a href="{$value.category}/{$value.id}">{$value.title}</a>
+
 							<p>{$value.dt_criacao}</p>					
-							<!--
-								Criar classe para tratar esses dados para serem apresentados no Template
-								<p><?php echo substr($linha[descricao], 0, 400) ?></p>
-							-->
-							<p>
-									{$value.descricao}
-							</p>
+							
+							<p>{$value.descricao}</p>
+
 						</li>
 				  {/loop}
 										
@@ -202,11 +190,11 @@
 					{loop="$comunicados"}
 						<li>
 							<a href="{$value.category}/{$value.id}">{$value.title}</a>
-							<p>{$value.dt_criacao}</p>					
-							<!--<p><?php echo substr($linha[descricao], 0, 400) ?></p>-->
-							<p>
-									{$value.descricao}
-							</p>
+
+							<p>{$value.dt_criacao}</p>				
+							
+							<p>{$value.descricao}</p>
+							
 						</li>
 				  {/loop}
 					

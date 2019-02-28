@@ -19,7 +19,19 @@ use \Classes\Model;
             
             for ($i=0; $i < count($result) ; $i++) { 
 
-                $result[$i]['dt_criacao'] = date("d-m-Y", strtotime($result[$i]['dt_criacao']) );    
+                $result[$i]['dt_criacao'] = date("d-m-Y", strtotime($result[$i]['dt_criacao']) );
+                
+                if ((int)$result[$i]['status_service'] === 0)
+                {
+                    $result[$i]['status_service'] = "Resolvido";
+                }
+                elseif((int)$result[$i]['status_service'] === 1 )
+                {
+                    $result[$i]['status_service'] = "Em Análise";
+                }
+                
+               
+            
                 
             }
 

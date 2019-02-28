@@ -10,15 +10,7 @@
 
 			  	<table>
 				  <tr>
-				    <th>
-				    	
-	              		Serviço
-	              		<!-- <a href="#"  data-toggle="tooltip" data-placement="bottom" title="Access database server and execute queries"> 
-	                	<i class="fa fa-question-circle"></i> 
-	              		</a>-->
-                		
-                	</th>
-
+				    <th>Serviço</th>
 				    <th>Status</th>
 				    <th>Previsão</th>
 				  </tr>
@@ -34,7 +26,6 @@
 				    <td>0 minutos</td>
 				  </tr>
 
-
 				  <tr>
 				    <td><h5><span class="cluster-email">Hospedagem Web</span></h5></td>
 				    <td>
@@ -47,7 +38,6 @@
 				     </td>	
 				    <td>0 minutos</td>
 				  </tr>
-
 
 				  <tr>
 				    <td><h5><span class="cluster-email">Backup</span></h5></td>
@@ -180,16 +170,13 @@
 					<?php $counter1=-1;  if( isset($incidentes) && ( is_array($incidentes) || $incidentes instanceof Traversable ) && sizeof($incidentes) ) foreach( $incidentes as $key1 => $value1 ){ $counter1++; ?>
 
 						<li>
-							<a href="<?php echo htmlspecialchars( $value1["category"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/<?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $value1["title"], ENT_COMPAT, 'UTF-8', FALSE ); ?></a>
-							<p><?php echo htmlspecialchars( $value1["dt_criacao"], ENT_COMPAT, 'UTF-8', FALSE ); ?></p>					
-							<!--
-								Criar classe para tratar esses dados para serem apresentados no Template
-								<p>&lt;?php echo substr($linha[descricao], 0, 400) ?&gt;</p>
-							-->
-							<p>
-									<?php echo htmlspecialchars( $value1["descricao"], ENT_COMPAT, 'UTF-8', FALSE ); ?>
 
-							</p>
+							<a href="<?php echo htmlspecialchars( $value1["category"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/<?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $value1["title"], ENT_COMPAT, 'UTF-8', FALSE ); ?></a>
+
+							<p><?php echo htmlspecialchars( $value1["dt_criacao"], ENT_COMPAT, 'UTF-8', FALSE ); ?></p>					
+							
+							<p><?php echo htmlspecialchars( $value1["descricao"], ENT_COMPAT, 'UTF-8', FALSE ); ?></p>
+
 						</li>
 				  <?php } ?>
 
@@ -206,12 +193,11 @@
 
 						<li>
 							<a href="<?php echo htmlspecialchars( $value1["category"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/<?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $value1["title"], ENT_COMPAT, 'UTF-8', FALSE ); ?></a>
-							<p><?php echo htmlspecialchars( $value1["dt_criacao"], ENT_COMPAT, 'UTF-8', FALSE ); ?></p>					
-							<!--<p>&lt;?php echo substr($linha[descricao], 0, 400) ?&gt;</p>-->
-							<p>
-									<?php echo htmlspecialchars( $value1["descricao"], ENT_COMPAT, 'UTF-8', FALSE ); ?>
 
-							</p>
+							<p><?php echo htmlspecialchars( $value1["dt_criacao"], ENT_COMPAT, 'UTF-8', FALSE ); ?></p>				
+							
+							<p><?php echo htmlspecialchars( $value1["descricao"], ENT_COMPAT, 'UTF-8', FALSE ); ?></p>
+							
 						</li>
 				  <?php } ?>
 
