@@ -200,7 +200,7 @@
 				
 					{loop="$comunicados"}
 						<li>
-							<a href="#">{$value.dt_criacao}</a>						
+							<a href="{$value.category}/{$value.id}">{$value.dt_criacao}</a>						
 							<!--<p><?php echo substr($linha[descricao], 0, 400) ?></p>-->
 							<p>
 									{$value.descricao}

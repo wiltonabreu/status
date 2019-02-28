@@ -79,7 +79,7 @@ header .vl-client{
 header .contact {
     
     position: absolute;
-    right: 255px;
+    right: 231px;
     font-size: 14px;
     top: 10px;
     
@@ -423,10 +423,17 @@ section .mx-auto h2 {
 
 .incidentes-email h3{
     font-weight: bold;
+    text-align: center;
+}
+
+.lead{
+    
+    text-align: center;
+
 }
 
 .incidentes-email span{
-    text-decoration: underline;
+    text-decoration: underline;    
 }
 
 .incidentes-email h3 a {

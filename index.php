@@ -83,6 +83,25 @@ $app->get('/email/:id', function($id){
 
 });
 
+$app->get('/comunicado/:id', function($id){
+
+	$page = new PageServices([			
+		"data"=>[
+					"servico" => "Comunicado"
+				]
+		]);
+	
+	$a = new Incidentes();
+
+	$result = $a->getcommunicated((int)$id);
+
+	$page->setTpl("communicated",array(
+		"result"=>$result
+	));
+
+
+});
+
 $app->get('/hospedagem/:id', function($id){
 
 	$page = new PageServices([			
@@ -170,16 +189,33 @@ $app->get('/todos',function () {
 	"data"=>[
 				"servico" => "Todos incedentes"
 			]
-]);
+	]);
 
-$a = new Incidentes();
-		$incidentes = $a->getAllIncidents();
+	$a = new Incidentes();
+			$incidentes = $a->getAllIncidents();
 
-$page->setTpl("services",array(
-	"incidentes"=>$incidentes
-));
+	$page->setTpl("services",array(
+		"incidentes"=>$incidentes
+	));
 
-}
+	}
+);
+
+$app->get('/comunicados',function () {
+	$page = new Page([
+	"data"=>[
+				"servico" => "Todos Comunicados"
+			]
+	]);
+
+	$a = new Incidentes();
+			$communicated = $a->getAllCommunicated();
+
+	$page->setTpl("services",array(
+		"incidentes"=>$communicated
+	));
+
+	}
 );
 
 

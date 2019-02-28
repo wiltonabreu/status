@@ -26,6 +26,26 @@ use \Classes\Model;
             return $result;
         }
         
+        public function getcommunicated($id){
+            $sql = new Sql();
+            
+
+			$result = $sql->select("SELECT * from tb_comunicados where id=:id", array(
+				":id" => $id
+			));
+
+            $this->setData($result[0]);
+            
+            for ($i=0; $i < count($result) ; $i++) { 
+
+                $result[$i]['dt_criacao'] = date("d-m-Y", strtotime($result[$i]['dt_criacao']) );    
+                
+            }
+
+            return $result;
+        }
+
+        
         public function processesIncidents(){
             
 
@@ -95,6 +115,18 @@ use \Classes\Model;
             }
 
             return $incidentes;
+        }
+
+        public function getAllCommunicated(){
+            $sql = new Sql();
+            $communicated = $sql->select("SELECT * from tb_comunicados ORDER BY dt_criacao desc ");
+
+            for ($i=0; $i < count($communicated) ; $i++) { 
+                $communicated[$i]['dt_criacao'] = date("d-m-Y", strtotime($communicated[$i]['dt_criacao']) );
+                
+            }
+
+            return $communicated;
         }
 
 

@@ -1,0 +1,29 @@
+<section id="about">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 mx-auto">
+              
+              {loop="$result"}
+                <div class="incidentes-email">
+                <p class="titulo">
+                    <span>{$value.dt_criacao}</span>
+                    
+                    <h3>{$value.title}</h3>  
+                    
+                </p>                
+    
+                <p class="lead">                    
+                    {$value.descricao}
+                </p>
+    
+                
+                
+                  <br>
+                </div>
+              {/loop}
+              
+            </div>
+          </div>
+        </div>
+    </section>
+      

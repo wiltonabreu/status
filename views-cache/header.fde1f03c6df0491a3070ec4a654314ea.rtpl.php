@@ -50,7 +50,7 @@
 					    <div class="vl vl-list-socials"></div>
 						
 						<div class="contact">
-							<a href="#">Contato</a>
+							<a href="/comunicados">Comunicados</a>
 
 						</div>
 
@@ -90,6 +90,7 @@
 							<li><a href="/hospedagem">HOSPEDAGEM WEB</a></li>
 							<li><a href="/backup">BACKUP</a></li>
 							<li><a href="/todos">TODOS</a></li>
+							
 												
 						</ul>
 					</nav>
