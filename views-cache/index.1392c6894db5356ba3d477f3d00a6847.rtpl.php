@@ -12,7 +12,7 @@
 				  <tr>
 				    <th>Serviço</th>
 				    <th>Status</th>
-				   <!-- <th>Previsão</th>-->
+				    <th>Previsão</th>
 				  </tr>
 				  
 				  <tr>
@@ -23,20 +23,20 @@
 				  	    	<i class="fas fa-plus-circle" title="Saiba mais" data-toggle="tooltip" data-placement="bottom" ></i>
 				  	    </a>
 				    </td>
-				   <!-- <td>0 minutos</td>-->
+				    <td><?php echo htmlspecialchars( $previsaoEmail, ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
 				  </tr>
 
 				  <tr>
 				    <td><h5><span class="cluster-email">Hospedagem Web</span></h5></td>
 				    <td>
-				    	<span class="<?php echo htmlspecialchars( $statusHopedagem, ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $messageStatusHospedagem, ENT_COMPAT, 'UTF-8', FALSE ); ?></span>			    
+				    	<span class="<?php echo htmlspecialchars( $statusHospedagem, ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $messageStatusHospedagem, ENT_COMPAT, 'UTF-8', FALSE ); ?></span>			    
 					    <!--<td><span class="badge badge-success">Operational</span></td> -->
 					    <a href="hospedagem">
 					    	<i class="fas fa-plus-circle" title="Saiba mais" data-toggle="tooltip" data-placement="bottom" ></i>
 					    </a>
 
 				     </td>	
-				    <!--<td>0 minutos</td>-->
+				    <td><?php echo htmlspecialchars( $previsaoHospedagem, ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
 				  </tr>
 
 				  <tr>
@@ -48,7 +48,7 @@
 						    <i class="fas fa-plus-circle" title="Saiba mais" data-toggle="tooltip" data-placement="bottom" ></i>
 					    </a>
 				    </td>
-				    <!--<td>0 minutos</td>-->
+				    <td><?php echo htmlspecialchars( $previsaoBackup, ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
 				  </tr>
 
 

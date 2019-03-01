@@ -27,6 +27,10 @@ $app->get('/',function () {
 
 		$statusEmail = $a->verifyStatus($tableStatus);
 
+		$previsaoEmail = $a->verifyPrevisao($tableStatus);
+
+		//var_dump($previsaoEmail);exit;
+
 		if ( $statusEmail == 1  ) {
 			$statusEmail = "badge badge-danger";
 			$messageStatusEmail = "Problema";
@@ -41,13 +45,14 @@ $app->get('/',function () {
 
 		$tableStatus= $a->processesAllIncidents($filtro);		
 
-		$statusHopedagem = $a->verifyStatus($tableStatus);
+		$statusHospedagem = $a->verifyStatus($tableStatus);
+		$previsaoHospedagem = $a->verifyPrevisao($tableStatus);
 
-		if ( $statusHopedagem == 1  ) {
-			$statusHopedagem = "badge badge-danger";
+		if ( $statusHospedagem == 1  ) {
+			$statusHospedagem = "badge badge-danger";
 			$messageStatusHospedagem = "Problema";
 		}else {
-			$statusHopedagem = "badge badge-success";
+			$statusHospedagem = "badge badge-success";
 			$messageStatusHospedagem = "Operacional";
 		}
 
@@ -58,6 +63,7 @@ $app->get('/',function () {
 		$tableStatus= $a->processesAllIncidents($filtro);		
 
 		$statusBackup = $a->verifyStatus($tableStatus);
+		$previsaoBackup = $a->verifyPrevisao($tableStatus);
 
 		if ( $statusBackup == 1  ) {
 			$statusBackup = "badge badge-danger";
@@ -87,10 +93,13 @@ $app->get('/',function () {
 						"mensagem1" => "Incidentes ocorridos nos serviços de e-mail",
 						"statusEmail" => $statusEmail,
 						"messageStatusEmail" => $messageStatusEmail,
-						"statusHopedagem" => $statusHopedagem,
+						"previsaoEmail" => $previsaoEmail,
+						"statusHospedagem" => $statusHospedagem,
 						"messageStatusHospedagem" => $messageStatusHospedagem,
+						"previsaoHospedagem" => $previsaoHospedagem,
 						"statusBackup" => $statusBackup,
-						"messageStatusBackup" => $messageStatusBackup
+						"messageStatusBackup" => $messageStatusBackup,
+						"previsaoBackup" => $previsaoBackup
 					]
 		]);
 		$page->setTpl("index",array(

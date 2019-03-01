@@ -248,6 +248,27 @@ use \Classes\Model;
 
         }
 
+        public function verifyPrevisao($tableStatus){            
+ 
+           
+             for ($i=0; $i < count($tableStatus) ; $i++) { 
+                
+                 if ($tableStatus[$i]["status_service"] == 1) {                                          
+                     return $tableStatus[$i]["previsao"];
+                     exit;
+ 
+                 }
+                    
+                 return "0";
+                 
+             }
+ 
+             
+ 
+         }
+
+        
+
 
 
 

@@ -12,7 +12,7 @@
 				  <tr>
 				    <th>Serviço</th>
 				    <th>Status</th>
-				   <!-- <th>Previsão</th>-->
+				    <th>Previsão</th>
 				  </tr>
 				  
 				  <tr>
@@ -23,20 +23,20 @@
 				  	    	<i class="fas fa-plus-circle" title="Saiba mais" data-toggle="tooltip" data-placement="bottom" ></i>
 				  	    </a>
 				    </td>
-				   <!-- <td>0 minutos</td>-->
+				    <td>{$previsaoEmail}</td>
 				  </tr>
 
 				  <tr>
 				    <td><h5><span class="cluster-email">Hospedagem Web</span></h5></td>
 				    <td>
-				    	<span class="{$statusHopedagem}">{$messageStatusHospedagem}</span>			    
+				    	<span class="{$statusHospedagem}">{$messageStatusHospedagem}</span>			    
 					    <!--<td><span class="badge badge-success">Operational</span></td> -->
 					    <a href="hospedagem">
 					    	<i class="fas fa-plus-circle" title="Saiba mais" data-toggle="tooltip" data-placement="bottom" ></i>
 					    </a>
 
 				     </td>	
-				    <!--<td>0 minutos</td>-->
+				    <td>{$previsaoHospedagem}</td>
 				  </tr>
 
 				  <tr>
@@ -48,7 +48,7 @@
 						    <i class="fas fa-plus-circle" title="Saiba mais" data-toggle="tooltip" data-placement="bottom" ></i>
 					    </a>
 				    </td>
-				    <!--<td>0 minutos</td>-->
+				    <td>{$previsaoBackup}</td>
 				  </tr>
 
 
