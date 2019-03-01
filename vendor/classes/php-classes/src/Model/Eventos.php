@@ -5,7 +5,7 @@ namespace Classes\Model;
 use \Classes\DB\Sql;
 use \Classes\Model;
 
-	class Incidentes extends Model{
+	class Eventos extends Model{
 
 
         public function getIncident($id){
@@ -51,6 +51,17 @@ use \Classes\Model;
 			
         }
 
+        public function saveCommunicated(){
+			$sql = new Sql();
+			
+            $sql->query("INSERT INTO tb_comunicados (title,descricao) values (:title,:descricao)", array(
+                ":title" =>$this->gettitle(),
+                ":descricao" =>$this->getdescricao()
+            ) );           
+            
+			
+        }
+
         public function update(){
 			$sql = new Sql();
 			
@@ -65,11 +76,33 @@ use \Classes\Model;
 
 			$this->setData($results);
         }
+
+        public function updateCommunicated(){
+			$sql = new Sql();
+			
+			$results = $sql->select("UPDATE tb_comunicados  SET title = :title, descricao = :descricao WHERE id = :id", array(
+				":title" =>$this->gettitle(),
+                ":descricao" =>$this->getdescricao(),                
+                ":id" => $this->getid()
+			));
+
+			$this->setData($results);
+        }
+
+        
         
         public function delete(){
 			$sql = new Sql();
 
 			$sql->query("DELETE FROM tb_status WHERE id = :id", array(
+				":id" => $this->getid()
+			));
+        }
+        
+        public function deleteCommunicated(){
+			$sql = new Sql();
+
+			$sql->query("DELETE FROM tb_comunicados WHERE id = :id", array(
 				":id" => $this->getid()
 			));
 		}
@@ -92,11 +125,9 @@ use \Classes\Model;
             
             $this->setData($results[0]);
         }
-        
 
 
-        
-        
+             
         public function getcommunicated($id){
             $sql = new Sql();
             
@@ -200,7 +231,22 @@ use \Classes\Model;
             return $communicated;
         }
 
+        public function verifyStatus($tableStatus){
+           // print_r($tableStatus); exit;
 
+            
+            for ($i=0; $i < count($tableStatus) ; $i++) { 
+                
+                if ($tableStatus[$i]["status_service"] == 1) {
+
+                    return 1; exit;
+
+                }
+            }
+
+            
+
+        }
 
 
 

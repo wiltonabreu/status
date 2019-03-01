@@ -9,7 +9,7 @@ use \Classes\Mailer;
 	class User extends Model{
 
 		const SESSION = "User";
-		const SECRET = "vvv"; //ocultar essa chave ao subir para o Git
+		const SECRET = "WAPCode_Secret64"; //ocultar essa chave ao subir para o Git
 
 		public static function login($login, $password){
 

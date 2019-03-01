@@ -13,7 +13,7 @@
                 
             </p>
 
-            <p class="status"> Status: <?php echo htmlspecialchars( $value1["status_service"], ENT_COMPAT, 'UTF-8', FALSE ); ?></p>
+            <p class="status"> Status: <b><?php echo htmlspecialchars( $value1["status_service"], ENT_COMPAT, 'UTF-8', FALSE ); ?></b></p>
 
             <p class="lead">
                 

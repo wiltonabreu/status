@@ -8,7 +8,7 @@ use \Classes\PageAdmin;
 use \Classes\PageServices;
 use Classes\DB\Sql;
 use \Classes\Model\User;
-use \Classes\Model\Incidentes;
+use \Classes\Model\Eventos;
 
 $app = new \Slim\Slim();
 
@@ -16,20 +16,81 @@ $app = new \Slim\Slim();
 $app->get('/',function () {
 		
 		
-	  $a = new Incidentes();
+		
+		
+
+		$a = new Eventos();
+		
+		$filtro = "email";
+
+		$tableStatus= $a->processesAllIncidents($filtro);		
+
+		$statusEmail = $a->verifyStatus($tableStatus);
+
+		if ( $statusEmail == 1  ) {
+			$statusEmail = "badge badge-danger";
+			$messageStatusEmail = "Problema";
+		}else {
+			$statusEmail = "badge badge-success";
+			$messageStatusEmail = "Operacional";
+		}
+
+		//---
+
+		$filtro = "hospedagem";
+
+		$tableStatus= $a->processesAllIncidents($filtro);		
+
+		$statusHopedagem = $a->verifyStatus($tableStatus);
+
+		if ( $statusHopedagem == 1  ) {
+			$statusHopedagem = "badge badge-danger";
+			$messageStatusHospedagem = "Problema";
+		}else {
+			$statusHopedagem = "badge badge-success";
+			$messageStatusHospedagem = "Operacional";
+		}
+
+		//---
+
+		$filtro = "backup";
+
+		$tableStatus= $a->processesAllIncidents($filtro);		
+
+		$statusBackup = $a->verifyStatus($tableStatus);
+
+		if ( $statusBackup == 1  ) {
+			$statusBackup = "badge badge-danger";
+			$messageStatusBackup = "Problema";
+		}else {
+			$statusBackup = "badge badge-success";
+			$messageStatusBackup = "Operacional";
+		}
+
+
+
+		//echo $statusEmail . "-" . $statusHopedagem . "-" . $statusBackup; exit;
+		
+
 
 		$incidentes = $a->processesIncidents();
 	
 		
 
-		$b = new Incidentes();
+		$b = new Eventos();
 		$comunicados = $b->processesCommunication();
 
 			
 		$page = new Page([			
 			"data"=>[
 						"servico" => "",
-						"mensagem1" => "Incidentes ocorridos nos serviços de e-mail"
+						"mensagem1" => "Incidentes ocorridos nos serviços de e-mail",
+						"statusEmail" => $statusEmail,
+						"messageStatusEmail" => $messageStatusEmail,
+						"statusHopedagem" => $statusHopedagem,
+						"messageStatusHospedagem" => $messageStatusHospedagem,
+						"statusBackup" => $statusBackup,
+						"messageStatusBackup" => $messageStatusBackup
 					]
 		]);
 		$page->setTpl("index",array(
@@ -50,7 +111,7 @@ $app->get('/email',function () {
 		
 		$filtro = "email";
 
-	  $a = new Incidentes();
+	  $a = new Eventos();
 
 		$incidentes = $a->processesAllIncidents($filtro);
 	
@@ -72,7 +133,7 @@ $app->get('/email/:id', function($id){
 				]
 		]);
 	
-	$a = new Incidentes();
+	$a = new Eventos();
 
 	$result = $a->getIncident((int)$id);
 
@@ -91,7 +152,7 @@ $app->get('/comunicado/:id', function($id){
 				]
 		]);
 	
-	$a = new Incidentes();
+	$a = new Eventos();
 
 	$result = $a->getcommunicated((int)$id);
 
@@ -110,7 +171,7 @@ $app->get('/hospedagem/:id', function($id){
 				]
 		]);
 	
-	$a = new Incidentes();
+	$a = new Eventos();
 
 	$result = $a->getIncident((int)$id);
 
@@ -129,7 +190,7 @@ $app->get('/backup/:id', function($id){
 				]
 		]);
 	
-	$a = new Incidentes();
+	$a = new Eventos();
 
 	$result = $a->getIncident((int)$id);
 
@@ -152,7 +213,7 @@ $app->get('/hospedagem',function () {
 
 		$filtro = "hospedagem";
 
-	  $a = new Incidentes();
+	  $a = new Eventos();
 
 		$incidentes = $a->processesAllIncidents($filtro);
 	
@@ -173,7 +234,7 @@ $app->get('/backup',function () {
 		
 		$filtro = "backup";
 
-	  $a = new Incidentes();
+	  $a = new Eventos();
 
 		$incidentes = $a->processesAllIncidents($filtro);
 
@@ -191,7 +252,7 @@ $app->get('/todos',function () {
 			]
 	]);
 
-	$a = new Incidentes();
+	$a = new Eventos();
 			$incidentes = $a->getAllIncidents();
 
 	$page->setTpl("services",array(
@@ -208,7 +269,7 @@ $app->get('/comunicados',function () {
 			]
 	]);
 
-	$a = new Incidentes();
+	$a = new Eventos();
 			$communicated = $a->getAllCommunicated();
 
 	$page->setTpl("services",array(
@@ -270,6 +331,8 @@ $app->get('/admin/users',function () {
 	
 });
 
+
+
 $app->get('/admin/users/create',function () {
 	
 	User::verifylogin();
@@ -295,6 +358,228 @@ $app->get('/admin/users/:iduser/delete', function($iduser){
 
 });
 
+$app->get('/admin/events',function () {
+	
+	User::verifylogin();
+
+	
+
+	$a = new Eventos();
+
+	$incidentes = $a->getAllIncidents();
+
+	$page = new PageAdmin();
+	
+	$page->setTpl("events", array(
+		"incidentes"=>$incidentes
+	));
+	
+});
+
+
+
+
+$app->get('/admin/events/create',function () {
+	
+	User::verifylogin();
+
+	$page = new PageAdmin();
+	$page->setTpl("events-create");
+	
+});
+
+$app->post('/admin/events/create',function() {
+	
+	User::verifylogin();
+	
+	$a = new Eventos();	
+	
+	
+	$_POST["status_service"] = (int)$_POST["status_service"];
+
+	//var_dump($_POST);exit;
+
+	$a->setData($_POST);
+
+	$a->save();
+
+	header("Location: /admin/events");
+
+	exit;
+	
+});
+
+$app->get('/admin/events/:id',function($id) {
+	
+	User::verifylogin();
+
+	$a = new Eventos();
+
+	$a->get((int)$id);
+
+	$page = new PageAdmin();
+
+	$page->setTpl("events-update", array(
+		"incidentes"=>$a->getValue()
+	));
+	
+});
+
+//=== UPdate Eventos
+$app->post('/admin/events/:id',function ($id) {
+	
+	User::verifylogin();
+
+	$a = new Eventos();
+
+	if($_POST["status_service"] == "Resolvido" )
+	{
+			$_POST["status_service"] = 0;
+	}
+	elseif ($_POST["status_service"] == "Em analise")
+	{
+			$_POST["status_service"] = 1;
+	}
+
+	
+	$a->get((int) $id);
+
+	$a->setData($_POST);
+
+
+
+	$a->update();
+
+	header("Location: /admin/events");
+
+	exit;
+	
+});
+
+//====Delete eventos
+
+$app->get('/admin/events/:id/delete', function($id){
+	User::verifylogin();
+
+	$a = new Eventos();
+
+	$a->get((int) $id);
+
+	$a->delete();
+
+	header("Location: /admin/events");
+
+	exit;
+
+
+});
+
+//Lista Comunicados
+
+$app->get('/admin/communicated',function () {
+	
+	User::verifylogin();
+
+	
+
+	$a = new Eventos();
+
+	$communicated = $a->getAllCommunicated();
+
+	$page = new PageAdmin();
+	
+	$page->setTpl("communicated", array(
+		"communicated"=>$communicated
+	));
+	
+});
+
+//===Create Comunucated GET
+$app->get('/admin/communicated/create',function () {
+	
+	User::verifylogin();
+
+	$page = new PageAdmin();
+	$page->setTpl("communicated-create");
+	
+});
+
+//===Create Comunucated POST
+
+$app->post('/admin/communicated/create',function() {
+	
+	User::verifylogin();
+	
+	$a = new Eventos();	
+	
+
+	$a->setData($_POST);
+
+	$a->saveCommunicated();
+
+	header("Location: /admin/communicated");
+
+	exit;
+	
+});
+//=== UPdate Comunicados GET
+$app->get('/admin/communicated/:id',function($id) {
+	
+	User::verifylogin();
+
+	$a = new Eventos();
+
+	$a->getcommunicated((int)$id);
+
+	$page = new PageAdmin();
+
+	$page->setTpl("communicated-update", array(
+		"communicated"=>$a->getValue()
+	));
+	
+});
+//=== Deleet Comunicados
+
+$app->get('/admin/communicated/:id/delete', function($id){
+	User::verifylogin();
+
+	$a = new Eventos();
+
+	$a->getcommunicated((int) $id);
+
+	$a->deleteCommunicated();
+
+	header("Location: /admin/communicated");
+
+	exit;
+
+
+});
+
+
+//=== UPdate Comunicados POST
+$app->post('/admin/communicated/:id',function ($id) {
+	
+	User::verifylogin();
+
+	$a = new Eventos();
+
+	
+	$a->getcommunicated((int) $id);
+
+	$a->setData($_POST);
+
+	$a->updateCommunicated();
+
+	header("Location: /admin/communicated");
+
+	exit;
+	
+});
+
+
+//==
+
 $app->get('/admin/users/:iduser',function($iduser) {
 	
 	User::verifylogin();
@@ -310,6 +595,8 @@ $app->get('/admin/users/:iduser',function($iduser) {
 	));
 	
 });
+
+
 
 $app->post('/admin/users/create',function() {
 	

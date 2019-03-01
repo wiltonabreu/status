@@ -12,43 +12,43 @@
 				  <tr>
 				    <th>Serviço</th>
 				    <th>Status</th>
-				    <th>Previsão</th>
+				   <!-- <th>Previsão</th>-->
 				  </tr>
 				  
 				  <tr>
 				    <td><h5><span class="cluster-email">Email</span></h5></td>
 				    <td>
-				    	<span class="badge badge-success">Operational</span>
+				    	<span class="{$statusEmail}">{$messageStatusEmail}</span>
 				    	<a href="email">						
 				  	    	<i class="fas fa-plus-circle" title="Saiba mais" data-toggle="tooltip" data-placement="bottom" ></i>
 				  	    </a>
 				    </td>
-				    <td>0 minutos</td>
+				   <!-- <td>0 minutos</td>-->
 				  </tr>
 
 				  <tr>
 				    <td><h5><span class="cluster-email">Hospedagem Web</span></h5></td>
 				    <td>
-				    	<span class="badge badge-warning" >Warning</span>			    
+				    	<span class="{$statusHopedagem}">{$messageStatusHospedagem}</span>			    
 					    <!--<td><span class="badge badge-success">Operational</span></td> -->
 					    <a href="hospedagem">
 					    	<i class="fas fa-plus-circle" title="Saiba mais" data-toggle="tooltip" data-placement="bottom" ></i>
 					    </a>
 
 				     </td>	
-				    <td>0 minutos</td>
+				    <!--<td>0 minutos</td>-->
 				  </tr>
 
 				  <tr>
 				    <td><h5><span class="cluster-email">Backup</span></h5></td>
 				    <td>
-				    	<span class="badge badge-success">Operational</span>
+				    	<span class="{$statusBackup}">{$messageStatusBackup}</span>
 				    	<a href="backup">
 						    <!--<td><span class="badge badge-warning">Warning</span></td>-->
 						    <i class="fas fa-plus-circle" title="Saiba mais" data-toggle="tooltip" data-placement="bottom" ></i>
 					    </a>
 				    </td>
-				    <td>0 minutos</td>
+				    <!--<td>0 minutos</td>-->
 				  </tr>
 
 

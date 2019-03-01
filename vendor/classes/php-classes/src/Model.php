@@ -24,9 +24,11 @@ class Model{
 	}
 
 	public function setData($data = array()){
-
+		#var_dump($data);exit;
+		#$data["status_service"] = (int)$data["status_service"];
 		foreach ($data as $key => $value) {
-			$this->{"set".$key}($value);
+			echo $this->{"set".$key}($value);
+
 		}
 	}
 

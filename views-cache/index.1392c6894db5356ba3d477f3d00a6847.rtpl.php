@@ -12,43 +12,43 @@
 				  <tr>
 				    <th>Serviço</th>
 				    <th>Status</th>
-				    <th>Previsão</th>
+				   <!-- <th>Previsão</th>-->
 				  </tr>
 				  
 				  <tr>
 				    <td><h5><span class="cluster-email">Email</span></h5></td>
 				    <td>
-				    	<span class="badge badge-success">Operational</span>
+				    	<span class="<?php echo htmlspecialchars( $statusEmail, ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $messageStatusEmail, ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
 				    	<a href="email">						
 				  	    	<i class="fas fa-plus-circle" title="Saiba mais" data-toggle="tooltip" data-placement="bottom" ></i>
 				  	    </a>
 				    </td>
-				    <td>0 minutos</td>
+				   <!-- <td>0 minutos</td>-->
 				  </tr>
 
 				  <tr>
 				    <td><h5><span class="cluster-email">Hospedagem Web</span></h5></td>
 				    <td>
-				    	<span class="badge badge-warning" >Warning</span>			    
+				    	<span class="<?php echo htmlspecialchars( $statusHopedagem, ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $messageStatusHospedagem, ENT_COMPAT, 'UTF-8', FALSE ); ?></span>			    
 					    <!--<td><span class="badge badge-success">Operational</span></td> -->
 					    <a href="hospedagem">
 					    	<i class="fas fa-plus-circle" title="Saiba mais" data-toggle="tooltip" data-placement="bottom" ></i>
 					    </a>
 
 				     </td>	
-				    <td>0 minutos</td>
+				    <!--<td>0 minutos</td>-->
 				  </tr>
 
 				  <tr>
 				    <td><h5><span class="cluster-email">Backup</span></h5></td>
 				    <td>
-				    	<span class="badge badge-success">Operational</span>
+				    	<span class="<?php echo htmlspecialchars( $statusBackup, ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $messageStatusBackup, ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
 				    	<a href="backup">
 						    <!--<td><span class="badge badge-warning">Warning</span></td>-->
 						    <i class="fas fa-plus-circle" title="Saiba mais" data-toggle="tooltip" data-placement="bottom" ></i>
 					    </a>
 				    </td>
-				    <td>0 minutos</td>
+				    <!--<td>0 minutos</td>-->
 				  </tr>
 
 

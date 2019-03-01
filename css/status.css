@@ -437,10 +437,10 @@ section .mx-auto h2 {
 }
 
 .incidentes-email h3 a {
-    color: #000;
-    text-decoration: none;
-    background-color: transparent;
     
+    color: #000;
+    text-decoration: underline;
+    background-color: transparent;   
     
 }
 @media (max-width: 768px){
