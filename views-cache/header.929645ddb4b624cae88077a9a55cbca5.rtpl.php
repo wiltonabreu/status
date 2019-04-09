@@ -7,7 +7,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Page Admin| Status</title>
+  <title>Page Admin| Status</title> 
+ 
+
   <link rel="shortcut icon" type="image/x-icon" href="../../img/faviconm.ico"/>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -25,12 +27,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
   -->
   <link rel="stylesheet" href="/res/admin/dist/css/skins/skin-blue.min.css">
 
+  <link href="../../css/teste.css" rel="stylesheet">
+  	
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
+
+  <script src="/res/admin/dist/js/conditional.js"></script>
+  <script src="/res/admin/dist/js/jquery-3.3.1.min.js"></script>
+
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -258,8 +266,9 @@ desired effect
         <li class="header">HEADER</li>
         <!-- Optionally, you can add icons to the links -->
         <li class="active"><a href="/admin/users"><i class="fa fa-users"></i> <span>Usuários</span></a></li>
-        <li><a href="/admin/events"><i  class="fa fa-link"></i> <span>Eventos</span></a></li>
+        <li><a href="/admin/events"><i  class="fa fa-link"></i> <span>Incidentes</span></a></li>
         <li><a href="/admin/communicated"><i  class="fa fa-link"></i> <span>Comunicados</span></a></li>
+        <li><a href="/admin/categories"><i  class="fa fa-link"></i> <span>Categorias</span></a></li>
         <li class="treeview">
           <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
             <span class="pull-right-container">

@@ -15,7 +15,7 @@
 
             <p class="status"> Status: <b><?php echo htmlspecialchars( $value1["status_service"], ENT_COMPAT, 'UTF-8', FALSE ); ?></b></p>
 
-            <p class="lead">
+            <p class="lead text-left">
                 
                 <?php echo htmlspecialchars( $value1["descricao"], ENT_COMPAT, 'UTF-8', FALSE ); ?>
 

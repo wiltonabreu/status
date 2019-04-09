@@ -6,9 +6,11 @@
 
 	<title>MAV Tecnologia Status</title>
 
-	<link rel="stylesheet" type="text/css" href="../lib/bootstrap/css/bootstrap.min.css">	
+	<link rel="stylesheet" type="text/css" href="../lib/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../lib/bootstrap/js/bootstrap.min.js">
 	<link href="../css/status.css" rel="stylesheet" id="bootstrap-css">
 	<link href="../css/mobile-status.css" rel="stylesheet">
+	
 
 	<link rel="shortcut icon" type="image/x-icon" href="img/faviconm.ico"/>
 
@@ -89,11 +91,9 @@
 						<li><a href="email">E-MAIL</a></li>
 						<li><a href="hospedagem">HOSPEDAGEM WEB</a></li>
 						<li><a href="backup">BACKUP</a></li>
-						<li><a href="todos">TODOS</a></li>
-						
-												
+						<li><a href="todos">TODOS</a></li>												
 						</ul>
-					</nav>
+				</nav>
 				
 				
 				

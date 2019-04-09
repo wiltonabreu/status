@@ -6,9 +6,9 @@ use \PHPMailer;
 
 class Mailer{
 
-    const USERNAME = "wilton@mav.com.br";
+    const USERNAME = "status@mav.com.br";
     const HOSTNAME = "mail.mav.com.br";
-    const PASSWORD = "123.qwe";
+    const PASSWORD = "45@NyOfrr";
     const NAME_FROM = "MAV Tecnologia";
 
     private $mail;

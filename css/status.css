@@ -202,7 +202,7 @@ table{
 }
 table, th, td {
   border: 1px solid black;
-  border-collapse: inherit;
+  /*border-collapse: inherit;*/
 }
 
 th, td {

@@ -8,7 +8,8 @@ use \Classes\PageAdmin;
 use \Classes\PageServices;
 use Classes\DB\Sql;
 use \Classes\Model\User;
-use \Classes\Model\Eventos;
+use \Classes\Model\Incidents;
+use \Classes\Model\Category;
 
 $app = new \Slim\Slim();
 
@@ -19,7 +20,7 @@ $app->get('/',function () {
 		
 		
 
-		$a = new Eventos();
+		$a = new Incidents();
 		
 		$filtro = "email";
 
@@ -49,8 +50,8 @@ $app->get('/',function () {
 		$previsaoHospedagem = $a->verifyPrevisao($tableStatus);
 
 		if ( $statusHospedagem == 1  ) {
-			$statusHospedagem = "badge badge-danger";
-			$messageStatusHospedagem = "Problema";
+			$statusHospedagem = "badge badge-warning";
+			$messageStatusHospedagem = "Parcialmente Operacional";
 		}else {
 			$statusHospedagem = "badge badge-success";
 			$messageStatusHospedagem = "Operacional";
@@ -83,7 +84,7 @@ $app->get('/',function () {
 	
 		
 
-		$b = new Eventos();
+		$b = new Incidents();
 		$comunicados = $b->processesCommunication();
 
 			
@@ -120,7 +121,7 @@ $app->get('/email',function () {
 		
 		$filtro = "email";
 
-	  $a = new Eventos();
+	  $a = new Incidents();
 
 		$incidentes = $a->processesAllIncidents($filtro);
 	
@@ -142,7 +143,7 @@ $app->get('/email/:id', function($id){
 				]
 		]);
 	
-	$a = new Eventos();
+	$a = new Incidents();
 
 	$result = $a->getIncident((int)$id);
 
@@ -161,7 +162,7 @@ $app->get('/comunicado/:id', function($id){
 				]
 		]);
 	
-	$a = new Eventos();
+	$a = new Incidents();
 
 	$result = $a->getcommunicated((int)$id);
 
@@ -180,7 +181,7 @@ $app->get('/hospedagem/:id', function($id){
 				]
 		]);
 	
-	$a = new Eventos();
+	$a = new Incidents();
 
 	$result = $a->getIncident((int)$id);
 
@@ -199,7 +200,7 @@ $app->get('/backup/:id', function($id){
 				]
 		]);
 	
-	$a = new Eventos();
+	$a = new Incidents();
 
 	$result = $a->getIncident((int)$id);
 
@@ -222,7 +223,7 @@ $app->get('/hospedagem',function () {
 
 		$filtro = "hospedagem";
 
-	  $a = new Eventos();
+	  $a = new Incidents();
 
 		$incidentes = $a->processesAllIncidents($filtro);
 	
@@ -243,7 +244,7 @@ $app->get('/backup',function () {
 		
 		$filtro = "backup";
 
-	  $a = new Eventos();
+	  $a = new Incidents();
 
 		$incidentes = $a->processesAllIncidents($filtro);
 
@@ -261,7 +262,7 @@ $app->get('/todos',function () {
 			]
 	]);
 
-	$a = new Eventos();
+	$a = new Incidents();
 			$incidentes = $a->getAllIncidents();
 
 	$page->setTpl("services",array(
@@ -278,7 +279,7 @@ $app->get('/comunicados',function () {
 			]
 	]);
 
-	$a = new Eventos();
+	$a = new Incidents();
 			$communicated = $a->getAllCommunicated();
 
 	$page->setTpl("services",array(
@@ -373,7 +374,7 @@ $app->get('/admin/events',function () {
 
 	
 
-	$a = new Eventos();
+	$a = new Incidents();
 
 	$incidentes = $a->getAllIncidents();
 
@@ -401,12 +402,12 @@ $app->post('/admin/events/create',function() {
 	
 	User::verifylogin();
 	
-	$a = new Eventos();	
+	$a = new Incidents();	
 	
 	
 	$_POST["status_service"] = (int)$_POST["status_service"];
 
-	//var_dump($_POST);exit;
+//	var_dump($_POST);exit;
 
 	$a->setData($_POST);
 
@@ -422,7 +423,7 @@ $app->get('/admin/events/:id',function($id) {
 	
 	User::verifylogin();
 
-	$a = new Eventos();
+	$a = new Incidents();
 
 	$a->get((int)$id);
 
@@ -439,7 +440,7 @@ $app->post('/admin/events/:id',function ($id) {
 	
 	User::verifylogin();
 
-	$a = new Eventos();
+	$a = new Incidents();
 
 	if($_POST["status_service"] == "Resolvido" )
 	{
@@ -470,7 +471,7 @@ $app->post('/admin/events/:id',function ($id) {
 $app->get('/admin/events/:id/delete', function($id){
 	User::verifylogin();
 
-	$a = new Eventos();
+	$a = new Incidents();
 
 	$a->get((int) $id);
 
@@ -491,7 +492,7 @@ $app->get('/admin/communicated',function () {
 
 	
 
-	$a = new Eventos();
+	$a = new Incidents();
 
 	$communicated = $a->getAllCommunicated();
 
@@ -519,7 +520,7 @@ $app->post('/admin/communicated/create',function() {
 	
 	User::verifylogin();
 	
-	$a = new Eventos();	
+	$a = new Incidents();	
 	
 
 	$a->setData($_POST);
@@ -536,7 +537,7 @@ $app->get('/admin/communicated/:id',function($id) {
 	
 	User::verifylogin();
 
-	$a = new Eventos();
+	$a = new Incidents();
 
 	$a->getcommunicated((int)$id);
 
@@ -552,7 +553,7 @@ $app->get('/admin/communicated/:id',function($id) {
 $app->get('/admin/communicated/:id/delete', function($id){
 	User::verifylogin();
 
-	$a = new Eventos();
+	$a = new Incidents();
 
 	$a->getcommunicated((int) $id);
 
@@ -571,7 +572,7 @@ $app->post('/admin/communicated/:id',function ($id) {
 	
 	User::verifylogin();
 
-	$a = new Eventos();
+	$a = new Incidents();
 
 	
 	$a->getcommunicated((int) $id);
@@ -716,6 +717,112 @@ $app->post("/admin/forgot/reset", function() {
 	$page->setTpl("forgot-reset-success");
 
 });
+
+$app->get('/admin/categories',function () {
+	
+	User::verifylogin();	
+
+	$categories = Category::listAll();
+
+	
+
+//	$incidentes = $a->getAllIncidents();
+
+	$page = new PageAdmin();
+	
+	$page->setTpl("categories",[
+		"categories"=>$categories
+	]);
+	
+});
+
+$app->get('/admin/categories/create',function () {
+	
+	User::verifylogin();	
+	
+	$page = new PageAdmin();
+	
+	$page->setTpl("categories-create");
+	
+	
+});
+
+
+$app->post('/admin/categories/create',function () {
+	
+	User::verifylogin();
+	
+	$category = new Category();
+
+	$category->setData($_POST);
+
+	$category->save();
+
+	header("Location: /admin/categories");
+
+	exit;
+	
+});
+
+$app->get('/admin/categories/:idcategory/delete',function ($idcategory) {
+	
+	User::verifylogin();
+	
+	$category = new Category();
+
+	$category->get((int)$idcategory);
+
+	$category->delete();
+
+	header("Location: /admin/categories");
+
+	exit;
+	
+});
+
+
+$app->get('/admin/categories/:idcategory',function ($idcategory) {
+	
+	User::verifylogin();
+
+	$category = new Category();
+
+	$category->get((int)$idcategory);
+
+	//var_dump($result);exit;
+	
+	$page = new PageAdmin();
+	
+	$page->setTpl("categories-update",[
+		"category"=>$category->getValue()
+	]);
+	
+	
+});
+
+
+$app->post('/admin/categories/:idcategory',function ($idcategory) {
+	
+	User::verifylogin();
+
+	$category = new Category();
+
+	$category->get((int)$idcategory);
+
+	//var_dump($result);exit;
+
+	$category->setData($_POST);
+	
+	$category->save();
+
+	header("Location: /admin/categories");
+
+	exit;
+	
+	
+	
+});
+
 
 
 

@@ -14,7 +14,7 @@
                     
                 </p>
 
-                <p class="lead">
+                <p class="lead text-left">
                     
                     <?php echo htmlspecialchars( $value1["descricao"], ENT_COMPAT, 'UTF-8', FALSE ); ?>
 

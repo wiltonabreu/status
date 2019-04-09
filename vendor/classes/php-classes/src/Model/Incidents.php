@@ -5,7 +5,7 @@ namespace Classes\Model;
 use \Classes\DB\Sql;
 use \Classes\Model;
 
-	class Eventos extends Model{
+	class Incidents extends Model{
 
 
         public function getIncident($id){
