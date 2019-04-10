@@ -13,6 +13,15 @@ use \Classes\Mailer;
 			$sql = new Sql();
 
 			return $sql->select("SELECT * FROM tb_categories  ORDER BY descategory");
+		}
+		
+		public function listCategories(){
+
+			$sql = new Sql();
+
+			$results = $sql->select("SELECT descategory FROM tb_categories  ORDER BY descategory");
+			
+			$this->setData($results);
         }
         
         public function get($idcategory){

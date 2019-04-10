@@ -45,169 +45,271 @@
 
                 <div class="form-group container container-categoria"><!-- CONTAINER CATEGORIA --> 
                     <label for="category">Categoria</label>
-              
-                    <select class="form-control" id="category" name="category" style="width: 150px">
+                    <!--              
+                    <select class="form-control" id="category" name="category" style="width: 150px" onclick="toggle(this.value)" >
                         <option selected>Selecione...</option>
-                        <option value="email">E-mail</option>
-                        <option value="hospedagem">Hospedagem</option>
-                        <option value="backup">Backup</option>
-                    </select>
+                        <?php $counter1=-1;  if( isset($categories) && ( is_array($categories) || $categories instanceof Traversable ) && sizeof($categories) ) foreach( $categories as $key1 => $value1 ){ $counter1++; ?>
+
+                        <option value="<?php echo htmlspecialchars( $value1["descategory"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo ucfirst($value1["descategory"]); ?></option>
+                        <?php } ?>
+
+                        <!--<option value="hospedagem">Hospedagem</option>--> 
+                       <!-- <option value="backup">Backup</option> 
+                    </select>-->
 
                          <!--TEste --> 
-
-                            <div class="row">
-
-                                  <div class="col-md-6">
-                                      <div class="card" style="margin:50px 0">
-                                      <!-- Default panel contents -->
-                                      <div class="card-header">
-                                        E-mail
-                                        <label class="switchcase">
-                                            <input type="checkbox" class="primary" value="category-email" id="category-email" name="category-email">
-                                            <span class="slider round"></span>
-                                        </label>
-                                      </div>
+                         
+                         <div class="container">
+                            
+                            <ul class="nav nav-tabs">
+                              
+                              <li><a data-toggle="tab" href="#tabEmail">E-mail</a></li>
+                              <li><a data-toggle="tab" href="#tabHospedagem">Hospedagem</a></li>
+                              <li><a data-toggle="tab" href="#tabBackup">Backup</a></li>
+                            </ul>
+                          
+                            <div class="tab-content">
+                              
+                              <div id="tabEmail" class="tab-pane fade">
+                                <h3>E-mail</h3>
+                                <div id="email" class="col-md-4">
+                                    
+                                    <ul class="list-group list-group-flush">
                                       
-                                          <ul class="list-group list-group-flush">
-                                            
-                                            
-                                              <li class="list-group-item hidden">
-                                                  IMAP
-                                                  <label class="switch ">
-                                                  <input type="checkbox" class="primary" value="imap" id="category-email-imap" name="category-email-imap">
-                                                  <span class="slider round"></span>
-                                                  </label>
-                                              </li>
-                                              <li class="list-group-item hidden">
-                                                  POP
-                                                  <label class="switch ">
-                                                  <input type="checkbox" class="primary" value="pop" id="category-email-pop" name="category-email-pop">
-                                                  <span class="slider round"></span>
-                                                  </label>
-                                              </li>
-                                              <li class="list-group-item hidden">
-                                                  SMTP
-                                                  <label class="switch ">
-                                                  <input type="checkbox" class="primary" value="smtp" id="category-email-smtp" name="category-email-smtp">
-                                                  <span class="slider round"></span>
-                                                  </label>
-                                              </li>
-                                              <li class="list-group-item hidden">
-                                                  WEBMAIL
-                                                  <label class="switch ">
-                                                  <input type="checkbox" class="primary" value="webmail" id="category-email-webmail" name="category-email-webmail">
-                                                  <span class="slider round"></span>
-                                                  </label>
-                                              </li>
-                                              <li class="list-group-item hidden">
-                                                  FILA
-                                                  <label class="switch ">
-                                                  <input type="checkbox" class="primary" value="fila" id="category-email-fila" name="category-email-fila">
-                                                  <span class="slider round"></span>
-                                                  </label>
-                                              </li>
+                                      
+                                        <li class="list-group-item">
+                                            IMAP
+                                            <label class="switch ">
+                                            <input type="checkbox" class="primary primary-email" value="imap" onclick="toggle('previsao-imap')" id="category-email-imap" name="category-email-imap">
+                                            <span class="slider round"></span>
+                                            </label>
+                                        </li>
+                                        <li class="list-group-item">
+                                            POP
+                                            <label class="switch ">
+                                            <input type="checkbox" class="primary" value="pop" onclick="toggle('previsao-pop')" id="category-email-pop" name="category-email-pop">
+                                            <span class="slider round"></span>
+                                            </label>
+                                        </li>
+                                        <li class="list-group-item">
+                                            SMTP
+                                            <label class="switch ">
+                                            <input type="checkbox" class="primary" value="smtp" onclick="toggle('previsao-smtp')" id="category-email-smtp" name="category-email-smtp">
+                                            <span class="slider round"></span>
+                                            </label>
+                                        </li>
+                                        <li class="list-group-item">
+                                            WEBMAIL
+                                            <label class="switch ">
+                                            <input type="checkbox" class="primary" value="webmail" onclick="toggle('previsao-webmail')" id="category-email-webmail" name="category-email-webmail">
+                                            <span class="slider round"></span>
+                                            </label>
+                                        </li>
+                                        <li class="list-group-item">
+                                            FILA
+                                            <label class="switch ">
+                                            <input type="checkbox" class="primary" value="fila" onclick="toggle('previsao-fila')" id="category-email-fila" name="category-email-fila">
+                                            <span class="slider round"></span>
+                                            </label>
+                                        </li>
 
-                                              <div class="card-header">Cluster</div>
-                                              <ul class="list-group list-group-flush">
-                                              <li class="list-group-item hidden">
-                                              MAIL 01
-                                                  <label class="switch ">
-                                                  <input type="checkbox" class="primary" value="mail01" id="category-email-mail01" name="category-email-mail01">
-                                                  <span class="slider round"></span>
-                                                  </label>
-                                              </li>
+                                        <div class="card-header">Cluster</div>
+                                        <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">
+                                        MAIL 01
+                                            <label class="switch ">
+                                            <input type="checkbox" class="primary" value="mail01" id="category-email-mail01" name="category-email-mail01">
+                                            <span class="slider round"></span>
+                                            </label>
+                                        </li>
 
-                                              <li class="list-group-item hidden">
-                                              MAIL 02
-                                                  <label class="switch ">
-                                                  <input type="checkbox" class="primary" value="mail02" id="category-email-mail02" name="category-email-mail02">
-                                                  <span class="slider round"></span>
-                                                  </label>
-                                              </li>
-                                              <li class="list-group-item hidden">
-                                                  MAIL 03
-                                                  <label class="switch ">
-                                                  <input type="checkbox" class="primary" value="mail03" id="category-email-mail03" name="category-email-mail03">
-                                                  <span class="slider round"></span>
-                                                  </label>
-                                              </li>
-                                          </ul>
-                                      </div> 
+                                        <li class="list-group-item">
+                                        MAIL 02
+                                            <label class="switch ">
+                                            <input type="checkbox" class="primary" value="mail02" id="category-email-mail02" name="category-email-mail02">
+                                            <span class="slider round"></span>
+                                            </label>
+                                        </li>
+                                        <li class="list-group-item">
+                                            MAIL 03
+                                            <label class="switch ">
+                                            <input type="checkbox" class="primary" value="mail03" id="category-email-mail03" name="category-email-mail03">
+                                            <span class="slider round"></span>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                  </div>  <!-- Fim minhaDiv -->
+                              </div>
+
+                              <div id="tabHospedagem" class="tab-pane fade">
+                                <h3>Hospedagem</h3>
+                                <div id="hospedagem" class="col-md-4">  
+                                    
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">
+                                            HTTP
+                                            <label class="switch ">
+                                            <input type="checkbox" class="primary" value="category-hospedagem-http" onclick="toggle('http')" id="category-hospedagem-http" name="category-hospedagem-http">
+                                            <span class="slider round"></span>
+                                            </label>
+                                        </li>
+                                        <li class="list-group-item">
+                                            APACHE
+                                            <label class="switch ">
+                                            <input type="checkbox" class="primary" value="category-hospedagem-apache" onclick="toggle('apache')" id="category-hospedagem-apache" name="category-hospedagem-apache">
+                                            <span class="slider round"></span>
+                                            </label>
+                                        </li>
+                                        <li class="list-group-item">
+                                            NGINX
+                                            <label class="switch ">
+                                            <input type="checkbox" class="primary" value="category-hospedagem-nginx" onclick="toggle('nginx')" id="category-hospedagem-nginx" name="category-hospedagem-nginx">
+                                            <span class="slider round"></span>
+                                            </label>
+                                        </li>
+                                        
+                                        <div class="card-header">Cluster</div>
+                                        <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">
+                                        Plesk linux 1
+                                            <label class="switch ">
+                                            <input type="checkbox" class="primary" value="category-hospedagem-lin1" id="category-hospedagem-lin1" name="category-hospedagem-lin1">
+                                            <span class="slider round"></span>
+                                            </label>
+                                        </li>
+
+                                        <li class="list-group-item">
+                                        Plesk linux 3
+                                            <label class="switch ">
+                                            <input type="checkbox" class="primary" value="category-hospedagem-lin3" id="category-hospedagem-lin3" name="category-hospedagem-lin3">
+                                            <span class="slider round"></span>
+                                            </label>
+                                        </li>
+                                        <li class="list-group-item">
+                                        Plesk Windows
+                                            <label class="switch ">
+                                            <input type="checkbox" class="primary" value="category-hospedagem-win" id="category-hospedagem-win" name="category-hospedagem-win">
+                                            <span class="slider round"></span>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                  </div>
+                              </div>
+                              
+                              <div id="tabBackup" class="tab-pane fade col-md-4">
+                                <h3>Backup</h3>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        <label class="switch ">
+                                        <input type="checkbox" class="primary" value="category-backup" onclick="toggle('backup')" id="category-backup" name="category-backup">
+                                        <span class="slider round"></span>
+                                        </label>
+                                    </li>
+                                </ul>
+                                
+                              </div>
+                            </div>
+                          </div>
+                            
+                               <!--  
+                                <div id="minhaDiv">Conteudo</div>
+                                <button type="button" class="btn-toggle" data-element="#minhaDiv">Mostrar / Esconder</button>
+                                -->
+                                
+
+                                  <div style="margin:50px 0">
+                                      
+                                      <!-- Default panel contents
+                                      <div class="card-header">
+                                        
+                                        <label class="switchcase">
+                                          E-mail
+                                            <input type="checkbox" class="primary" value="category-email" onclick="toggle('minhaDivEmail')" id="category-email" name="category-email">
+                                            <button type="button" class="btn-toggle" id="addblockE" onclick="toggle('minhaDivEmail')" style="width:100px">E-mail</button>
+                                            
+                                        </label>
+                                      </div> -->
+
+                                      
+
+                                      
+                                       
                                   </div>
 
-                                  <div class="col-md-6">
-                                      <div class="card" style="margin:50px 0">
-                                      <!-- Default panel contents -->
+                                  <div style="margin:50px 0">
+                                      
+                                      <!-- Default panel contents
                                       <div class="card-header">
-                                          Hospedagem
+                                          
                                           <label class="switchcase">
-                                              <input type="checkbox" class="primary" value="category-hospedagem" id="category-hospedagem" name="category-hospedagem">
-                                              <span class="slider round"></span>
+                                            Hospedagem
+                                              <input type="checkbox" class="primary" value="category-email" id="category-email" name="category-email">
+                                              <input type="checkbox" class="primary" value="category-hospedage" onclick="toggle('minhaDivHospedagem')" id="category-hospedage" name="category-hospedage">
+                                              <button type="button" class="btn-toggle" id="addblockH" onclick="toggle('minhaDivHospedagem')">Hospedagem</button>
+                                              
                                           </label>
                                         </div>
+                                      -->
                                           
-                                        
-
-                                          <ul class="list-group list-group-flush">
-                                              <li class="list-group-item">
-                                                  HTTP
-                                                  <label class="switch ">
-                                                  <input type="checkbox" class="primary" value="category-hospedagem-http" id="category-hospedagem-http" name="category-hospedagem-http">
-                                                  <span class="slider round"></span>
-                                                  </label>
-                                              </li>
-                                              <li class="list-group-item">
-                                                  APACHE
-                                                  <label class="switch ">
-                                                  <input type="checkbox" class="primary" value="category-hospedagem-apache" id="category-hospedagem-apache" name="category-hospedagem-apache">
-                                                  <span class="slider round"></span>
-                                                  </label>
-                                              </li>
-                                              <li class="list-group-item">
-                                                  NGINX
-                                                  <label class="switch ">
-                                                  <input type="checkbox" class="primary" value="category-hospedagem-nginx" id="category-hospedagem-nginx" name="category-hospedagem-nginx">
-                                                  <span class="slider round"></span>
-                                                  </label>
-                                              </li>
-                                              
-                                              <div class="card-header">Cluster</div>
-                                              <ul class="list-group list-group-flush">
-                                              <li class="list-group-item">
-                                              Plesk linux 1
-                                                  <label class="switch ">
-                                                  <input type="checkbox" class="primary" value="category-hospedagem-lin1" id="category-hospedagem-lin1" name="category-hospedagem-lin1">
-                                                  <span class="slider round"></span>
-                                                  </label>
-                                              </li>
-
-                                              <li class="list-group-item">
-                                              Plesk linux 3
-                                                  <label class="switch ">
-                                                  <input type="checkbox" class="primary" value="category-hospedagem-lin3" id="category-hospedagem-lin3" name="category-hospedagem-lin3">
-                                                  <span class="slider round"></span>
-                                                  </label>
-                                              </li>
-                                              <li class="list-group-item">
-                                              Plesk Windows
-                                                  <label class="switch ">
-                                                  <input type="checkbox" class="primary" value="category-hospedagem-win" id="category-hospedagem-win" name="category-hospedagem-win">
-                                                  <span class="slider round"></span>
-                                                  </label>
-                                              </li>
-                                          </ul>
-                                      </div> 
+                                      
+                                       
                                   </div>
-                              </div>                         
-                      
+                                  
+                             
+
+                                  <div class="form-group" id="http" style="display:none;">
+                                      <label for="previsao">Previsão Http</label>
+                                      <input type="text" class="form-control" id="previsao-http" name="previsao-http" placeholder="Digite a previsao" style="width: 150px">
+                                  </div>
+                                  <div class="form-group" id="apache" style="display:none;">
+                                      <label for="previsao">Previsão Apache</label>
+                                      <input type="text" class="form-control" id="previsao-apache" name="previsao-apache" placeholder="Digite a previsao" style="width: 150px">
+                                  </div> 
+                                  <div class="form-group" id="nginx" style="display:none;">
+                                      <label for="previsao">Previsão Nginx</label>
+                                      <input type="text" class="form-control" id="previsao-nginx" name="previsao-nginx" placeholder="Digite a previsao" style="width: 150px">
+                                  </div>
+                                  <div class="form-group" id="backup" style="display:none;">
+                                      <label for="previsao">Previsão backup</label>
+                                      <input type="text" class="form-control" id="previsao-backup" name="previsao-backup" placeholder="Digite a previsao" style="width: 150px">
+                                  </div>
+
+                                  <div class="form-group" id="previsao-imap" style="display:none;">
+                                      <label for="previsao">Previsão IMAP</label>
+                                      <input type="text" class="form-control" id="previsao-imap-email" name="previsao-imap-email" placeholder="Digite a previsao" style="width: 150px">
+                                  </div>
+
+                                  <div class="form-group" id="previsao-pop" style="display:none;">
+                                      <label for="previsao">Previsão POP</label>
+                                      <input type="text" class="form-control" id="previsao-pop-email" name="previsao-pop-email" placeholder="Digite a previsao" style="width: 150px">
+                                  </div>
+
+                                  <div class="form-group" id="previsao-smtp" style="display:none;">
+                                      <label for="previsao">Previsão SMTP</label>
+                                      <input type="text" class="form-control" id="previsao-smtp-email" name="previsao-smtp-email" placeholder="Digite a previsao" style="width: 150px">
+                                  </div>
+
+                                  <div class="form-group" id="previsao-webmail" style="display:none;">
+                                      <label for="previsao">Previsão WEBMAIL</label>
+                                      <input type="text" class="form-control" id="previsao-webmail-email" name="previsao-webmail-email" placeholder="Digite a previsao" style="width: 150px">
+                                  </div>
+
+                                  <div class="form-group" id="previsao-fila" style="display:none;">
+                                      <label for="previsao">Previsão FILA</label>
+                                      <input type="text" class="form-control" id="previsao-fila-email" name="previsao-fila-email" placeholder="Digite a previsao" style="width: 150px">
+                                  </div>
+
+                            
                         <!--FIM TEste -->
 
-                </div><!-- /CONTAINER CATEGORIA -->
+                </div><!-- /CONTAINER CATEGORIA 
 
               <div class="form-group">
                 <label for="previsao">Previsão</label>
                 <input type="text" class="form-control" id="previsao" name="previsao" placeholder="Digite a previsao" style="width: 150px">
               </div>
+-->
+
 
               <div class="form-group">
                 <label for="status_service">Status</label>                      
@@ -223,12 +325,13 @@
             </div>    <!-- /.box-body -->
 
             <div class="box-footer">
-              <!--<button type="submit" class="btn btn-success">Cadastrar</button>-->
+            <button type="submit" class="btn btn-success">Cadastrar</button>
             </div>
 
           </form> <!-- fim form role="form" -->
 
         </div> <!-- fim box box-success" -->
+
 
       </div> <!-- fim class="col-md-12" -->
 
@@ -239,56 +342,20 @@
 </div>
         <!-- /.content-wrapper -->
 
-<script>
-$( document ).ready(function() {
-    //var testimonial_ok=false;
-    //Inputs that determine what fields to show
-    var rating = $('#createincident input[name="category-email"]:checked');
-    //var testimonial=$('#createincident input:checkbox[name=category-hospedagem]');				
-    
-    //Wrappers for all fields
-    var category_email_imap = $('#createincident input[name="category-email-imap"]').parent();
-    var category_email_pop = $('#createincident input[name="category-email-pop"]').parent();
-    //var great = $('#live_form textarea[name="feedback_great"]').parent();
-    //var testimonial_parent = $('#live_form #div_testimonial');
-    //var thanks_anyway  = $('#live_form #thanks_anyway');
-    //var all=bad.add(ok).add(great).add(testimonial_parent).add(thanks_anyway);
-    var all=category_email_imap.add(category_email_pop);
-    
-    rating.change(function(){
-        var value=this.value;						
-        all.addClass('hidden'); //hide everything and reveal as needed
-        
-       if (value == "category-email"){
-            category_email_imap.removeClass('hidden');
-            category_email_pop.removeClass('hidden');								
-       }
-        //else if (value == 'hospedagem'){
-            ok.removeClass('hidden');
-       // }
-        /*		
-        else if (value == 'Excellent'){
-            testimonial_parent.removeClass('hidden');
-            if (testimonial_ok == 'yes'){great.removeClass('hidden');}
-            else if (testimonial_ok == 'no'){thanks_anyway.removeClass('hidden');}
-        }*/
-    });	
+        <script>
+          /*
+            $("#addblock").click(function() {
+            $('.hiddenHosp').removeClass("hidden");
+          });
 
-    
-    testimonial.change(function(){
-        all.addClass('hidden'); 
-        testimonial_parent.removeClass('hidden');
-    
-        testimonial_ok=this.value;
-        
-        if (testimonial_ok == 'yes'){
-            great.removeClass('hidden');
-        }
-        else{
-            thanks_anyway.removeClass('hidden');
-        }
-        
-    });
-});
+          $("#addblockE").click(function() {
+            $('.hiddenE').removeClass("hidden");
+          });*/ 
+          function toggle(sDivId) {
+                var oDiv = document.getElementById(sDivId);
+                oDiv.style.display = (oDiv.style.display == "none") ? "block" : "none";
+          }
 
-</script>
+          
+
+        </script>

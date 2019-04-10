@@ -393,8 +393,17 @@ $app->get('/admin/events/create',function () {
 	
 	User::verifylogin();
 
+	$categories = new Category();
+
+	$categories->listCategories();
+
+//	var_dump($categories->getValue());exit;
+
 	$page = new PageAdmin();
-	$page->setTpl("events-create");
+	$page->setTpl("events-create",[
+		"categories"=>$categories->getValue()
+	
+	]);
 	
 });
 
@@ -407,7 +416,7 @@ $app->post('/admin/events/create',function() {
 	
 	$_POST["status_service"] = (int)$_POST["status_service"];
 
-//	var_dump($_POST);exit;
+	var_dump($_POST);exit;
 
 	$a->setData($_POST);
 

@@ -36,9 +36,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 
-  <script src="/res/admin/dist/js/conditional.js"></script>
-  <script src="/res/admin/dist/js/jquery-3.3.1.min.js"></script>
-
+  <!--<script src="../../js/conditional.js"></script>-->
+  <script src="../../js/jquery-3.3.1.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -61,6 +62,8 @@ desired effect
 |---------------------------------------------------------|
 -->
 <body class="hold-transition skin-blue sidebar-mini">
+
+
 <div class="wrapper">
 
   <!-- Main Header -->
@@ -267,8 +270,9 @@ desired effect
         <!-- Optionally, you can add icons to the links -->
         <li class="active"><a href="/admin/users"><i class="fa fa-users"></i> <span>Usuários</span></a></li>
         <li><a href="/admin/events"><i  class="fa fa-link"></i> <span>Incidentes</span></a></li>
-        <li><a href="/admin/communicated"><i  class="fa fa-link"></i> <span>Comunicados</span></a></li>
         <li><a href="/admin/categories"><i  class="fa fa-link"></i> <span>Categorias</span></a></li>
+        <li><a href="/admin/communicated"><i  class="fa fa-link"></i> <span>Comunicados</span></a></li>
+        
         <li class="treeview">
           <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
             <span class="pull-right-container">
