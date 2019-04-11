@@ -63,52 +63,59 @@
                             
                             <ul class="nav nav-tabs">
                               
-                              <li><a data-toggle="tab" href="#tabEmail">E-mail</a></li>
-                              <li><a data-toggle="tab" href="#tabHospedagem">Hospedagem</a></li>
-                              <li><a data-toggle="tab" href="#tabBackup">Backup</a></li>
+                              <li><a onclick="desbloquearCheckBoxEmail()" data-toggle="tab" href="#tabEmail">E-mail</a></li>
+                              <li><a onclick="desbloquearCheckBoxHospedagem()" data-toggle="tab" href="#tabHospedagem">Hospedagem</a></li>
+                              <li><a onclick="desbloquearCheckBoxBackup()" data-toggle="tab" href="#tabBackup">Backup</a></li>
                             </ul>
                           
                             <div class="tab-content">
                               
-                              <div id="tabEmail" class="tab-pane fade">
+                              <div id="tabEmail" class="tab-pane fade" >
                                 <h3>E-mail</h3>
                                 <div id="email" class="col-md-4">
                                     
                                     <ul class="list-group list-group-flush">
-                                      
+
+                                      <li class="list-group-item hidden">
+                                        EMAIL
+                                        <label class="switch ">
+                                        <input type="checkbox" class="primary primary-email" value="category-email" id="category-email" name="category-email">
+                                        <span class="slider round"></span>
+                                        </label>
+                                    </li>
                                       
                                         <li class="list-group-item">
                                             IMAP
                                             <label class="switch ">
-                                            <input type="checkbox" class="primary primary-email" value="imap" onclick="toggle('previsao-imap')" id="category-email-imap" name="category-email-imap">
+                                            <input type="checkbox" class="primary primary-email" value="category-email-imap" onclick="toggle('previsao-imap')"  id="category-email-imap" name="category-email-imap">
                                             <span class="slider round"></span>
                                             </label>
                                         </li>
                                         <li class="list-group-item">
                                             POP
                                             <label class="switch ">
-                                            <input type="checkbox" class="primary" value="pop" onclick="toggle('previsao-pop')" id="category-email-pop" name="category-email-pop">
+                                            <input type="checkbox" class="primary" value="category-email-pop" onclick="toggle('previsao-pop')" id="category-email-pop" name="category-email-pop">
                                             <span class="slider round"></span>
                                             </label>
                                         </li>
                                         <li class="list-group-item">
                                             SMTP
                                             <label class="switch ">
-                                            <input type="checkbox" class="primary" value="smtp" onclick="toggle('previsao-smtp')" id="category-email-smtp" name="category-email-smtp">
+                                            <input type="checkbox" class="primary" value="category-email-smtp" onclick="toggle('previsao-smtp')" id="category-email-smtp" name="category-email-smtp">
                                             <span class="slider round"></span>
                                             </label>
                                         </li>
                                         <li class="list-group-item">
                                             WEBMAIL
                                             <label class="switch ">
-                                            <input type="checkbox" class="primary" value="webmail" onclick="toggle('previsao-webmail')" id="category-email-webmail" name="category-email-webmail">
+                                            <input type="checkbox" class="primary" value="category-email-webmail" onclick="toggle('previsao-webmail')" id="category-email-webmail" name="category-email-webmail">
                                             <span class="slider round"></span>
                                             </label>
                                         </li>
                                         <li class="list-group-item">
                                             FILA
                                             <label class="switch ">
-                                            <input type="checkbox" class="primary" value="fila" onclick="toggle('previsao-fila')" id="category-email-fila" name="category-email-fila">
+                                            <input type="checkbox" class="primary" value="category-email-fila" onclick="toggle('previsao-fila')" id="category-email-fila" name="category-email-fila">
                                             <span class="slider round"></span>
                                             </label>
                                         </li>
@@ -138,6 +145,41 @@
                                             </label>
                                         </li>
                                     </ul>
+
+                                    <div class="form-group" id="previsao-imap" style="display:none;">
+                                        <label for="previsao">Previsão IMAP</label>
+                                        <input type="text" class="form-control" id="previsao-imap-email" name="previsao-imap-email" placeholder="Digite a previsao" style="width: 150px">
+                                        <!--
+                                        <div class="col-md-4">
+                                            <label for="data-consulta">Data</label>
+                                            <input type="date" class="form-control" id="data-consulta" name="data-consulta" style="width: 150px">
+                                            <input id="horas" type="time" name="horas" style="width: 100px">
+                                            <!--<input id="horas" type="time" name="horas" required>
+                                        </div>
+                                       -->
+                                        
+                                    </div>
+  
+                                    <div class="form-group" id="previsao-pop" style="display:none;">
+                                        <label for="previsao">Previsão POP</label>
+                                        <input type="text" class="form-control" id="previsao-pop-email" name="previsao-pop-email" placeholder="Digite a previsao" style="width: 150px">
+                                    </div>
+  
+                                    <div class="form-group" id="previsao-smtp" style="display:none;">
+                                        <label for="previsao">Previsão SMTP</label>
+                                        <input type="text" class="form-control" id="previsao-smtp-email" name="previsao-smtp-email" placeholder="Digite a previsao" style="width: 150px">
+                                    </div>
+  
+                                    <div class="form-group" id="previsao-webmail" style="display:none;">
+                                        <label for="previsao">Previsão WEBMAIL</label>
+                                        <input type="text" class="form-control" id="previsao-webmail-email" name="previsao-webmail-email" placeholder="Digite a previsao" style="width: 150px">
+                                    </div>
+  
+                                    <div class="form-group" id="previsao-fila" style="display:none;">
+                                        <label for="previsao">Previsão FILA</label>
+                                        <input type="text" class="form-control" id="previsao-fila-email" name="previsao-fila-email" placeholder="Digite a previsao" style="width: 150px">
+                                    </div>
+  
                                   </div>  <!-- Fim minhaDiv -->
                               </div>
 
@@ -146,12 +188,22 @@
                                 <div id="hospedagem" class="col-md-4">  
                                     
                                     <ul class="list-group list-group-flush">
+
+                                        <li class="list-group-item hidden">
+                                            HOSPEDAGEM
+                                            <label class="switch ">
+                                            <input type="checkbox" class="primary primary-email" value="category-hospedagem" id="category-hospedagem" name="category-hospedagem">
+                                            <span class="slider round"></span>
+                                            </label>
+                                        </li>
+
                                         <li class="list-group-item">
                                             HTTP
                                             <label class="switch ">
                                             <input type="checkbox" class="primary" value="category-hospedagem-http" onclick="toggle('http')" id="category-hospedagem-http" name="category-hospedagem-http">
                                             <span class="slider round"></span>
                                             </label>
+                                            
                                         </li>
                                         <li class="list-group-item">
                                             APACHE
@@ -193,12 +245,29 @@
                                             </label>
                                         </li>
                                     </ul>
+
+                                    <div class="form-group" id="http" style="display:none;">
+                                        <label for="previsao">Previsão Http</label>
+                                        <input type="text" class="form-control" id="previsao-http" name="previsao-http" placeholder="Digite a previsao" style="width: 150px">
+                                    </div>
+
+                                    <div class="form-group" id="apache" style="display:none;">
+                                        <label for="previsao">Previsão Apache</label>
+                                        <input type="text" class="form-control" id="previsao-apache" name="previsao-apache" placeholder="Digite a previsao" style="width: 150px">
+                                    </div>
+
+                                    <div class="form-group" id="nginx" style="display:none;">
+                                        <label for="previsao">Previsão Nginx</label>
+                                        <input type="text" class="form-control" id="previsao-nginx" name="previsao-nginx" placeholder="Digite a previsao" style="width: 150px">
+                                    </div>
                                   </div>
                               </div>
                               
                               <div id="tabBackup" class="tab-pane fade col-md-4">
                                 <h3>Backup</h3>
                                 <ul class="list-group list-group-flush">
+
+                                    
                                     <li class="list-group-item">
                                         <label class="switch ">
                                         <input type="checkbox" class="primary" value="category-backup" onclick="toggle('backup')" id="category-backup" name="category-backup">
@@ -206,6 +275,11 @@
                                         </label>
                                     </li>
                                 </ul>
+
+                                <div class="form-group" id="backup" style="display:none;">
+                                    <label for="previsao">Previsão backup</label>
+                                    <input type="text" class="form-control" id="previsao-backup" name="previsao-backup" placeholder="Digite a previsao" style="width: 150px">
+                                </div>
                                 
                               </div>
                             </div>
@@ -255,50 +329,8 @@
                                        
                                   </div>
                                   
-                             
 
-                                  <div class="form-group" id="http" style="display:none;">
-                                      <label for="previsao">Previsão Http</label>
-                                      <input type="text" class="form-control" id="previsao-http" name="previsao-http" placeholder="Digite a previsao" style="width: 150px">
-                                  </div>
-                                  <div class="form-group" id="apache" style="display:none;">
-                                      <label for="previsao">Previsão Apache</label>
-                                      <input type="text" class="form-control" id="previsao-apache" name="previsao-apache" placeholder="Digite a previsao" style="width: 150px">
-                                  </div> 
-                                  <div class="form-group" id="nginx" style="display:none;">
-                                      <label for="previsao">Previsão Nginx</label>
-                                      <input type="text" class="form-control" id="previsao-nginx" name="previsao-nginx" placeholder="Digite a previsao" style="width: 150px">
-                                  </div>
-                                  <div class="form-group" id="backup" style="display:none;">
-                                      <label for="previsao">Previsão backup</label>
-                                      <input type="text" class="form-control" id="previsao-backup" name="previsao-backup" placeholder="Digite a previsao" style="width: 150px">
-                                  </div>
-
-                                  <div class="form-group" id="previsao-imap" style="display:none;">
-                                      <label for="previsao">Previsão IMAP</label>
-                                      <input type="text" class="form-control" id="previsao-imap-email" name="previsao-imap-email" placeholder="Digite a previsao" style="width: 150px">
-                                  </div>
-
-                                  <div class="form-group" id="previsao-pop" style="display:none;">
-                                      <label for="previsao">Previsão POP</label>
-                                      <input type="text" class="form-control" id="previsao-pop-email" name="previsao-pop-email" placeholder="Digite a previsao" style="width: 150px">
-                                  </div>
-
-                                  <div class="form-group" id="previsao-smtp" style="display:none;">
-                                      <label for="previsao">Previsão SMTP</label>
-                                      <input type="text" class="form-control" id="previsao-smtp-email" name="previsao-smtp-email" placeholder="Digite a previsao" style="width: 150px">
-                                  </div>
-
-                                  <div class="form-group" id="previsao-webmail" style="display:none;">
-                                      <label for="previsao">Previsão WEBMAIL</label>
-                                      <input type="text" class="form-control" id="previsao-webmail-email" name="previsao-webmail-email" placeholder="Digite a previsao" style="width: 150px">
-                                  </div>
-
-                                  <div class="form-group" id="previsao-fila" style="display:none;">
-                                      <label for="previsao">Previsão FILA</label>
-                                      <input type="text" class="form-control" id="previsao-fila-email" name="previsao-fila-email" placeholder="Digite a previsao" style="width: 150px">
-                                  </div>
-
+                                  
                             
                         <!--FIM TEste -->
 
@@ -354,8 +386,116 @@
           function toggle(sDivId) {
                 var oDiv = document.getElementById(sDivId);
                 oDiv.style.display = (oDiv.style.display == "none") ? "block" : "none";
+                
+                                
+          }       
+
+          function desbloquearCheckBoxEmail(){  
+            
+                          
+              document.getElementById('category-email').checked = true;
+                            
+              document.getElementById('category-hospedagem').checked = false;
+              document.getElementById('category-hospedagem-http').checked = false;
+              document.getElementById('category-hospedagem-apache').checked = false;
+              document.getElementById('category-hospedagem-nginx').checked = false;
+
+              document.getElementById('category-backup').checked = false;
+
+              var http = document.getElementById('http');
+              http.style.display = "none";
+
+              var apache = document.getElementById('apache');
+              apache.style.display = "none";
+
+              var nginx = document.getElementById('nginx');
+              nginx.style.display = "none";
+
+              var backup = document.getElementById('backup');
+              backup.style.display = "none";
+
           }
 
+          function desbloquearCheckBoxHospedagem(){ 
+                       
+            document.getElementById('category-hospedagem').checked = true;            
+
+            document.getElementById('category-email').checked = false;
+            document.getElementById('category-email-imap').checked = false;
+            document.getElementById('category-email-pop').checked = false;
+            document.getElementById('category-email-smtp').checked = false;
+            document.getElementById('category-email-webmail').checked = false;
+            document.getElementById('category-email-fila').checked = false;
+
+            document.getElementById('category-backup').checked = false;
+
+            var imap = document.getElementById('previsao-imap');
+            imap.style.display = "none";
+
+            var pop = document.getElementById('previsao-pop');
+            pop.style.display = "none";
+
+            var smtp = document.getElementById('previsao-smtp');
+            smtp.style.display = "none";
+
+            var webmail = document.getElementById('previsao-webmail');
+            webmail.style.display = "none";
+
+            var fila = document.getElementById('previsao-fila');
+            fila.style.display = "none";
+
+            var backup = document.getElementById('backup');
+            backup.style.display = "none";
+        }
+
+        function desbloquearCheckBoxBackup(){  
           
+                       
+            document.getElementById('category-email').checked = false;
+            
+            
+            document.getElementById('category-email-imap').checked = false;
+            document.getElementById('category-email-pop').checked = false;
+            document.getElementById('category-email-smtp').checked = false;
+            document.getElementById('category-email-webmail').checked = false;
+            document.getElementById('category-email-fila').checked = false;
+
+            document.getElementById('category-hospedagem').checked = false;
+            document.getElementById('category-hospedagem-http').checked = false;
+            document.getElementById('category-hospedagem-apache').checked = false;
+            document.getElementById('category-hospedagem-nginx').checked = false;
+
+            var imap = document.getElementById('previsao-imap');
+            imap.style.display = "none";
+
+            var pop = document.getElementById('previsao-pop');
+            pop.style.display = "none";
+
+            var smtp = document.getElementById('previsao-smtp');
+            smtp.style.display = "none";
+
+            var webmail = document.getElementById('previsao-webmail');
+            webmail.style.display = "none";
+
+            var fila = document.getElementById('previsao-fila');
+            fila.style.display = "none";
+
+            var http = document.getElementById('http');
+            http.style.display = "none";
+
+            var apache = document.getElementById('apache');
+            apache.style.display = "none";
+
+            var nginx = document.getElementById('nginx');
+            nginx.style.display = "none";
+
+            var backup = document.getElementById('backup');
+            backup.style.display = "none";
+
+          
+            
+
+          
+        }
 
         </script>
