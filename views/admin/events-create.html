@@ -3,11 +3,11 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      Lista de Eventos
+      Cadastrar Incidente
     </h1>
     <ol class="breadcrumb">
       <li><a href="/admin"><i class="fa fa-dashboard"></i> Home</a></li>
-      <li><a href="/admin/events">Eventos</a></li>
+      <li><a href="/admin/events">Incidente</a></li>
       <li class="active"><a href="/admin/events/create">Cadastrar</a></li>
     </ol>
   </section>
@@ -22,7 +22,7 @@
         <div class="box box-success"> <!-- box box-success" -->
 
           <div class="box-header with-border">
-            <h3 class="box-title">Novo Evento</h3>
+            <h3 class="box-title">Novo Incidente</h3>
           </div>
 
           <!-- /.box-header -->
@@ -32,19 +32,19 @@
             <div class="box-body"> <!-- class="box-body" -->
 
               <div class="form-group">
-                  <label for="title">Titulo</label>
+                  <label for="title"><h3>Titulo</h3></label>
                   <input type="text" class="form-control" id="title" name="title" placeholder="Digite a Titulo">
               </div>
 
               <div class="form-group">
-                <label for="descricao">Descrição</label>                      
+                <label for="descricao"><h3>Descrição</h3></label>                      
                 <textarea class="form-control" rows="5" id="descricao" name="descricao" placeholder="Digite a descrição"></textarea>
               </div>
 
               
 
                 <div class="form-group container container-categoria"><!-- CONTAINER CATEGORIA --> 
-                    <label for="category">Categoria</label>
+                    <label for="category"><h3>Categoria</h3></label>
                     <!--              
                     <select class="form-control" id="category" name="category" style="width: 150px" onclick="toggle(this.value)" >
                         <option selected>Selecione...</option>
@@ -342,7 +342,7 @@
 
 
               <div class="form-group">
-                <label for="status_service">Status</label>                      
+                <label for="status_service"><h3>Status</h3></label>                      
                 <select class="form-control" id="status_service" name="status_service" style="width: 150px">
                       <option selected>Selecione...</option>
                       <option value=0>Resolvido</option>
@@ -402,15 +402,19 @@
 
               var http = document.getElementById('http');
               http.style.display = "none";
+              document.getElementById('previsao-http').value = "";
 
               var apache = document.getElementById('apache');
               apache.style.display = "none";
+              document.getElementById('previsao-apache').value = "";
 
               var nginx = document.getElementById('nginx');
               nginx.style.display = "none";
+              document.getElementById('previsao-nginx').value = "";
 
               var backup = document.getElementById('backup');
               backup.style.display = "none";
+              document.getElementById('previsao-backup').value = "";
 
           }
 
@@ -425,25 +429,32 @@
             document.getElementById('category-email-webmail').checked = false;
             document.getElementById('category-email-fila').checked = false;
 
-            document.getElementById('category-backup').checked = false;
+            document.getElementById('category-backup').checked = false;            
+            
 
             var imap = document.getElementById('previsao-imap');
             imap.style.display = "none";
+            document.getElementById('previsao-imap-email').value = "";
 
             var pop = document.getElementById('previsao-pop');
             pop.style.display = "none";
+            document.getElementById('previsao-pop-email').value = "";
 
             var smtp = document.getElementById('previsao-smtp');
             smtp.style.display = "none";
+            document.getElementById('previsao-smtp-email').value = "";
 
             var webmail = document.getElementById('previsao-webmail');
             webmail.style.display = "none";
+            document.getElementById('previsao-webmail-email').value = "";
 
             var fila = document.getElementById('previsao-fila');
             fila.style.display = "none";
+            document.getElementById('previsao-fila-email').value = "";
 
             var backup = document.getElementById('backup');
             backup.style.display = "none";
+            document.getElementById('previsao-backup').value = "";
         }
 
         function desbloquearCheckBoxBackup(){  
@@ -465,30 +476,37 @@
 
             var imap = document.getElementById('previsao-imap');
             imap.style.display = "none";
+            document.getElementById('previsao-imap-email').value = "";
 
             var pop = document.getElementById('previsao-pop');
             pop.style.display = "none";
+            document.getElementById('previsao-pop-email').value = "";
 
             var smtp = document.getElementById('previsao-smtp');
             smtp.style.display = "none";
+            document.getElementById('previsao-smtp-email').value = "";
 
             var webmail = document.getElementById('previsao-webmail');
             webmail.style.display = "none";
+            document.getElementById('previsao-webmail-email').value = "";
 
             var fila = document.getElementById('previsao-fila');
             fila.style.display = "none";
+            document.getElementById('previsao-fila-email').value = "";
 
             var http = document.getElementById('http');
             http.style.display = "none";
+            document.getElementById('previsao-http').value = "";
 
             var apache = document.getElementById('apache');
             apache.style.display = "none";
+            document.getElementById('previsao-apache').value = "";
 
             var nginx = document.getElementById('nginx');
             nginx.style.display = "none";
+            document.getElementById('previsao-nginx').value = "";
 
-            var backup = document.getElementById('backup');
-            backup.style.display = "none";
+           
 
           
             

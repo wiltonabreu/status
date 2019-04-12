@@ -97,3 +97,12 @@
     .container-categoria{
         margin-left: 0;
     }
+
+    .nav-tabs a{
+        font-size: 20px;
+        color: #444;
+    }
+
+    .container-categoria {
+        margin-left: -17px;
+    }
