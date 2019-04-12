@@ -45,16 +45,7 @@
 
                 <div class="form-group container container-categoria"><!-- CONTAINER CATEGORIA --> 
                     <label for="category"><h3>Categoria</h3></label>
-                    <!--              
-                    <select class="form-control" id="category" name="category" style="width: 150px" onclick="toggle(this.value)" >
-                        <option selected>Selecione...</option>
-                        {loop="$categories"}
-                        <option value="{$value.descategory}">{function="ucfirst($value.descategory)"}</option>
-                        {/loop}
-                        <!--<option value="hospedagem">Hospedagem</option>--> 
-                       <!-- <option value="backup">Backup</option> 
-                    </select>-->
-
+                   
                          <!--TEste --> 
                          
                          <div class="container">
@@ -147,15 +138,7 @@
                                     <div class="form-group" id="previsao-imap" style="display:none;">
                                         <label for="previsao">Previsão IMAP</label>
                                         <input type="text" class="form-control" id="previsao-imap-email" name="previsao-imap-email" placeholder="Digite a previsao" style="width: 150px">
-                                        <!--
-                                        <div class="col-md-4">
-                                            <label for="data-consulta">Data</label>
-                                            <input type="date" class="form-control" id="data-consulta" name="data-consulta" style="width: 150px">
-                                            <input id="horas" type="time" name="horas" style="width: 100px">
-                                            <!--<input id="horas" type="time" name="horas" required>
-                                        </div>
-                                       -->
-                                        
+                                                                              
                                     </div>
   
                                     <div class="form-group" id="previsao-pop" style="display:none;">
@@ -282,64 +265,10 @@
                               </div>
                             </div>
                           </div>
-                            
-                               <!--  
-                                <div id="minhaDiv">Conteudo</div>
-                                <button type="button" class="btn-toggle" data-element="#minhaDiv">Mostrar / Esconder</button>
-                                -->
-                                
-
-                                  <div style="margin:50px 0">
-                                      
-                                      <!-- Default panel contents
-                                      <div class="card-header">
-                                        
-                                        <label class="switchcase">
-                                          E-mail
-                                            <input type="checkbox" class="primary" value="category-email" onclick="toggle('minhaDivEmail')" id="category-email" name="category-email">
-                                            <button type="button" class="btn-toggle" id="addblockE" onclick="toggle('minhaDivEmail')" style="width:100px">E-mail</button>
-                                            
-                                        </label>
-                                      </div> -->
-
-                                      
-
-                                      
-                                       
-                                  </div>
-
-                                  <div style="margin:50px 0">
-                                      
-                                      <!-- Default panel contents
-                                      <div class="card-header">
-                                          
-                                          <label class="switchcase">
-                                            Hospedagem
-                                              <input type="checkbox" class="primary" value="category-email" id="category-email" name="category-email">
-                                              <input type="checkbox" class="primary" value="category-hospedage" onclick="toggle('minhaDivHospedagem')" id="category-hospedage" name="category-hospedage">
-                                              <button type="button" class="btn-toggle" id="addblockH" onclick="toggle('minhaDivHospedagem')">Hospedagem</button>
-                                              
-                                          </label>
-                                        </div>
-                                      -->
-                                          
-                                      
-                                       
-                                  </div>
-                                  
-
-                                  
-                            
+                          
                         <!--FIM TEste -->
 
-                </div><!-- /CONTAINER CATEGORIA 
-
-              <div class="form-group">
-                <label for="previsao">Previsão</label>
-                <input type="text" class="form-control" id="previsao" name="previsao" placeholder="Digite a previsao" style="width: 150px">
-              </div>
--->
-
+                </div><!-- /CONTAINER CATEGORIA -->
 
               <div class="form-group">
                 <label for="status_service"><h3>Status</h3></label>                      
@@ -372,19 +301,10 @@
 </div>
         <!-- /.content-wrapper -->
 
-        <script>
-          /*
-            $("#addblock").click(function() {
-            $('.hiddenHosp').removeClass("hidden");
-          });
-
-          $("#addblockE").click(function() {
-            $('.hiddenE').removeClass("hidden");
-          });*/ 
+        <script>          
           function toggle(sDivId) {
                 var oDiv = document.getElementById(sDivId);
-                oDiv.style.display = (oDiv.style.display == "none") ? "block" : "none";
-                
+                oDiv.style.display = (oDiv.style.display == "none") ? "block" : "none";             
                                 
           }       
 
@@ -397,6 +317,11 @@
               document.getElementById('category-hospedagem-http').checked = false;
               document.getElementById('category-hospedagem-apache').checked = false;
               document.getElementById('category-hospedagem-nginx').checked = false;
+              document.getElementById('category-hospedagem-lin1').checked = false;
+              document.getElementById('category-hospedagem-lin3').checked = false;
+              document.getElementById('category-hospedagem-win').checked = false;
+
+              
 
               document.getElementById('category-backup').checked = false;
 
@@ -428,6 +353,9 @@
             document.getElementById('category-email-smtp').checked = false;
             document.getElementById('category-email-webmail').checked = false;
             document.getElementById('category-email-fila').checked = false;
+            document.getElementById('category-email-mail01').checked = false;
+            document.getElementById('category-email-mail02').checked = false;
+            document.getElementById('category-email-mail03').checked = false;
 
             document.getElementById('category-backup').checked = false;            
             
@@ -468,11 +396,17 @@
             document.getElementById('category-email-smtp').checked = false;
             document.getElementById('category-email-webmail').checked = false;
             document.getElementById('category-email-fila').checked = false;
+            document.getElementById('category-email-mail01').checked = false;
+            document.getElementById('category-email-mail02').checked = false;
+            document.getElementById('category-email-mail03').checked = false;
 
             document.getElementById('category-hospedagem').checked = false;
             document.getElementById('category-hospedagem-http').checked = false;
             document.getElementById('category-hospedagem-apache').checked = false;
             document.getElementById('category-hospedagem-nginx').checked = false;
+            document.getElementById('category-hospedagem-lin1').checked = false;
+            document.getElementById('category-hospedagem-lin3').checked = false;
+            document.getElementById('category-hospedagem-win').checked = false;
 
             var imap = document.getElementById('previsao-imap');
             imap.style.display = "none";
