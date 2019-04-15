@@ -36,8 +36,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 
-  <!--<script src="../../js/conditional.js"></script>-->
-  <script src="../../js/jquery-3.3.1.min.js"></script>
+  <!--<script src="../../js/conditional.js"></script>
+  <script src="../../js/jquery-3.3.1.min.js"></script>-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   
 </head>

@@ -415,12 +415,15 @@ $app->post('/admin/events/create',function() {
 	
 	
 	$_POST["status_service"] = (int)$_POST["status_service"];
+	
 
-	var_dump($_POST);exit;
+	//var_dump($_POST);exit;
 
 	$a->setData($_POST);
 
+	
 	$a->save();
+	
 
 	header("Location: /admin/events");
 
@@ -428,24 +431,36 @@ $app->post('/admin/events/create',function() {
 	
 });
 
-$app->get('/admin/events/:id',function($id) {
+$app->get('/admin/events/:id/:idsubcategory',function($id,$idsubcategory) {
 	
 	User::verifylogin();
 
 	$a = new Incidents();
 
-	$a->get((int)$id);
+	$a->get((int)$idsubcategory);
 
-	$page = new PageAdmin();
+	if($a->getcategory_email() != NULL) {
+		
+		$page = new PageAdmin();
 
-	$page->setTpl("events-update", array(
-		"incidentes"=>$a->getValue()
-	));
+		$page->setTpl("events-update-email", array(
+			"incidentes"=>$a->getValue()
+		));
+	}
+
+	if($a->getcategory_hospedagem() != NULL) {
+		echo("getcategory_hospedagem"); exit;
+	}
+
+	if($a->getcategory_backup() != NULL) {
+		echo("getcategory_backup"); exit;
+	}
+	
 	
 });
 
 //=== UPdate Eventos
-$app->post('/admin/events/:id',function ($id) {
+$app->post('/admin/events/:id',function ($id,$idsubcategory) {
 	
 	User::verifylogin();
 
@@ -461,11 +476,9 @@ $app->post('/admin/events/:id',function ($id) {
 	}
 
 	
-	$a->get((int) $id);
+	$a->get((int)$idsubcategory);
 
 	$a->setData($_POST);
-
-
 
 	$a->update();
 

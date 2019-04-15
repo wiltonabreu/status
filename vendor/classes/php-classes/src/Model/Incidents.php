@@ -38,7 +38,9 @@ use \Classes\Model;
         }
 
         public function save(){
-			$sql = new Sql();
+            /*$sql = new Sql();
+            
+            
 			
             $sql->query("INSERT INTO tb_incidents (title,descricao,previsao,status_service,category) values (:title,:descricao,:previsao,:status_service,:category)", array(
                 ":title" =>$this->gettitle(),
@@ -46,7 +48,55 @@ use \Classes\Model;
                 ":previsao" =>$this->getprevisao(),
                 ":status_service" =>$this->getstatus_service(),
                 ":category" =>$this->getcategory()
-            ) );           
+            ) );   */    
+            
+            $sql = new Sql();
+
+                       
+			
+            $results = $sql->select("CALL sp_incident_save 
+                        (:title,:descricao,:status_service,:category_email_imap,:category_email_pop,
+                            :category_email_smtp,:category_email_webmail,:category_email_fila,:category_email_eas,:category_email_mail01,:category_email_mail02,
+                            :category_email_mail03,:previsao_imap_email,:previsao_pop_email,:previsao_smtp_email,:previsao_webmail_email,:previsao_fila_email,
+                            :previsao_eas_email,:category_hospedagem_http,:category_hospedagem_apache,:category_hospedagem_nginx,:category_hospedagem_lin1,
+                            :category_hospedagem_lin3,:category_hospedagem_win,:previsao_http,:previsao_apache,:previsao_nginx,:previsao_backup,:category_email,
+                            :category_hospedagem,:category_backup)",
+                            [
+                                ":title"=>$this->gettitle(),
+                                ":descricao"=>$this->getdescricao(),
+                                ":status_service"=>$this->getstatus_service(),                                
+                                ":category_email_imap"=>$this->getcategory_email_imap(),
+                                ":category_email_pop"=>$this->getcategory_email_pop(),
+                                ":category_email_smtp"=>$this->getcategory_email_smtp(),
+                                ":category_email_webmail"=>$this->getcategory_email_webmail(),
+                                ":category_email_fila"=>$this->getcategory_email_fila(),
+                                ":category_email_eas"=>$this->getcategory_email_eas(),
+                                ":category_email_mail01"=>$this->getcategory_email_mail01(),
+                                ":category_email_mail02"=>$this->getcategory_email_mail02(),
+                                ":category_email_mail03"=>$this->getcategory_email_mail03(),
+                                ":previsao_imap_email"=>$this->getprevisao_imap_email(),
+                                ":previsao_pop_email"=>$this->getprevisao_pop_email(),
+                                ":previsao_smtp_email"=>$this->getprevisao_smtp_email(),
+                                ":previsao_webmail_email"=>$this->getprevisao_webmail_email(),
+                                ":previsao_fila_email"=>$this->getprevisao_fila_email(),
+                                ":previsao_eas_email"=>$this->getprevisao_eas_email(),
+                                ":category_hospedagem_http"=>$this->getcategory_hospedagem_http(),
+                                ":category_hospedagem_apache"=>$this->getcategory_hospedagem_apache(),
+                                ":category_hospedagem_nginx"=>$this->getcategory_hospedagem_nginx(),
+                                ":category_hospedagem_lin1"=>$this->getcategory_hospedagem_lin1(),
+                                ":category_hospedagem_lin3"=>$this->getcategory_hospedagem_lin3(),
+                                ":category_hospedagem_win"=>$this->getcategory_hospedagem_win(),
+                                ":previsao_http"=>$this->getprevisao_http(),
+                                ":previsao_apache"=>$this->getprevisao_apache(),
+                                ":previsao_nginx"=>$this->getprevisao_nginx(),
+                                ":previsao_backup"=>$this->getprevisao_backup(),
+                                ":category_email"=>$this->getcategory_email(),
+                                ":category_hospedagem"=>$this->getcategory_hospedagem(),
+                                ":category_backup"=>$this->getcategory_backup()
+                            ]
+            );           
+            //var_dump($results[0]); exit;
+			$this->setData($results[0]);
             
 			
         }
@@ -107,11 +157,11 @@ use \Classes\Model;
 			));
 		}
         
-        public function get($id){
+        public function get($idsubcategory){
 			$sql = new Sql();
 
-			$results = $sql->select("SELECT * FROM tb_incidents WHERE id = :id", array(
-				":id" => $id
+			$results = $sql->select("SELECT * FROM tb_incidents a INNER JOIN tb_subcategories b ON a.id=b.idincident WHERE b.idsubcategory = :idsubcategory", array(
+				":idsubcategory" => $idsubcategory
             ));
             
             if($results[0]["status_service"] == 0 )
@@ -124,8 +174,9 @@ use \Classes\Model;
             }
             
             $this->setData($results[0]);
+           // var_dump($results[0]);exit;
         }
-
+        
 
              
         public function getcommunicated($id){
@@ -209,7 +260,7 @@ use \Classes\Model;
 
         public function getAllIncidents(){
             $sql = new Sql();
-            $incidentes = $sql->select("SELECT * from tb_incidents ORDER BY dt_criacao desc ");
+            $incidentes = $sql->select("SELECT * from tb_incidents a INNER JOIN tb_subcategories b ON a.id=b.idincident ORDER BY a.dt_criacao desc ");
 
             for ($i=0; $i < count($incidentes) ; $i++) { 
                 $incidentes[$i]['dt_criacao'] = date("d-m-Y", strtotime($incidentes[$i]['dt_criacao']) );
