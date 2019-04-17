@@ -3,11 +3,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Lista de Eventos
+        Lista de Incidentes
       </h1>
       <ol class="breadcrumb">
         <li><a href="/admin"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active"><a href="/admin/events">Eventos</a></li>
+        <li class="active"><a href="/admin/events">Incidentes</a></li>
       </ol>
     </section>
     
@@ -19,7 +19,7 @@
               <div class="box box-primary">
                 
                 <div class="box-header">
-                  <a href="/admin/events/create" class="btn btn-success">Cadastrar Evento</a>
+                  <a href="/admin/events/create" class="btn btn-success">Cadastrar Incidente</a>
                 </div>
     
                 <div class="box-body no-padding">
@@ -28,10 +28,8 @@
                       <tr>
                         <th style="width: 10px">#</th>                        
                         <th>Titulo</th>
-                        <th>Descrição</th>
-                        <th>Previsão</th>
-                        <th>Status</th>
-                        <th>Categoria</th>
+                        <th>Descrição</th>                       
+                        <th>Status</th>                        
                         <th style="width: 140px">&nbsp;</th>
                       </tr>
                     </thead>
@@ -41,13 +39,12 @@
                       <tr>
                         <td><?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
                         <td><?php echo htmlspecialchars( $value1["title"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
-                        <td><?php echo htmlspecialchars( $value1["descricao"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
-                        <td><?php echo htmlspecialchars( $value1["previsao"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
+                        <td><?php echo htmlspecialchars( $value1["descricao"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>                        
                         <td><?php echo htmlspecialchars( $value1["status_service"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
-                        <td><?php echo htmlspecialchars( $value1["category"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
+                        
                         
                         <td>
-                          <a href="/admin/events/<?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/<?php echo htmlspecialchars( $value1["idsubcategory"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Editar</a>
+                          <a href="/admin/events/<?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Editar</a>
                           <a href="/admin/events/<?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/delete" onclick="return confirm('Deseja realmente excluir este registro?')" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Excluir</a>
                         </td>
                       </tr>

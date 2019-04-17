@@ -50,8 +50,7 @@
                          
                          <div class="container">
                             
-                            <ul class="nav nav-tabs">
-                              
+                            <ul class="nav nav-tabs">                              
                               <li><a onclick="desbloquearCheckBoxEmail()" data-toggle="tab" href="#tabEmail">E-mail</a></li>
                               <li><a onclick="desbloquearCheckBoxHospedagem()" data-toggle="tab" href="#tabHospedagem">Hospedagem</a></li>
                               <li><a onclick="desbloquearCheckBoxBackup()" data-toggle="tab" href="#tabBackup">Backup</a></li>
@@ -68,7 +67,7 @@
                                       <li class="list-group-item hidden">
                                         EMAIL
                                         <label class="switch ">
-                                        <input type="checkbox" class="primary primary_email" value="category_email" id="category_email" name="category_email">
+                                        <input type="checkbox" class="primary primary_email" value="1" id="category_email" name="category_email">
                                         <span class="slider round"></span>
                                         </label>
                                     </li>
@@ -76,42 +75,42 @@
                                         <li class="list-group-item">
                                             IMAP
                                             <label class="switch ">
-                                            <input type="checkbox" class="primary primary_email" value="category_email_imap" onclick="toggle('previsao_imap')"  id="category_email_imap" name="category_email_imap">
+                                            <input type="checkbox" class="primary primary_email" value="1" onclick="toggle('previsao_imap')"  id="category_email_imap" name="category_email_imap">
                                             <span class="slider round"></span>
                                             </label>
                                         </li>
                                         <li class="list-group-item">
                                             POP
                                             <label class="switch ">
-                                            <input type="checkbox" class="primary" value="category_email_pop" onclick="toggle('previsao_pop')" id="category_email_pop" name="category_email_pop">
+                                            <input type="checkbox" class="primary" value="1" onclick="toggle('previsao_pop')" id="category_email_pop" name="category_email_pop">
                                             <span class="slider round"></span>
                                             </label>
                                         </li>
                                         <li class="list-group-item">
                                             SMTP
                                             <label class="switch ">
-                                            <input type="checkbox" class="primary" value="category_email_smtp" onclick="toggle('previsao_smtp')" id="category_email_smtp" name="category_email_smtp">
+                                            <input type="checkbox" class="primary" value="1" onclick="toggle('previsao_smtp')" id="category_email_smtp" name="category_email_smtp">
                                             <span class="slider round"></span>
                                             </label>
                                         </li>
                                         <li class="list-group-item">
                                             WEBMAIL
                                             <label class="switch ">
-                                            <input type="checkbox" class="primary" value="category_email_webmail" onclick="toggle('previsao_webmail')" id="category_email_webmail" name="category_email_webmail">
+                                            <input type="checkbox" class="primary" value="1" onclick="toggle('previsao_webmail')" id="category_email_webmail" name="category_email_webmail">
                                             <span class="slider round"></span>
                                             </label>
                                         </li>
                                         <li class="list-group-item">
                                             FILA
                                             <label class="switch ">
-                                            <input type="checkbox" class="primary" value="category_email_fila" onclick="toggle('previsao_fila')" id="category_email_fila" name="category_email_fila">
+                                            <input type="checkbox" class="primary" value="1" onclick="toggle('previsao_fila')" id="category_email_fila" name="category_email_fila">
                                             <span class="slider round"></span>
                                             </label>
                                         </li>
                                         <li class="list-group-item">
                                           Colaboração
                                           <label class="switch ">
-                                          <input type="checkbox" class="primary" value="category_email_eas" onclick="toggle('previsao_eas')" id="category_email_eas" name="category_email_eas">
+                                          <input type="checkbox" class="primary" value="1" onclick="toggle('previsao_eas')" id="category_email_eas" name="category_email_eas">
                                           <span class="slider round"></span>
                                           </label>
                                       </li>
@@ -121,7 +120,7 @@
                                         <li class="list-group-item">
                                         MAIL 01
                                             <label class="switch ">
-                                            <input type="checkbox" class="primary" value="mail01" id="category_email_mail01" name="category_email_mail01">
+                                            <input type="checkbox" class="primary" value="1" id="category_email_mail01" name="category_email_mail01">
                                             <span class="slider round"></span>
                                             </label>
                                         </li>
@@ -129,14 +128,14 @@
                                         <li class="list-group-item">
                                         MAIL 02
                                             <label class="switch ">
-                                            <input type="checkbox" class="primary" value="mail02" id="category_email_mail02" name="category_email_mail02">
+                                            <input type="checkbox" class="primary" value="1" id="category_email_mail02" name="category_email_mail02">
                                             <span class="slider round"></span>
                                             </label>
                                         </li>
                                         <li class="list-group-item">
                                         MAIL 03
                                             <label class="switch ">
-                                            <input type="checkbox" class="primary" value="mail03" id="category_email_mail03" name="category_email_mail03">
+                                            <input type="checkbox" class="primary" value="1" id="category_email_mail03" name="category_email_mail03">
                                             <span class="slider round"></span>
                                             </label>
                                         </li>
@@ -185,7 +184,7 @@
                                         <li class="list-group-item hidden">
                                             HOSPEDAGEM
                                             <label class="switch ">
-                                            <input type="checkbox" class="primary primary_email" value="category_hospedagem" id="category_hospedagem" name="category_hospedagem">
+                                            <input type="checkbox" class="primary primary_email" value="1" id="category_hospedagem" name="category_hospedagem">
                                             <span class="slider round"></span>
                                             </label>
                                         </li>
@@ -193,7 +192,7 @@
                                         <li class="list-group-item">
                                             HTTP
                                             <label class="switch ">
-                                            <input type="checkbox" class="primary" value="category_hospedagem_http" onclick="toggle('http')" id="category_hospedagem_http" name="category_hospedagem_http">
+                                            <input type="checkbox" class="primary" value="1" onclick="toggle('http')" id="category_hospedagem_http" name="category_hospedagem_http">
                                             <span class="slider round"></span>
                                             </label>
                                             
@@ -201,14 +200,14 @@
                                         <li class="list-group-item">
                                             APACHE
                                             <label class="switch ">
-                                            <input type="checkbox" class="primary" value="category_hospedagem_apache" onclick="toggle('apache')" id="category_hospedagem_apache" name="category_hospedagem_apache">
+                                            <input type="checkbox" class="primary" value="1" onclick="toggle('apache')" id="category_hospedagem_apache" name="category_hospedagem_apache">
                                             <span class="slider round"></span>
                                             </label>
                                         </li>
                                         <li class="list-group-item">
                                             NGINX
                                             <label class="switch ">
-                                            <input type="checkbox" class="primary" value="category_hospedagem_nginx" onclick="toggle('nginx')" id="category_hospedagem_nginx" name="category_hospedagem_nginx">
+                                            <input type="checkbox" class="primary" value="1" onclick="toggle('nginx')" id="category_hospedagem_nginx" name="category_hospedagem_nginx">
                                             <span class="slider round"></span>
                                             </label>
                                         </li>
@@ -218,7 +217,7 @@
                                         <li class="list-group-item">
                                         Plesk linux 1
                                             <label class="switch ">
-                                            <input type="checkbox" class="primary" value="category_hospedagem_lin1" id="category_hospedagem_lin1" name="category_hospedagem_lin1">
+                                            <input type="checkbox" class="primary" value="1" id="category_hospedagem_lin1" name="category_hospedagem_lin1">
                                             <span class="slider round"></span>
                                             </label>
                                         </li>
@@ -226,14 +225,14 @@
                                         <li class="list-group-item">
                                         Plesk linux 3
                                             <label class="switch ">
-                                            <input type="checkbox" class="primary" value="category_hospedagem_lin3" id="category_hospedagem_lin3" name="category_hospedagem_lin3">
+                                            <input type="checkbox" class="primary" value="1" id="category_hospedagem_lin3" name="category_hospedagem_lin3">
                                             <span class="slider round"></span>
                                             </label>
                                         </li>
                                         <li class="list-group-item">
                                         Plesk Windows
                                             <label class="switch ">
-                                            <input type="checkbox" class="primary" value="category_hospedagem_win" id="category_hospedagem_win" name="category_hospedagem_win">
+                                            <input type="checkbox" class="primary" value="1" id="category_hospedagem_win" name="category_hospedagem_win">
                                             <span class="slider round"></span>
                                             </label>
                                         </li>
@@ -263,7 +262,7 @@
                                     
                                     <li class="list-group-item">
                                         <label class="switch ">
-                                        <input type="checkbox" class="primary" value="category_backup" onclick="toggle('backup')" id="category_backup" name="category_backup">
+                                        <input type="checkbox" class="primary" value="1" onclick="toggle('backup')" id="category_backup" name="category_backup">
                                         <span class="slider round"></span>
                                         </label>
                                     </li>

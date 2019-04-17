@@ -60,39 +60,40 @@ use \Classes\Model;
                             :category_email_mail03,:previsao_imap_email,:previsao_pop_email,:previsao_smtp_email,:previsao_webmail_email,:previsao_fila_email,
                             :previsao_eas_email,:category_hospedagem_http,:category_hospedagem_apache,:category_hospedagem_nginx,:category_hospedagem_lin1,
                             :category_hospedagem_lin3,:category_hospedagem_win,:previsao_http,:previsao_apache,:previsao_nginx,:previsao_backup,:category_email,
-                            :category_hospedagem,:category_backup)",
+                            :category_hospedagem,:category_backup,:dt_modified)",
                             [
                                 ":title"=>$this->gettitle(),
                                 ":descricao"=>$this->getdescricao(),
                                 ":status_service"=>$this->getstatus_service(),                                
-                                ":category_email_imap"=>$this->getcategory_email_imap(),
-                                ":category_email_pop"=>$this->getcategory_email_pop(),
-                                ":category_email_smtp"=>$this->getcategory_email_smtp(),
-                                ":category_email_webmail"=>$this->getcategory_email_webmail(),
-                                ":category_email_fila"=>$this->getcategory_email_fila(),
-                                ":category_email_eas"=>$this->getcategory_email_eas(),
-                                ":category_email_mail01"=>$this->getcategory_email_mail01(),
-                                ":category_email_mail02"=>$this->getcategory_email_mail02(),
-                                ":category_email_mail03"=>$this->getcategory_email_mail03(),
+                                ":category_email_imap"=>(int)$this->getcategory_email_imap(),
+                                ":category_email_pop"=>(int)$this->getcategory_email_pop(),
+                                ":category_email_smtp"=>(int)$this->getcategory_email_smtp(),
+                                ":category_email_webmail"=>(int)$this->getcategory_email_webmail(),
+                                ":category_email_fila"=>(int)$this->getcategory_email_fila(),
+                                ":category_email_eas"=>(int)$this->getcategory_email_eas(),
+                                ":category_email_mail01"=>(int)$this->getcategory_email_mail01(),
+                                ":category_email_mail02"=>(int)$this->getcategory_email_mail02(),
+                                ":category_email_mail03"=>(int)$this->getcategory_email_mail03(),
                                 ":previsao_imap_email"=>$this->getprevisao_imap_email(),
                                 ":previsao_pop_email"=>$this->getprevisao_pop_email(),
                                 ":previsao_smtp_email"=>$this->getprevisao_smtp_email(),
                                 ":previsao_webmail_email"=>$this->getprevisao_webmail_email(),
                                 ":previsao_fila_email"=>$this->getprevisao_fila_email(),
                                 ":previsao_eas_email"=>$this->getprevisao_eas_email(),
-                                ":category_hospedagem_http"=>$this->getcategory_hospedagem_http(),
-                                ":category_hospedagem_apache"=>$this->getcategory_hospedagem_apache(),
-                                ":category_hospedagem_nginx"=>$this->getcategory_hospedagem_nginx(),
-                                ":category_hospedagem_lin1"=>$this->getcategory_hospedagem_lin1(),
-                                ":category_hospedagem_lin3"=>$this->getcategory_hospedagem_lin3(),
-                                ":category_hospedagem_win"=>$this->getcategory_hospedagem_win(),
+                                ":category_hospedagem_http"=>(int)$this->getcategory_hospedagem_http(),
+                                ":category_hospedagem_apache"=>(int)$this->getcategory_hospedagem_apache(),
+                                ":category_hospedagem_nginx"=>(int)$this->getcategory_hospedagem_nginx(),
+                                ":category_hospedagem_lin1"=>(int)$this->getcategory_hospedagem_lin1(),
+                                ":category_hospedagem_lin3"=>(int)$this->getcategory_hospedagem_lin3(),
+                                ":category_hospedagem_win"=>(int)$this->getcategory_hospedagem_win(),
                                 ":previsao_http"=>$this->getprevisao_http(),
                                 ":previsao_apache"=>$this->getprevisao_apache(),
                                 ":previsao_nginx"=>$this->getprevisao_nginx(),
                                 ":previsao_backup"=>$this->getprevisao_backup(),
-                                ":category_email"=>$this->getcategory_email(),
-                                ":category_hospedagem"=>$this->getcategory_hospedagem(),
-                                ":category_backup"=>$this->getcategory_backup()
+                                ":category_email"=>(int)$this->getcategory_email(),
+                                ":category_hospedagem"=>(int)$this->getcategory_hospedagem(),
+                                ":category_backup"=>(int)$this->getcategory_backup(),
+                                ":dt_modified"=>$this->getdt_modified()
                             ]
             );           
             //var_dump($results[0]); exit;
@@ -115,14 +116,74 @@ use \Classes\Model;
         public function update(){
 			$sql = new Sql();
 			
-			$results = $sql->select("UPDATE tb_incidents  SET title = :title, descricao = :descricao, previsao = :previsao,status_service = :status_service, category = :category WHERE id = :id", array(
-				":title" =>$this->gettitle(),
-                ":descricao" =>$this->getdescricao(),
-                ":previsao" =>$this->getprevisao(),
-                ":status_service" =>$this->getstatus_service(),
-                ":category" =>$this->getcategory(),
-                ":id" => $this->getid()
-			));
+			$results = $sql->select("UPDATE tb_incidents  SET
+                title = :title,
+                descricao = :descricao, 
+                status_service = :status_service, 
+                category_email_imap = :category_email_imap,
+                category_email_pop = :category_email_pop,
+                category_email_smtp = :category_email_smtp,
+                category_email_webmail = :category_email_webmail,
+                category_email_fila = :category_email_fila,
+                category_email_eas = :category_email_eas,
+                category_email_mail01 = :category_email_mail01,
+                category_email_mail02 = :category_email_mail02,
+                category_email_mail03 = :category_email_mail03,
+                previsao_imap_email = :previsao_imap_email,
+                previsao_pop_email = :previsao_pop_email,
+                previsao_smtp_email = :previsao_smtp_email,
+                previsao_webmail_email = :previsao_webmail_email,
+                previsao_fila_email = :previsao_fila_email,
+                previsao_eas_email = :previsao_eas_email,
+                category_hospedagem_http = :category_hospedagem_http,
+                category_hospedagem_apache = :category_hospedagem_apache,
+                category_hospedagem_nginx = :category_hospedagem_nginx,
+                category_hospedagem_lin1 = :category_hospedagem_lin1,
+                category_hospedagem_lin3 = :category_hospedagem_lin3,
+                category_hospedagem_win = :category_hospedagem_win,
+                previsao_http = :previsao_http,
+                previsao_apache = :previsao_apache,
+                previsao_nginx = :previsao_nginx,
+                previsao_backup = :previsao_backup,
+                category_email = :category_email,
+                category_hospedagem = :category_hospedagem,
+                category_backup = :category_backup,
+                dt_modified = NOW()
+
+                WHERE id = :id",array(
+                ":title"=>$this->gettitle(),
+                ":descricao"=>$this->getdescricao(),
+                ":status_service"=>$this->getstatus_service(),                                
+                ":category_email_imap"=>(int)$this->getcategory_email_imap(),
+                ":category_email_pop"=>(int)$this->getcategory_email_pop(),
+                ":category_email_smtp"=>(int)$this->getcategory_email_smtp(),
+                ":category_email_webmail"=>(int)$this->getcategory_email_webmail(),
+                ":category_email_fila"=>(int)$this->getcategory_email_fila(),
+                ":category_email_eas"=>(int)$this->getcategory_email_eas(),
+                ":category_email_mail01"=>(int)$this->getcategory_email_mail01(),
+                ":category_email_mail02"=>(int)$this->getcategory_email_mail02(),
+                ":category_email_mail03"=>(int)$this->getcategory_email_mail03(),
+                ":previsao_imap_email"=>$this->getprevisao_imap_email(),
+                ":previsao_pop_email"=>$this->getprevisao_pop_email(),
+                ":previsao_smtp_email"=>$this->getprevisao_smtp_email(),
+                ":previsao_webmail_email"=>$this->getprevisao_webmail_email(),
+                ":previsao_fila_email"=>$this->getprevisao_fila_email(),
+                ":previsao_eas_email"=>$this->getprevisao_eas_email(),
+                ":category_hospedagem_http"=>(int)$this->getcategory_hospedagem_http(),
+                ":category_hospedagem_apache"=>(int)$this->getcategory_hospedagem_apache(),
+                ":category_hospedagem_nginx"=>(int)$this->getcategory_hospedagem_nginx(),
+                ":category_hospedagem_lin1"=>(int)$this->getcategory_hospedagem_lin1(),
+                ":category_hospedagem_lin3"=>(int)$this->getcategory_hospedagem_lin3(),
+                ":category_hospedagem_win"=>(int)$this->getcategory_hospedagem_win(),
+                ":previsao_http"=>$this->getprevisao_http(),
+                ":previsao_apache"=>$this->getprevisao_apache(),
+                ":previsao_nginx"=>$this->getprevisao_nginx(),
+                ":previsao_backup"=>$this->getprevisao_backup(),
+                ":category_email"=>(int)$this->getcategory_email(),
+                ":category_hospedagem"=>(int)$this->getcategory_hospedagem(),
+                ":category_backup"=>(int)$this->getcategory_backup(),
+                ":id"=>$this->getid()
+                ));
 
 			$this->setData($results);
         }
@@ -157,11 +218,11 @@ use \Classes\Model;
 			));
 		}
         
-        public function get($idsubcategory){
+        public function get($id){
 			$sql = new Sql();
 
-			$results = $sql->select("SELECT * FROM tb_incidents a INNER JOIN tb_subcategories b ON a.id=b.idincident WHERE b.idsubcategory = :idsubcategory", array(
-				":idsubcategory" => $idsubcategory
+			$results = $sql->select("SELECT * FROM tb_incidents WHERE id = :id", array(
+				":id" => $id
             ));
             
             if($results[0]["status_service"] == 0 )
@@ -260,7 +321,7 @@ use \Classes\Model;
 
         public function getAllIncidents(){
             $sql = new Sql();
-            $incidentes = $sql->select("SELECT * from tb_incidents a INNER JOIN tb_subcategories b ON a.id=b.idincident ORDER BY a.dt_criacao desc ");
+            $incidentes = $sql->select("SELECT * from tb_incidents ORDER BY dt_criacao desc ");
 
             for ($i=0; $i < count($incidentes) ; $i++) { 
                 $incidentes[$i]['dt_criacao'] = date("d-m-Y", strtotime($incidentes[$i]['dt_criacao']) );

@@ -413,12 +413,67 @@ $app->post('/admin/events/create',function() {
 	
 	$a = new Incidents();	
 	
-	
+
 	$_POST["status_service"] = (int)$_POST["status_service"];
-	
+/*
 
+	if(isset($_POST["category_email"])){
+		$_POST["category_email"] = (int)$_POST["category_email"];
+	}
+	if(isset($_POST["category_email_imap"])){
+		$_POST["category_email_imap"] = (int)$_POST["category_email_imap"];
+	}
+	if(isset($_POST["category_email_pop"])){
+		$_POST["category_email_pop"] = (int)$_POST["category_email_pop"];
+	}
+	if(isset($_POST["category_email_smtp"])){
+		$_POST["category_email_smtp"] = (int)$_POST["category_email_smtp"];
+	}
+	if(isset($_POST["category_email_webmail"])){
+		$_POST["category_email_webmail"] = (int)$_POST["category_email_webmail"];
+	}
+	if(isset($_POST["category_email_fila"])){
+		$_POST["category_email_fila"] = (int)$_POST["category_email_fila"];
+	}
+	if(isset($_POST["category_email_eas"])){
+		$_POST["category_email_eas"] = (int)$_POST["category_email_eas"];
+	}
+	if(isset($_POST["category_email_mail01"])){
+		$_POST["category_email_mail01"] = (int)$_POST["category_email_mail01"];
+	}
+	if(isset($_POST["category_email_mail02"])){
+		$_POST["category_email_mail02"] = (int)$_POST["category_email_mail02"];
+	}
+	if(isset($_POST["category_email_mail03"])){
+		$_POST["category_email_mail03"] = (int)$_POST["category_email_mail03"];
+	}
+	if(isset($_POST["category_hospedagem"])){
+		$_POST["category_hospedagem"] = (int)$_POST["category_hospedagem"];
+	}
+
+	if(isset($_POST["category_hospedagem_http"])){
+		$_POST["category_hospedagem_http"] = (int)$_POST["category_hospedagem_http"];
+	}
+	if(isset($_POST["category_hospedagem_apache"])){
+		$_POST["category_hospedagem_apache"] = (int)$_POST["category_hospedagem_apache"];
+	}
+	if(isset($_POST["category_hospedagem_nginx"])){
+		$_POST["category_hospedagem_nginx"] = (int)$_POST["category_hospedagem_nginx"];
+	}
+	if(isset($_POST["category_hospedagem_lin1"])){
+		$_POST["category_hospedagem_lin1"] = (int)$_POST["category_hospedagem_lin1"];
+	}
+	if(isset($_POST["category_hospedagem_lin3"])){
+		$_POST["category_hospedagem_lin3"] = (int)$_POST["category_hospedagem_lin3"];
+	}
+	if(isset($_POST["category_hospedagem_win"])){
+		$_POST["category_hospedagem_win"] = (int)$_POST["category_hospedagem_win"];
+	}
+	if(isset($_POST["category_backup"])){
+		$_POST["category_backup"] = (int)$_POST["category_backup"];
+	}
+	*/	
 	//var_dump($_POST);exit;
-
 	$a->setData($_POST);
 
 	
@@ -431,36 +486,46 @@ $app->post('/admin/events/create',function() {
 	
 });
 
-$app->get('/admin/events/:id/:idsubcategory',function($id,$idsubcategory) {
+$app->get('/admin/events/:id',function($id) {
 	
 	User::verifylogin();
 
 	$a = new Incidents();
 
-	$a->get((int)$idsubcategory);
+	$a->get((int)$id);
+	
 
-	if($a->getcategory_email() != NULL) {
+	if($a->getcategory_email() == 1) {
 		
 		$page = new PageAdmin();
 
 		$page->setTpl("events-update-email", array(
 			"incidentes"=>$a->getValue()
 		));
+
 	}
 
-	if($a->getcategory_hospedagem() != NULL) {
-		echo("getcategory_hospedagem"); exit;
+	if($a->getcategory_hospedagem() == 1) {
+		$page = new PageAdmin();
+
+		$page->setTpl("events-update-hospedagem", array(
+			"incidentes"=>$a->getValue()
+		));
 	}
 
-	if($a->getcategory_backup() != NULL) {
-		echo("getcategory_backup"); exit;
+	if($a->getcategory_backup() == 1) {
+		$page = new PageAdmin();
+
+		$page->setTpl("events-update-backup", array(
+			"incidentes"=>$a->getValue()
+		));
 	}
 	
 	
 });
 
 //=== UPdate Eventos
-$app->post('/admin/events/:id',function ($id,$idsubcategory) {
+$app->post('/admin/events/:id',function ($id) {
 	
 	User::verifylogin();
 
@@ -476,8 +541,27 @@ $app->post('/admin/events/:id',function ($id,$idsubcategory) {
 	}
 
 	
-	$a->get((int)$idsubcategory);
+	$a->get((int)$id);
 
+	$_POST["category_email"] = (isset($_POST["category_email"]))?1:0;
+	$_POST["category_email_imap"] = (isset($_POST["category_email_imap"]))?1:0;
+	$_POST["category_email_pop"] = (isset($_POST["category_email_pop"]))?1:0;
+	$_POST["category_email_smtp"] = (isset($_POST["category_email_smtp"]))?1:0;
+	$_POST["category_email_webmail"] = (isset($_POST["category_email_webmail"]))?1:0;
+	$_POST["category_email_fila"] = (isset($_POST["category_email_fila"]))?1:0;
+	$_POST["category_email_eas"] = (isset($_POST["category_email_eas"]))?1:0;
+	$_POST["category_email_mail01"] = (isset($_POST["category_email_mail01"]))?1:0;
+	$_POST["category_email_mail02"] = (isset($_POST["category_email_mail02"]))?1:0;
+	$_POST["category_email_mail03"] = (isset($_POST["category_email_mail03"]))?1:0;	
+	$_POST["category_hospedagem"] = (isset($_POST["category_hospedagem"]))?1:0;
+	$_POST["category_hospedagem_http"] = (isset($_POST["category_hospedagem_http"]))?1:0;
+	$_POST["category_hospedagem_apache"] = (isset($_POST["category_hospedagem_apache"]))?1:0;
+	$_POST["category_hospedagem_nginx"] = (isset($_POST["category_hospedagem_nginx"]))?1:0;
+	$_POST["category_hospedagem_lin1"] = (isset($_POST["category_hospedagem_lin1"]))?1:0;
+	$_POST["category_hospedagem_lin3"] = (isset($_POST["category_hospedagem_lin3"]))?1:0;
+	$_POST["category_hospedagem_win"] = (isset($_POST["category_hospedagem_win"]))?1:0;
+	$_POST["category_backup"] = (isset($_POST["category_backup"]))?1:0;
+	
 	$a->setData($_POST);
 
 	$a->update();
