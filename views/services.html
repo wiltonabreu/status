@@ -1,31 +1,28 @@
   <!-- Navigation -->
   <section id="about">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-8 mx-auto">
-              
-              {loop="$incidentes"}
-                <div class="incidentes-email">
-                <p class="titulo">
-                    <span>{$value.dt_criacao}</span>
-                    
-                    <h3><a href="{$value.category}/{$value.id}">{$value.title}</a></h3>  
-                    
-                </p>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          
+          {loop="$incidentes"}
+            <div class="incidentes-email">
+              <p class="titulo">
+                  <span>{$value.dt_criacao}</span>                      
+                  <h3><a href="{$value.category}/{$value.id}">{$value.title}</a></h3>                        
+              </p>
 
-                <p class="lead text-left">
-                    
-                    {$value.descricao}
-                </p>
-                
-                  <br>
-                </div>
-				      {/loop}
+              <p class="lead text-left">                      
+                  {$value.descricao}
+              </p>
               
+              <br>
             </div>
-          </div>
+          {/loop}
+          
         </div>
-      </section>
+      </div>
+    </div>
+  </section>
     <!--
       <section id="services" class="bg-light">
         <div class="container">

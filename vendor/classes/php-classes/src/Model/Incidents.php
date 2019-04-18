@@ -49,6 +49,19 @@ use \Classes\Model;
                 ":status_service" =>$this->getstatus_service(),
                 ":category" =>$this->getcategory()
             ) );   */    
+
+            if((int)$this->getcategory_email() === 1){
+                $category = "email";
+            }
+
+            if((int)$this->getcategory_hospedagem() === 1){
+                $category = "hospedagem";
+            }
+
+            if((int)$this->getcategory_backup() === 1){
+                $category = "backup";
+            }
+            
             
             $sql = new Sql();
 
@@ -60,7 +73,7 @@ use \Classes\Model;
                             :category_email_mail03,:previsao_imap_email,:previsao_pop_email,:previsao_smtp_email,:previsao_webmail_email,:previsao_fila_email,
                             :previsao_eas_email,:category_hospedagem_http,:category_hospedagem_apache,:category_hospedagem_nginx,:category_hospedagem_lin1,
                             :category_hospedagem_lin3,:category_hospedagem_win,:previsao_http,:previsao_apache,:previsao_nginx,:previsao_backup,:category_email,
-                            :category_hospedagem,:category_backup,:dt_modified)",
+                            :category_hospedagem,:category_backup,:dt_modified,:category)",
                             [
                                 ":title"=>$this->gettitle(),
                                 ":descricao"=>$this->getdescricao(),
@@ -93,7 +106,8 @@ use \Classes\Model;
                                 ":category_email"=>(int)$this->getcategory_email(),
                                 ":category_hospedagem"=>(int)$this->getcategory_hospedagem(),
                                 ":category_backup"=>(int)$this->getcategory_backup(),
-                                ":dt_modified"=>$this->getdt_modified()
+                                ":dt_modified"=>$this->getdt_modified(),
+                                ":category"=>$category
                             ]
             );           
             //var_dump($results[0]); exit;
@@ -114,7 +128,8 @@ use \Classes\Model;
         }
 
         public function update(){
-			$sql = new Sql();
+
+            $sql = new Sql();
 			
 			$results = $sql->select("UPDATE tb_incidents  SET
                 title = :title,
@@ -182,7 +197,7 @@ use \Classes\Model;
                 ":category_email"=>(int)$this->getcategory_email(),
                 ":category_hospedagem"=>(int)$this->getcategory_hospedagem(),
                 ":category_backup"=>(int)$this->getcategory_backup(),
-                ":id"=>$this->getid()
+                ":id"=>$this->getid()                
                 ));
 
 			$this->setData($results);

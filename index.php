@@ -28,7 +28,7 @@ $app->get('/',function () {
 
 		$statusEmail = $a->verifyStatus($tableStatus);
 
-		$previsaoEmail = $a->verifyPrevisao($tableStatus);
+		//$previsaoEmail = $a->verifyPrevisao($tableStatus);
 
 		//var_dump($previsaoEmail);exit;
 
@@ -47,7 +47,7 @@ $app->get('/',function () {
 		$tableStatus= $a->processesAllIncidents($filtro);		
 
 		$statusHospedagem = $a->verifyStatus($tableStatus);
-		$previsaoHospedagem = $a->verifyPrevisao($tableStatus);
+		//$previsaoHospedagem = $a->verifyPrevisao($tableStatus);
 
 		if ( $statusHospedagem == 1  ) {
 			$statusHospedagem = "badge badge-warning";
@@ -64,7 +64,7 @@ $app->get('/',function () {
 		$tableStatus= $a->processesAllIncidents($filtro);		
 
 		$statusBackup = $a->verifyStatus($tableStatus);
-		$previsaoBackup = $a->verifyPrevisao($tableStatus);
+		//$previsaoBackup = $a->verifyPrevisao($tableStatus);
 
 		if ( $statusBackup == 1  ) {
 			$statusBackup = "badge badge-danger";
@@ -81,6 +81,8 @@ $app->get('/',function () {
 
 
 		$incidentes = $a->processesIncidents();
+
+			
 	
 		
 
@@ -94,13 +96,13 @@ $app->get('/',function () {
 						"mensagem1" => "Incidentes ocorridos nos serviços de e-mail",
 						"statusEmail" => $statusEmail,
 						"messageStatusEmail" => $messageStatusEmail,
-						"previsaoEmail" => $previsaoEmail,
+						//"previsaoEmail" => $previsaoEmail,
 						"statusHospedagem" => $statusHospedagem,
 						"messageStatusHospedagem" => $messageStatusHospedagem,
-						"previsaoHospedagem" => $previsaoHospedagem,
+						//"previsaoHospedagem" => $previsaoHospedagem,
 						"statusBackup" => $statusBackup,
 						"messageStatusBackup" => $messageStatusBackup,
-						"previsaoBackup" => $previsaoBackup
+						//"previsaoBackup" => $previsaoBackup
 					]
 		]);
 		$page->setTpl("index",array(
@@ -415,64 +417,7 @@ $app->post('/admin/events/create',function() {
 	
 
 	$_POST["status_service"] = (int)$_POST["status_service"];
-/*
 
-	if(isset($_POST["category_email"])){
-		$_POST["category_email"] = (int)$_POST["category_email"];
-	}
-	if(isset($_POST["category_email_imap"])){
-		$_POST["category_email_imap"] = (int)$_POST["category_email_imap"];
-	}
-	if(isset($_POST["category_email_pop"])){
-		$_POST["category_email_pop"] = (int)$_POST["category_email_pop"];
-	}
-	if(isset($_POST["category_email_smtp"])){
-		$_POST["category_email_smtp"] = (int)$_POST["category_email_smtp"];
-	}
-	if(isset($_POST["category_email_webmail"])){
-		$_POST["category_email_webmail"] = (int)$_POST["category_email_webmail"];
-	}
-	if(isset($_POST["category_email_fila"])){
-		$_POST["category_email_fila"] = (int)$_POST["category_email_fila"];
-	}
-	if(isset($_POST["category_email_eas"])){
-		$_POST["category_email_eas"] = (int)$_POST["category_email_eas"];
-	}
-	if(isset($_POST["category_email_mail01"])){
-		$_POST["category_email_mail01"] = (int)$_POST["category_email_mail01"];
-	}
-	if(isset($_POST["category_email_mail02"])){
-		$_POST["category_email_mail02"] = (int)$_POST["category_email_mail02"];
-	}
-	if(isset($_POST["category_email_mail03"])){
-		$_POST["category_email_mail03"] = (int)$_POST["category_email_mail03"];
-	}
-	if(isset($_POST["category_hospedagem"])){
-		$_POST["category_hospedagem"] = (int)$_POST["category_hospedagem"];
-	}
-
-	if(isset($_POST["category_hospedagem_http"])){
-		$_POST["category_hospedagem_http"] = (int)$_POST["category_hospedagem_http"];
-	}
-	if(isset($_POST["category_hospedagem_apache"])){
-		$_POST["category_hospedagem_apache"] = (int)$_POST["category_hospedagem_apache"];
-	}
-	if(isset($_POST["category_hospedagem_nginx"])){
-		$_POST["category_hospedagem_nginx"] = (int)$_POST["category_hospedagem_nginx"];
-	}
-	if(isset($_POST["category_hospedagem_lin1"])){
-		$_POST["category_hospedagem_lin1"] = (int)$_POST["category_hospedagem_lin1"];
-	}
-	if(isset($_POST["category_hospedagem_lin3"])){
-		$_POST["category_hospedagem_lin3"] = (int)$_POST["category_hospedagem_lin3"];
-	}
-	if(isset($_POST["category_hospedagem_win"])){
-		$_POST["category_hospedagem_win"] = (int)$_POST["category_hospedagem_win"];
-	}
-	if(isset($_POST["category_backup"])){
-		$_POST["category_backup"] = (int)$_POST["category_backup"];
-	}
-	*/	
 	//var_dump($_POST);exit;
 	$a->setData($_POST);
 

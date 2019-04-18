@@ -18,10 +18,8 @@
 
 						<li>
 							<div class="email"><i class="far fa-envelope"></i> contato@mav.com.br</div>
-						</li>
-						
-					</ul>
-					
+						</li>						
+					</ul>					
 				</div>
 
 				<div class="col-md-3 d-none d-sm-block">
@@ -38,11 +36,8 @@
 
 						<li>
 							<div class="email"><i class="far fa-envelope"></i> financeiro@mav.com.br</div>
-						</li>		
-
-						
-					</ul>								
-					
+						</li>						
+					</ul>
 				</div>
 
 				<div class="col-md-3 d-none d-sm-block">
@@ -88,9 +83,6 @@
 						<li>
 							<div class="whatsapp"><i class="fab fa-whatsapp"></i> (31) 99436-7715​</div>
 						</li>
-
-						
-
 					</ul>	
 
 				</div>
@@ -102,21 +94,12 @@
 
 	<div class="row row-orange">
 		
-		
 		<div class="container copyright-mobile" >
 			<p class="text-copyright"><i class="far fa-copyright"></i> MAV Tecnologia. 2018 All rights reserved.</p>			
 		</div>
 
 	</div>
 
-<!--
-<address class="endereco">												
-	<span>Av. Professor Magalhães Penido, 701, São Luiz, Belo Horizonte</span>
-</address>
-
-<i class="fa fa-phone"></i>(31) 3211-7777</p>
-<i class="far fa-envelope"></i>contato@mav.com.br 
--->
 </footer>
 
 </body>

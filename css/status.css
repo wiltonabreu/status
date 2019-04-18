@@ -105,12 +105,15 @@ header .row{
 }
 
 
-header .row-gray{
-    position: absolute;
-    width: 100%;
-    background-color: #EEE;
-    top: 117px;
-    height: 50px;
+header .row-gray{      
+       position: absolute;
+       width: 100%;
+       background-color: #EEE;       
+       height: 50px;
+}
+
+.container1{
+    display: block;
 }
 
 header .container{
@@ -142,7 +145,7 @@ header .header h1{
 
 
 
-html, body {
+body {
   overflow-x: hidden;
   
 }

@@ -5,26 +5,22 @@
           
           {loop="$result"}
             <div class="incidentes-email">
-            <p class="titulo">
-                <span>{$value.dt_criacao}</span>
-                
-                <h3>{$value.title}</h3>  
-                
-            </p>
+              <p class="titulo">
+                  <span>{$value.dt_criacao}</span>
+                  
+                  <h3>{$value.title}</h3>  
+                  
+              </p>
 
-            <p class="status"> Status: <b>{$value.status_service}</b></p>
+              <p class="status"> Status: <b>{$value.status_service}</b></p>
 
-            <p class="lead text-left">
-                
-                {$value.descricao}
-            </p>
-
-            <p class="previsao"> Previsão: {$value.previsao}</p>
-            
+              <p class="lead text-left">                  
+                  {$value.descricao}
+              </p>             
+              
               <br>
             </div>
-          {/loop}
-          
+          {/loop}          
         </div>
       </div>
     </div>
