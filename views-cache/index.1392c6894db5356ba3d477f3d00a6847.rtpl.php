@@ -16,9 +16,9 @@
 							<td><h5><span class="cluster-email">Email</span></h5></td>
 							<td>
 								<span class="<?php echo htmlspecialchars( $statusEmail, ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $messageStatusEmail, ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
-								<a href="email">						
+								<a href="mail-details">						
 										<i class="fas fa-plus-circle" title="Saiba mais" data-toggle="tooltip" data-placement="bottom" ></i>
-									</a>
+								</a>
 							</td>						
 							<td>TEste</td>
 						</tr>
@@ -28,7 +28,7 @@
 							<td>
 								<span class="<?php echo htmlspecialchars( $statusHospedagem, ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $messageStatusHospedagem, ENT_COMPAT, 'UTF-8', FALSE ); ?></span>			    
 								<!--<td><span class="badge badge-success">Operational</span></td> -->
-								<a href="hospedagem">
+								<a href="web-details">
 									<i class="fas fa-plus-circle" title="Saiba mais" data-toggle="tooltip" data-placement="bottom" ></i>
 								</a>
 							</td>							

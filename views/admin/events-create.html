@@ -198,19 +198,13 @@
                                             
                                         </li>
                                         <li class="list-group-item">
-                                            APACHE
+                                            Banco de dados
                                             <label class="switch ">
-                                            <input type="checkbox" class="primary" value="1" onclick="toggle('apache')" id="category_hospedagem_apache" name="category_hospedagem_apache">
+                                            <input type="checkbox" class="primary" value="1" onclick="toggle('bd')" id="category_hospedagem_bd" name="category_hospedagem_bd">
                                             <span class="slider round"></span>
                                             </label>
                                         </li>
-                                        <li class="list-group-item">
-                                            NGINX
-                                            <label class="switch ">
-                                            <input type="checkbox" class="primary" value="1" onclick="toggle('nginx')" id="category_hospedagem_nginx" name="category_hospedagem_nginx">
-                                            <span class="slider round"></span>
-                                            </label>
-                                        </li>
+                                        
                                         
                                         <div class="card-header">Cluster</div>
                                         <ul class="list-group list-group-flush">
@@ -243,15 +237,12 @@
                                         <input type="text" class="form-control" id="previsao_http" name="previsao_http" placeholder="Digite a previsao" style="width: 150px">
                                     </div>
 
-                                    <div class="form-group" id="apache" style="display:none;">
-                                        <label for="previsao">Previsão Apache</label>
-                                        <input type="text" class="form-control" id="previsao_apache" name="previsao_apache" placeholder="Digite a previsao" style="width: 150px">
+                                    <div class="form-group" id="bd" style="display:none;">
+                                        <label for="previsao">Previsão Banco de dados</label>
+                                        <input type="text" class="form-control" id="previsao_bd" name="previsao_bd" placeholder="Digite a previsao" style="width: 150px">
                                     </div>
 
-                                    <div class="form-group" id="nginx" style="display:none;">
-                                        <label for="previsao">Previsão Nginx</label>
-                                        <input type="text" class="form-control" id="previsao_nginx" name="previsao_nginx" placeholder="Digite a previsao" style="width: 150px">
-                                    </div>
+                                    
                                   </div>
                               </div>
                               
@@ -326,8 +317,7 @@
                             
               document.getElementById('category_hospedagem').checked = false;
               document.getElementById('category_hospedagem_http').checked = false;
-              document.getElementById('category_hospedagem_apache').checked = false;
-              document.getElementById('category_hospedagem_nginx').checked = false;
+              document.getElementById('category_hospedagem_bd').checked = false;            
               document.getElementById('category_hospedagem_lin1').checked = false;
               document.getElementById('category_hospedagem_lin3').checked = false;
               document.getElementById('category_hospedagem_win').checked = false;
@@ -340,13 +330,11 @@
               http.style.display = "none";
               document.getElementById('previsao_http').value = "";
 
-              var apache = document.getElementById('apache');
-              apache.style.display = "none";
-              document.getElementById('previsao_apache').value = "";
+              var bd = document.getElementById('bd');
+              bd.style.display = "none";
+              document.getElementById('previsao_bd').value = "";
 
-              var nginx = document.getElementById('nginx');
-              nginx.style.display = "none";
-              document.getElementById('previsao_nginx').value = "";
+              
 
               var backup = document.getElementById('backup');
               backup.style.display = "none";
@@ -418,8 +406,8 @@
 
             document.getElementById('category_hospedagem').checked = false;
             document.getElementById('category_hospedagem_http').checked = false;
-            document.getElementById('category_hospedagem_apache').checked = false;
-            document.getElementById('category_hospedagem_nginx').checked = false;
+            document.getElementById('category_hospedagem_bd').checked = false;
+            
             document.getElementById('category_hospedagem_lin1').checked = false;
             document.getElementById('category_hospedagem_lin3').checked = false;
             document.getElementById('category_hospedagem_win').checked = false;
@@ -452,13 +440,11 @@
             http.style.display = "none";
             document.getElementById('previsao_http').value = "";
 
-            var apache = document.getElementById('apache');
-            apache.style.display = "none";
-            document.getElementById('previsao_apache').value = "";
+            var bd = document.getElementById('bd');
+            bd.style.display = "none";
+            document.getElementById('previsao_bd').value = "";
 
-            var nginx = document.getElementById('nginx');
-            nginx.style.display = "none";
-            document.getElementById('previsao_nginx').value = "";
+            
         }
 
         </script>

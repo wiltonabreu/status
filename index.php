@@ -113,6 +113,53 @@ $app->get('/',function () {
     }
 );
 
+$app->get('/mail-details',function () {
+	
+	$page = new Page([			
+		"data"=>[
+					"servico" => "E-mail"
+				]
+		]);
+
+
+  $filtro = "email";
+
+	  $a = new Incidents();
+
+		$incidentes = $a->processesAllIncidents($filtro);
+
+	$page->setTpl("tabledetails",array(
+		"incidentes"=>$incidentes
+	));
+
+});
+
+$app->get('/web-details',function () {
+	
+	$page = new Page([			
+		"data"=>[
+					"servico" => "Hospedagem Web"
+				]
+		]);
+
+
+  $filtro = "hospedagem";
+
+	  $a = new Incidents();
+
+		$incidentes = $a->processesAllIncidents($filtro);
+
+	$page->setTpl("tabledetails-hospedagem",array(
+		"incidentes"=>$incidentes
+	));
+
+});
+
+
+
+
+
+
 $app->get('/email',function () {
   		$page = new Page([			
 			"data"=>[

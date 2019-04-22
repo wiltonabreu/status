@@ -55,19 +55,13 @@
                                     
                                 </li>
                                 <li class="list-group-item">
-                                    APACHE
+                                    Banco de dados
                                     <label class="switch ">
-                                    <input type="checkbox" class="primary" value="1" <?php if( $incidentes["category_hospedagem_apache"] == 1  ){ ?>checked<?php } ?> id="category_hospedagem_apache" name="category_hospedagem_apache">
+                                    <input type="checkbox" class="primary" value="1" <?php if( $incidentes["category_hospedagem_bd"] == 1  ){ ?>checked<?php } ?> id="category_hospedagem_bd" name="category_hospedagem_bd">
                                     <span class="slider round"></span>
                                     </label>
                                 </li>
-                                <li class="list-group-item">
-                                    NGINX
-                                    <label class="switch ">
-                                    <input type="checkbox" class="primary" value="1" <?php if( $incidentes["category_hospedagem_nginx"] == 1  ){ ?>checked<?php } ?>  id="category_hospedagem_nginx" name="category_hospedagem_nginx">
-                                    <span class="slider round"></span>
-                                    </label>
-                                </li>
+                                
                                 
                             </ul>
                         </div>
@@ -111,15 +105,12 @@
                                 <input type="text" class="form-control" id="previsao_http" value="<?php echo htmlspecialchars( $incidentes["previsao_http"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" name="previsao_http" placeholder="Digite a previsao" style="width: 150px">
                             </div>
 
-                            <div class="form-group" id="apache">
-                                <label for="previsao">Previsão Apache</label>
-                                <input type="text" class="form-control" id="previsao_apache" value="<?php echo htmlspecialchars( $incidentes["previsao_apache"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" name="previsao_apache" placeholder="Digite a previsao" style="width: 150px">
+                            <div class="form-group" id="bd">
+                                <label for="previsao">Previsão Banco de dados</label>
+                                <input type="text" class="form-control" id="previsao_bd" value="<?php echo htmlspecialchars( $incidentes["previsao_bd"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" name="previsao_bd" placeholder="Digite a previsao" style="width: 150px">
                             </div>
 
-                            <div class="form-group" id="nginx">
-                                <label for="previsao">Previsão Nginx</label>
-                                <input type="text" class="form-control" id="previsao_nginx" value="<?php echo htmlspecialchars( $incidentes["previsao_nginx"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" name="previsao_nginx" placeholder="Digite a previsao" style="width: 150px">
-                            </div>
+                            
 
                             
                         </div>
