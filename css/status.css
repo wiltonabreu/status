@@ -188,7 +188,7 @@ body {
 .services-gray h2 {
     font-size: 27px;
     position: relative;
-    top: 10px;
+    top: 7px;
     text-align: center;
     color: #ff7e00;
 }
@@ -201,6 +201,7 @@ body {
 
 table{
     width: 100%;
+    margin-top: 30px;
     
 }
 table, th, td {
@@ -445,6 +446,22 @@ section .mx-auto h2 {
     text-decoration: underline;
     background-color: transparent;   
     
+}
+
+.primarytable{
+    width: 50%;
+    margin: auto;
+}
+
+.secundarytable{
+    width: 60%;
+    margin: auto;
+}
+
+.badge {    
+    font-size: 100%;
+    font-weight: 700;
+    margin-right: 4%;    
 }
 
 

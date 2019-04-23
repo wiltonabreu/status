@@ -50,8 +50,8 @@ $app->get('/',function () {
 		//$previsaoHospedagem = $a->verifyPrevisao($tableStatus);
 
 		if ( $statusHospedagem == 1  ) {
-			$statusHospedagem = "badge badge-warning";
-			$messageStatusHospedagem = "Parcialmente Operacional";
+			$statusHospedagem = "badge badge-danger";
+			$messageStatusHospedagem = "Problema";
 		}else {
 			$statusHospedagem = "badge badge-success";
 			$messageStatusHospedagem = "Operacional";

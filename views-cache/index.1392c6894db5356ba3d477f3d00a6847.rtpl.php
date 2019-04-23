@@ -5,48 +5,59 @@
 		<div class="list-group">
       <ul class="list-group">
 			  <li class="list-group-item">
-			  	<table>
+				<div class="primarytable">
+
+				
+			  	<table class="table table-striped table-bordered table-condensed table-hover">
 						<tr>
-							<th>Serviço</th>
-							<th>Status</th>
-							<th>Previsão</th>
+							<th><span class="d-flex justify-content-center"> Serviço</span></th>
+							<th><span class="d-flex justify-content-center"> Status</span></th>
+							
 						</tr>
 						
 						<tr>
-							<td><h5><span class="cluster-email">Email</span></h5></td>
+							<td><h5><span class="cluster-email d-flex justify-content-center">Email</span></h5></td>
 							<td>
-								<span class="<?php echo htmlspecialchars( $statusEmail, ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $messageStatusEmail, ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
-								<a href="mail-details">						
-										<i class="fas fa-plus-circle" title="Saiba mais" data-toggle="tooltip" data-placement="bottom" ></i>
-								</a>
-							</td>						
-							<td>TEste</td>
+								<div class="d-flex justify-content-center">
+									<span class="<?php echo htmlspecialchars( $statusEmail, ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $messageStatusEmail, ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+									<a href="mail-details">						
+										<i class="fas fa-plus-circle fa-lg" title="Saiba mais" data-toggle="tooltip" data-placement="bottom" ></i>
+									</a>
+								</div>
+							</td>
+												
+							
 						</tr>
 
 						<tr>
-							<td><h5><span class="cluster-email">Hospedagem Web</span></h5></td>
+							<td><h5><span class="cluster-email d-flex justify-content-center">Hospedagem Web</span></h5></td>
 							<td>
-								<span class="<?php echo htmlspecialchars( $statusHospedagem, ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $messageStatusHospedagem, ENT_COMPAT, 'UTF-8', FALSE ); ?></span>			    
-								<!--<td><span class="badge badge-success">Operational</span></td> -->
-								<a href="web-details">
-									<i class="fas fa-plus-circle" title="Saiba mais" data-toggle="tooltip" data-placement="bottom" ></i>
-								</a>
+								<div class="d-flex justify-content-center">
+									<span class="<?php echo htmlspecialchars( $statusHospedagem, ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $messageStatusHospedagem, ENT_COMPAT, 'UTF-8', FALSE ); ?></span>			    
+									<!--<td><span class="badge badge-success">Operational</span></td> -->
+									<a href="web-details">
+										<i class="fas fa-plus-circle fa-lg" title="Saiba mais" data-toggle="tooltip" data-placement="bottom" ></i>
+									</a>
+								</div>
 							</td>							
-							<td>TEste</td>
+							
 						</tr>
 
 						<tr>
-							<td><h5><span class="cluster-email">Backup</span></h5></td>
-							<td>
-								<span class="<?php echo htmlspecialchars( $statusBackup, ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $messageStatusBackup, ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
-								<a href="backup">
-									<!--<td><span class="badge badge-warning">Warning</span></td>-->
-									<i class="fas fa-plus-circle" title="Saiba mais" data-toggle="tooltip" data-placement="bottom" ></i>
-								</a>
+							<td><h5><span class="cluster-email d-flex justify-content-center">Backup</span></h5></td>
+							<td >
+								<div class="d-flex justify-content-center">
+									<span class="<?php echo htmlspecialchars( $statusBackup, ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $messageStatusBackup, ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+									<a href="backup">
+										<!--<td><span class="badge badge-warning">Warning</span></td>-->
+										<i class="fas fa-plus-circle fa-lg" title="Saiba mais" data-toggle="tooltip" data-placement="bottom" ></i>
+									</a>
+								</div>
 							</td>							
-							<td>TEste</td>
+							
 						</tr>
-				  </table>                                   					
+				  </table>  
+				</div>                                 					
 			  </li>
 			</ul>
               
