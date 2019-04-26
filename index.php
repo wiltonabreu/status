@@ -15,10 +15,6 @@ $app = new \Slim\Slim();
 
 
 $app->get('/',function () {
-		
-		
-		
-		
 
 		$a = new Incidents();
 		
@@ -27,10 +23,7 @@ $app->get('/',function () {
 		$tableStatus= $a->processesAllIncidents($filtro);		
 
 		$statusEmail = $a->verifyStatus($tableStatus);
-
-		//$previsaoEmail = $a->verifyPrevisao($tableStatus);
-
-		//var_dump($previsaoEmail);exit;
+		
 
 		if ( $statusEmail == 1  ) {
 			$statusEmail = "badge badge-danger";
@@ -47,7 +40,6 @@ $app->get('/',function () {
 		$tableStatus= $a->processesAllIncidents($filtro);		
 
 		$statusHospedagem = $a->verifyStatus($tableStatus);
-		//$previsaoHospedagem = $a->verifyPrevisao($tableStatus);
 
 		if ( $statusHospedagem == 1  ) {
 			$statusHospedagem = "badge badge-danger";
@@ -64,7 +56,7 @@ $app->get('/',function () {
 		$tableStatus= $a->processesAllIncidents($filtro);		
 
 		$statusBackup = $a->verifyStatus($tableStatus);
-		//$previsaoBackup = $a->verifyPrevisao($tableStatus);
+	
 
 		if ( $statusBackup == 1  ) {
 			$statusBackup = "badge badge-danger";
@@ -74,35 +66,27 @@ $app->get('/',function () {
 			$messageStatusBackup = "Operacional";
 		}
 
+		$backup = $a->processesIncidentsWhithProblem($filtro);
 
+		$previsaBackup = $a->getProblemSubcategory($backup);
 
-		//echo $statusEmail . "-" . $statusHopedagem . "-" . $statusBackup; exit;
 		
-
 
 		$incidentes = $a->processesIncidents();
-
-			
-	
-		
-
 		$b = new Incidents();
 		$comunicados = $b->processesCommunication();
 
 			
 		$page = new Page([			
 			"data"=>[
-						"servico" => "",
-						"mensagem1" => "Incidentes ocorridos nos serviços de e-mail",
+						"servico" => "",						
 						"statusEmail" => $statusEmail,
-						"messageStatusEmail" => $messageStatusEmail,
-						//"previsaoEmail" => $previsaoEmail,
+						"messageStatusEmail" => $messageStatusEmail,						
 						"statusHospedagem" => $statusHospedagem,
-						"messageStatusHospedagem" => $messageStatusHospedagem,
-						//"previsaoHospedagem" => $previsaoHospedagem,
+						"messageStatusHospedagem" => $messageStatusHospedagem,						
 						"statusBackup" => $statusBackup,
 						"messageStatusBackup" => $messageStatusBackup,
-						//"previsaoBackup" => $previsaoBackup
+						"previsaBackup" => $previsaBackup[1]					
 					]
 		]);
 		$page->setTpl("index",array(
@@ -114,23 +98,67 @@ $app->get('/',function () {
 );
 
 $app->get('/mail-details',function () {
+    
+
+		$a = new Incidents();
+		
+		// Inicio ImapMail01
+
+		$statusImapMail01 = $a->verifyStatusMail01("imap");
 	
-	$page = new Page([			
-		"data"=>[
-					"servico" => "E-mail"
-				]
-		]);
+		if(isset($statusImapMail01[0]['previsao_imap_email'])){
+		 $prevImapMail01 = $statusImapMail01[0]['previsao_imap_email'];
+		}else{
+			$prevImapMail01 = "";
+		}
 
+		if (isset($statusImapMail01[0]["category_email_imap"])) {				  	
+			$statusImapMail01 = "badge badge-danger";
+			$messageStatusImapMail01 = "Problema";
+			$previsaoImapMail01 =  $prevImapMail01;
+		}else {
+			$statusImapMail01 = "badge badge-success";
+			$messageStatusImapMail01 = "Ok";
+			$previsaoImapMail01 = $prevImapMail01;
+		}
 
-  $filtro = "email";
+		// Fim ImapMail01
+		
+		// Inicio PopMail01
+		$statusPopMail01 = $a->verifyStatusMail01("pop");
+	
+		if(isset($statusPopMail01[0]['previsao_pop_email'])){
+		 $prevPopMail01 = $statusPopMail01[0]['previsao_pop_email'];
+		}else{
+			$prevPopMail01 = "";
+		}
 
-	  $a = new Incidents();
+		if (isset($statusPopMail01[0]["category_email_pop"])) {				  	
+			$statusPopMail01 = "badge badge-danger";
+			$messageStatusPopMail01 = "Problema";
+			$previsaoPopMail01 =  $prevPopMail01;
+		}else {
+			$statusPopMail01 = "badge badge-success";
+			$messageStatusPopMail01 = "Ok";
+			$previsaoPopMail01 = $prevPopMail01;
+		}
 
-		$incidentes = $a->processesAllIncidents($filtro);
+		// Fim PopMail01
 
-	$page->setTpl("tabledetails",array(
-		"incidentes"=>$incidentes
-	));
+		$page = new Page([			
+			"data"=>[
+						"servico" => "E-mail",
+						"statusImapMail01" => $statusImapMail01,
+						"messageStatusImapMail01" => $messageStatusImapMail01,
+						"previsaoImapMail01"=> $previsaoImapMail01,
+
+						"statusPopMail01" => $statusPopMail01,
+						"messageStatusPopMail01" => $messageStatusPopMail01,
+						"previsaoPopMail01"=> $previsaoPopMail01
+					]
+			]);	
+
+	$page->setTpl("tabledetails");
 
 });
 
@@ -143,11 +171,14 @@ $app->get('/web-details',function () {
 		]);
 
 
-  $filtro = "hospedagem";
+		$filtro = "hospedagem";
 
 	  $a = new Incidents();
 
-		$incidentes = $a->processesAllIncidents($filtro);
+		$incidentes = $a->processesIncidentsWhithProblem($filtro);
+
+		$b = $a->getProblemSubcategory($incidentes);
+
 
 	$page->setTpl("tabledetails-hospedagem",array(
 		"incidentes"=>$incidentes

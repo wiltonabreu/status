@@ -97,7 +97,7 @@
                                     <li class="list-group-item">
                                     MAIL 01
                                         <label class="switch ">
-                                        <input type="checkbox" class="primary" value="1" <?php if( $incidentes["category_email_mail01"] == 1  ){ ?>checked<?php } ?> id="category_email_mail01" name="category_email_mail01">
+                                        <input type="checkbox" class="primary" value="1" onclick="desbloquearCheckBoxMail02Mail03()" <?php if( $incidentes["category_email_mail01"] == 1  ){ ?>checked<?php } ?> id="category_email_mail01" name="category_email_mail01">
                                         <span class="slider round"></span>
                                         </label>
                                     </li>
@@ -105,14 +105,14 @@
                                     <li class="list-group-item">
                                     MAIL 02
                                         <label class="switch ">
-                                        <input type="checkbox" class="primary" value="1" <?php if( $incidentes["category_email_mail02"] == 1  ){ ?>checked<?php } ?> id="category_email_mail02" name="category_email_mail02">
+                                        <input type="checkbox" class="primary" value="1" onclick="desbloquearCheckBoxMail01Mail03()" <?php if( $incidentes["category_email_mail02"] == 1  ){ ?>checked<?php } ?> id="category_email_mail02" name="category_email_mail02">
                                         <span class="slider round"></span>
                                         </label>
                                     </li>
                                     <li class="list-group-item">
                                     MAIL 03
                                         <label class="switch ">
-                                        <input type="checkbox" class="primary" value="1" <?php if( $incidentes["category_email_mail03"] == 1  ){ ?>checked<?php } ?> id="category_email_mail03" name="category_email_mail03">
+                                        <input type="checkbox" class="primary" value="1" onclick="desbloquearCheckBoxMail01Mail02()" <?php if( $incidentes["category_email_mail03"] == 1  ){ ?>checked<?php } ?> id="category_email_mail03" name="category_email_mail03">
                                         <span class="slider round"></span>
                                         </label>
                                     </li>
@@ -180,3 +180,21 @@
         <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
+<script>
+
+    function desbloquearCheckBoxMail02Mail03(){            
+        document.getElementById('category_email_mail02').checked = false;
+        document.getElementById('category_email_mail03').checked = false;
+    }
+
+    function desbloquearCheckBoxMail01Mail03(){
+        document.getElementById('category_email_mail01').checked = false;    
+        document.getElementById('category_email_mail03').checked = false;
+    }
+
+    function desbloquearCheckBoxMail01Mail02(){
+        document.getElementById('category_email_mail01').checked = false;
+        document.getElementById('category_email_mail02').checked = false;    
+    }
+
+</script>

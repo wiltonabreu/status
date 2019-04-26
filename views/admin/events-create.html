@@ -120,7 +120,7 @@
                                         <li class="list-group-item">
                                         MAIL 01
                                             <label class="switch ">
-                                            <input type="checkbox" class="primary" value="1" id="category_email_mail01" name="category_email_mail01">
+                                            <input type="checkbox" class="primary" value="1" onclick="desbloquearCheckBoxMail02Mail03()" id="category_email_mail01" name="category_email_mail01">
                                             <span class="slider round"></span>
                                             </label>
                                         </li>
@@ -128,14 +128,14 @@
                                         <li class="list-group-item">
                                         MAIL 02
                                             <label class="switch ">
-                                            <input type="checkbox" class="primary" value="1" id="category_email_mail02" name="category_email_mail02">
+                                            <input type="checkbox" class="primary" value="1" onclick="desbloquearCheckBoxMail01Mail03()" id="category_email_mail02" name="category_email_mail02">
                                             <span class="slider round"></span>
                                             </label>
                                         </li>
                                         <li class="list-group-item">
                                         MAIL 03
                                             <label class="switch ">
-                                            <input type="checkbox" class="primary" value="1" id="category_email_mail03" name="category_email_mail03">
+                                            <input type="checkbox" class="primary" value="1" onclick="desbloquearCheckBoxMail01Mail02()" id="category_email_mail03" name="category_email_mail03">
                                             <span class="slider round"></span>
                                             </label>
                                         </li>
@@ -211,7 +211,7 @@
                                         <li class="list-group-item">
                                         Plesk linux 1
                                             <label class="switch ">
-                                            <input type="checkbox" class="primary" value="1" id="category_hospedagem_lin1" name="category_hospedagem_lin1">
+                                            <input type="checkbox" class="primary" value="1" onclick="desbloquearCheckBoxlin3Win()" id="category_hospedagem_lin1" name="category_hospedagem_lin1">
                                             <span class="slider round"></span>
                                             </label>
                                         </li>
@@ -219,14 +219,14 @@
                                         <li class="list-group-item">
                                         Plesk linux 3
                                             <label class="switch ">
-                                            <input type="checkbox" class="primary" value="1" id="category_hospedagem_lin3" name="category_hospedagem_lin3">
+                                            <input type="checkbox" class="primary" value="1" onclick="desbloquearCheckBoxlin1Win()" id="category_hospedagem_lin3" name="category_hospedagem_lin3">
                                             <span class="slider round"></span>
                                             </label>
                                         </li>
                                         <li class="list-group-item">
                                         Plesk Windows
                                             <label class="switch ">
-                                            <input type="checkbox" class="primary" value="1" id="category_hospedagem_win" name="category_hospedagem_win">
+                                            <input type="checkbox" class="primary" value="1" onclick="desbloquearCheckBoxlin1lin3()" id="category_hospedagem_win" name="category_hospedagem_win">
                                             <span class="slider round"></span>
                                             </label>
                                         </li>
@@ -340,6 +340,38 @@
               backup.style.display = "none";
               document.getElementById('previsao_backup').value = "";
 
+          }
+
+          function desbloquearCheckBoxlin3Win(){
+            document.getElementById('category_hospedagem_lin3').checked = false;
+            document.getElementById('category_hospedagem_win').checked = false;
+          }
+
+          function desbloquearCheckBoxlin1Win(){
+            document.getElementById('category_hospedagem_lin1').checked = false;
+            document.getElementById('category_hospedagem_win').checked = false;
+          }
+
+          function desbloquearCheckBoxlin1lin3(){
+            document.getElementById('category_hospedagem_lin3').checked = false;
+            document.getElementById('category_hospedagem_lin1').checked = false;
+          }
+          
+          function desbloquearCheckBoxMail02Mail03(){            
+            document.getElementById('category_email_mail02').checked = false;
+            document.getElementById('category_email_mail03').checked = false;
+          }
+
+          function desbloquearCheckBoxMail01Mail03(){
+            document.getElementById('category_email_mail01').checked = false;
+            
+            document.getElementById('category_email_mail03').checked = false;
+          }
+
+          function desbloquearCheckBoxMail01Mail02(){
+            document.getElementById('category_email_mail01').checked = false;
+            document.getElementById('category_email_mail02').checked = false;
+            
           }
 
           function desbloquearCheckBoxHospedagem(){ 

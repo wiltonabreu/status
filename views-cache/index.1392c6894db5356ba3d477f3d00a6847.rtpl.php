@@ -50,7 +50,7 @@
 									<span class="<?php echo htmlspecialchars( $statusBackup, ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $messageStatusBackup, ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
 									<a href="backup">
 										<!--<td><span class="badge badge-warning">Warning</span></td>-->
-										<i class="fas fa-plus-circle fa-lg" title="Saiba mais" data-toggle="tooltip" data-placement="bottom" ></i>
+										<i class="fas fa-plus-circle fa-lg" title="Previsão <?php echo htmlspecialchars( $previsaBackup, ENT_COMPAT, 'UTF-8', FALSE ); ?>" data-toggle="tooltip" data-placement="bottom" ></i>
 									</a>
 								</div>
 							</td>							

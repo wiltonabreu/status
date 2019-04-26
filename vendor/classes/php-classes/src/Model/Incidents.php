@@ -325,7 +325,156 @@ use \Classes\Model;
 
             return $incidentes;
         }   
+
+
+        public function processesIncidentsWhithProblem($filtro){
+
+            if ($filtro === "email") {
+                $category = "email";
+            }
+            elseif ($filtro === "hospedagem") {
+                $category = "hospedagem";
+            }
+           elseif ($filtro === "backup") {
+                $category = "backup";
+            }
+
+            $sql = new Sql();
+            $incidentes = $sql->select("SELECT * from tb_incidents where category = :category AND status_service=1 ORDER BY dt_criacao desc", array(
+                ":category" => $category
+            ));
+
+            for ($i=0; $i < count($incidentes) ; $i++) { 
+                $incidentes[$i]['dt_criacao'] = date("d-m-Y", strtotime($incidentes[$i]['dt_criacao']) );
+                
+            }
+
+            return $incidentes;
+        }
+
+        public function verifyStatusMail01($subcategory){
+
+           $filtro = "email";  
+           
+           $sub = "category_email_".$subcategory;
+
+          
+
+            $sql = new Sql();
+            $incidentes = $sql->select("SELECT * from tb_incidents where category = :category AND status_service=1 AND $sub=1 AND category_email_mail01=1", array(
+                ":category" => $filtro
+            ));
+
+            for ($i=0; $i < count($incidentes) ; $i++) { 
+                $incidentes[$i]['dt_criacao'] = date("d-m-Y", strtotime($incidentes[$i]['dt_criacao']) );
+                
+            }
+
+            return $incidentes;
+        }
+
         
+        
+        public function getProblemSubcategory($incidentes){
+            //var_dump($incidentes);exit;
+            $b = [];
+
+            for ($i=0; $i < count($incidentes) ; $i++) { 
+
+                //BACKUP
+                if ( $incidentes[$i]['category_backup'] == 1 ) {
+                    array_push($b,'category_backup');
+                    array_push($b, $incidentes[$i]['previsao_backup']);
+                    continue;
+                }
+            
+                if ( $incidentes[$i]['category_email_imap'] == 1 ) {
+                    array_push($b,'category_email_imap');
+                    array_push($b, $incidentes[$i]['previsao_imap_email']);
+                    continue;
+                }
+                
+                //EMAIL
+                if ( $incidentes[$i]['category_email_pop'] == 1) {
+                    array_push($b,'category_email_pop');
+                    array_push($b, $incidentes[$i]['previsao_pop_email']);
+                    continue;
+                }
+
+                if ( $incidentes[$i]['category_email_smtp'] == 1) {
+                    array_push($b,'category_email_smtp');
+                    array_push($b, $incidentes[$i]['previsao_smtp_email']);
+                    continue;
+                }
+                if ( $incidentes[$i]['category_email_webmail'] == 1) {
+                    array_push($b,'category_email_webmail');
+                    array_push($b, $incidentes[$i]['previsao_webmail_email']);
+                    continue;
+                }
+
+                if ( $incidentes[$i]['category_email_fila'] == 1) {
+                    array_push($b,'category_email_fila');
+                    array_push($b, $incidentes[$i]['previsao_fila_email']);
+                    continue;
+                }
+
+                if ( $incidentes[$i]['category_email_eas'] == 1) {
+                    array_push($b,'category_email_eas');
+                    array_push($b, $incidentes[$i]['previsao_eas_email']);
+                    continue;
+                }
+
+                if ( $incidentes[$i]['category_email_mail01'] == 1) {
+                    array_push($b,'category_email_mail01');
+                    
+                    continue;
+                }
+
+                if ( $incidentes[$i]['category_email_mail02'] == 1) {
+                    array_push($b,'category_email_mail02');
+                    continue;
+                }
+
+                if ( $incidentes[$i]['category_email_mail03'] == 1) {
+                    array_push($b,'category_email_mail03');
+                    continue;
+                }
+
+                //Hospedagem
+
+                if ( $incidentes[$i]['category_hospedagem_http'] == 1) {
+                    array_push($b,'category_hospedagem_http');
+                    array_push($b, $incidentes[$i]['previsao_http']);
+                    continue;
+                }
+
+                if ( $incidentes[$i]['category_hospedagem_bd'] == 1) {
+                    array_push($b,'category_hospedagem_bd');
+                    array_push($b, $incidentes[$i]['previsao_bd']);
+                    continue;
+                }
+                
+                if ( $incidentes[$i]['category_hospedagem_lin1'] == 1) {
+                    array_push($b,'category_hospedagem_lin1');
+                    continue;
+                }
+
+                if ( $incidentes[$i]['category_hospedagem_lin3'] == 1) {
+                    array_push($b,'category_hospedagem_lin3');
+                    continue;
+                }
+
+                if ( $incidentes[$i]['category_hospedagem_win'] == 1) {
+                    array_push($b,'category_hospedagem_win');
+                    continue;
+                }
+            }
+            
+            //print_r($b); exit;
+
+            return $b;
+
+        }
 
 
         public function getAllIncidents(){
