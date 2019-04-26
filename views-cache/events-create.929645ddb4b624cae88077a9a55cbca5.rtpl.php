@@ -356,7 +356,7 @@
             document.getElementById('category_hospedagem_lin3').checked = false;
             document.getElementById('category_hospedagem_lin1').checked = false;
           }
-
+          
           function desbloquearCheckBoxMail02Mail03(){            
             document.getElementById('category_email_mail02').checked = false;
             document.getElementById('category_email_mail03').checked = false;

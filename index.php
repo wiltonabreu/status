@@ -67,9 +67,14 @@ $app->get('/',function () {
 		}
 
 		$backup = $a->processesIncidentsWhithProblem($filtro);
+		
+		if(!empty($backup)){
+			$previsaBackup = $a->getProblemSubcategory($backup);
+		}else{
+			$previsaBackup[1] = ': Operação normal';
+		}
 
-		$previsaBackup = $a->getProblemSubcategory($backup);
-
+		
 		
 
 		$incidentes = $a->processesIncidents();
@@ -104,30 +109,31 @@ $app->get('/mail-details',function () {
 		
 		// Inicio ImapMail01
 		$clusterMail01 = "mail01";
+		$filtro = "email";
 
 		$subcategoriaImailMail01 = "imap";
-		$statusImapMail01 = $a->verifyStatusMail($clusterMail01,$subcategoriaImailMail01);
-		$dataImapMail01 = $a->getDataForTemplate($subcategoriaImailMail01,$statusImapMail01);
+		$statusImapMail01 = $a->verifyStatusIncidents($filtro, $clusterMail01,$subcategoriaImailMail01);
+		$dataImapMail01 = $a->getDataForTemplate($filtro, $subcategoriaImailMail01,$statusImapMail01);
 
 		$subcategoriaPopMail01 = "pop";
-		$statusPopMail01 = $a->verifyStatusMail($clusterMail01,$subcategoriaPopMail01);
-		$dataPopMail01 = $a->getDataForTemplate($subcategoriaPopMail01,$statusPopMail01);
+		$statusPopMail01 = $a->verifyStatusIncidents($filtro, $clusterMail01,$subcategoriaPopMail01);
+		$dataPopMail01 = $a->getDataForTemplate($filtro, $subcategoriaPopMail01,$statusPopMail01);
 
 		$subcategoriaSmtpMail01 = "smtp";
-		$statusSmtpMail01 = $a->verifyStatusMail($clusterMail01,$subcategoriaSmtpMail01);
-		$dataSmtpMail01 = $a->getDataForTemplate($subcategoriaSmtpMail01,$statusSmtpMail01);
+		$statusSmtpMail01 = $a->verifyStatusIncidents($filtro, $clusterMail01,$subcategoriaSmtpMail01);
+		$dataSmtpMail01 = $a->getDataForTemplate($filtro, $subcategoriaSmtpMail01,$statusSmtpMail01);
 
 		$subcategoriaWebmailMail01 = "webmail";
-		$statusWebmailMail01 = $a->verifyStatusMail($clusterMail01,$subcategoriaWebmailMail01);
-		$dataWebmailMail01 = $a->getDataForTemplate($subcategoriaWebmailMail01,$statusWebmailMail01);
+		$statusWebmailMail01 = $a->verifyStatusIncidents($filtro, $clusterMail01,$subcategoriaWebmailMail01);
+		$dataWebmailMail01 = $a->getDataForTemplate($filtro, $subcategoriaWebmailMail01,$statusWebmailMail01);
 
 		$subcategoriaEasMail01 = "eas";
-		$statusEasMail01 = $a->verifyStatusMail($clusterMail01,$subcategoriaEasMail01);
-		$dataEasMail01 = $a->getDataForTemplate($subcategoriaEasMail01,$statusEasMail01);
+		$statusEasMail01 = $a->verifyStatusIncidents($filtro, $clusterMail01,$subcategoriaEasMail01);
+		$dataEasMail01 = $a->getDataForTemplate($filtro, $subcategoriaEasMail01,$statusEasMail01);
 
 		$subcategoriaFilaMail01 = "fila";
-		$statusFilaMail01 = $a->verifyStatusMail($clusterMail01,$subcategoriaFilaMail01);
-		$dataFilaMail01 = $a->getDataForTemplate($subcategoriaFilaMail01,$statusFilaMail01);
+		$statusFilaMail01 = $a->verifyStatusIncidents($filtro, $clusterMail01,$subcategoriaFilaMail01);
+		$dataFilaMail01 = $a->getDataForTemplate($filtro, $subcategoriaFilaMail01,$statusFilaMail01);
 
 // Fim ImapMail01
 
@@ -135,28 +141,28 @@ $app->get('/mail-details',function () {
 	$clusterMail02 = "mail02";
 
 	$subcategoriaImailMail02 = "imap";
-	$statusImapMail02 = $a->verifyStatusMail($clusterMail02,$subcategoriaImailMail02);
-	$dataImapMail02 = $a->getDataForTemplate($subcategoriaImailMail02,$statusImapMail02);
+	$statusImapMail02 = $a->verifyStatusIncidents($filtro, $clusterMail02,$subcategoriaImailMail02);
+	$dataImapMail02 = $a->getDataForTemplate($filtro, $subcategoriaImailMail02,$statusImapMail02);
 
 	$subcategoriaPopMail02 = "pop";
-	$statusPopMail02 = $a->verifyStatusMail($clusterMail02,$subcategoriaPopMail02);
-	$dataPopMail02 = $a->getDataForTemplate($subcategoriaPopMail02,$statusPopMail02);
+	$statusPopMail02 = $a->verifyStatusIncidents($filtro, $clusterMail02,$subcategoriaPopMail02);
+	$dataPopMail02 = $a->getDataForTemplate($filtro, $subcategoriaPopMail02,$statusPopMail02);
 
 	$subcategoriaSmtpMail02 = "smtp";
-	$statusSmtpMail02 = $a->verifyStatusMail($clusterMail02,$subcategoriaSmtpMail02);
-	$dataSmtpMail02 = $a->getDataForTemplate($subcategoriaSmtpMail02,$statusSmtpMail02);
+	$statusSmtpMail02 = $a->verifyStatusIncidents($filtro, $clusterMail02,$subcategoriaSmtpMail02);
+	$dataSmtpMail02 = $a->getDataForTemplate($filtro, $subcategoriaSmtpMail02,$statusSmtpMail02);
 
 	$subcategoriaWebmailMail02 = "webmail";
-	$statusWebmailMail02 = $a->verifyStatusMail($clusterMail02,$subcategoriaWebmailMail02);
-	$dataWebmailMail02 = $a->getDataForTemplate($subcategoriaWebmailMail02,$statusWebmailMail02);
+	$statusWebmailMail02 = $a->verifyStatusIncidents($filtro, $clusterMail02,$subcategoriaWebmailMail02);
+	$dataWebmailMail02 = $a->getDataForTemplate($filtro, $subcategoriaWebmailMail02,$statusWebmailMail02);
 
 	$subcategoriaEasMail02 = "eas";
-	$statusEasMail02 = $a->verifyStatusMail($clusterMail02,$subcategoriaEasMail02);
-	$dataEasMail02 = $a->getDataForTemplate($subcategoriaEasMail02,$statusEasMail02);
+	$statusEasMail02 = $a->verifyStatusIncidents($filtro, $clusterMail02,$subcategoriaEasMail02);
+	$dataEasMail02 = $a->getDataForTemplate($filtro, $subcategoriaEasMail02,$statusEasMail02);
 
 	$subcategoriaFilaMail02 = "fila";
-	$statusFilaMail02 = $a->verifyStatusMail($clusterMail02,$subcategoriaFilaMail02);
-	$dataFilaMail02 = $a->getDataForTemplate($subcategoriaFilaMail02,$statusFilaMail02);
+	$statusFilaMail02 = $a->verifyStatusIncidents($filtro, $clusterMail02,$subcategoriaFilaMail02);
+	$dataFilaMail02 = $a->getDataForTemplate($filtro, $subcategoriaFilaMail02,$statusFilaMail02);
 
 // Fim ImapMail02
 
@@ -164,28 +170,28 @@ $app->get('/mail-details',function () {
 $clusterMail03 = "mail03";
 
 $subcategoriaImailMail03 = "imap";
-$statusImapMail03 = $a->verifyStatusMail($clusterMail03,$subcategoriaImailMail03);
-$dataImapMail03 = $a->getDataForTemplate($subcategoriaImailMail03,$statusImapMail03);
+$statusImapMail03 = $a->verifyStatusIncidents($filtro, $clusterMail03,$subcategoriaImailMail03);
+$dataImapMail03 = $a->getDataForTemplate($filtro, $subcategoriaImailMail03,$statusImapMail03);
 
 $subcategoriaPopMail03 = "pop";
-$statusPopMail03 = $a->verifyStatusMail($clusterMail03,$subcategoriaPopMail03);
-$dataPopMail03 = $a->getDataForTemplate($subcategoriaPopMail03,$statusPopMail03);
+$statusPopMail03 = $a->verifyStatusIncidents($filtro, $clusterMail03,$subcategoriaPopMail03);
+$dataPopMail03 = $a->getDataForTemplate($filtro, $subcategoriaPopMail03,$statusPopMail03);
 
 $subcategoriaSmtpMail03 = "smtp";
-$statusSmtpMail03 = $a->verifyStatusMail($clusterMail03,$subcategoriaSmtpMail03);
-$dataSmtpMail03 = $a->getDataForTemplate($subcategoriaSmtpMail03,$statusSmtpMail03);
+$statusSmtpMail03 = $a->verifyStatusIncidents($filtro, $clusterMail03,$subcategoriaSmtpMail03);
+$dataSmtpMail03 = $a->getDataForTemplate($filtro, $subcategoriaSmtpMail03,$statusSmtpMail03);
 
 $subcategoriaWebmailMail03 = "webmail";
-$statusWebmailMail03 = $a->verifyStatusMail($clusterMail03,$subcategoriaWebmailMail03);
-$dataWebmailMail03 = $a->getDataForTemplate($subcategoriaWebmailMail03,$statusWebmailMail03);
+$statusWebmailMail03 = $a->verifyStatusIncidents($filtro, $clusterMail03,$subcategoriaWebmailMail03);
+$dataWebmailMail03 = $a->getDataForTemplate($filtro, $subcategoriaWebmailMail03,$statusWebmailMail03);
 
 $subcategoriaEasMail03 = "eas";
-$statusEasMail03 = $a->verifyStatusMail($clusterMail03,$subcategoriaEasMail03);
-$dataEasMail03 = $a->getDataForTemplate($subcategoriaEasMail03,$statusEasMail03);
+$statusEasMail03 = $a->verifyStatusIncidents($filtro, $clusterMail03,$subcategoriaEasMail03);
+$dataEasMail03 = $a->getDataForTemplate($filtro, $subcategoriaEasMail03,$statusEasMail03);
 
 $subcategoriaFilaMail03 = "fila";
-$statusFilaMail03 = $a->verifyStatusMail($clusterMail03,$subcategoriaFilaMail03);
-$dataFilaMail03 = $a->getDataForTemplate($subcategoriaFilaMail03,$statusFilaMail03);
+$statusFilaMail03 = $a->verifyStatusIncidents($filtro, $clusterMail03,$subcategoriaFilaMail03);
+$dataFilaMail03 = $a->getDataForTemplate($filtro, $subcategoriaFilaMail03,$statusFilaMail03);
 
 // Fim ImapMail03
 
@@ -220,26 +226,59 @@ $dataFilaMail03 = $a->getDataForTemplate($subcategoriaFilaMail03,$statusFilaMail
 });
 
 $app->get('/web-details',function () {
-	
-	$page = new Page([			
-		"data"=>[
-					"servico" => "Hospedagem Web"
-				]
-		]);
+		
 
-
+		$a = new Incidents();
+		
+		
 		$filtro = "hospedagem";
 
-	  $a = new Incidents();
+		$clusterLin1 = "lin1";
+		$subcategoriaHttpLin1 = "http";
+		$statusHttpLin1 = $a->verifyStatusIncidents($filtro, $clusterLin1,$subcategoriaHttpLin1);
+		$dataHttpLin1 = $a->getDataForTemplate($filtro, $subcategoriaHttpLin1,$statusHttpLin1);
 
-		$incidentes = $a->processesIncidentsWhithProblem($filtro);
+		$subcategoriaBdLin1 = "bd";
+		$statusBdLin1 = $a->verifyStatusIncidents($filtro, $clusterLin1,$subcategoriaBdLin1);
+		$dataBdLin1 = $a->getDataForTemplate($filtro, $subcategoriaBdLin1,$statusBdLin1);
 
-		$b = $a->getProblemSubcategory($incidentes);
+		$clusterLin3 = "lin3";
+		$subcategoriaHttpLin3 = "http";
+		$statusHttpLin3 = $a->verifyStatusIncidents($filtro, $clusterLin3,$subcategoriaHttpLin3);
+		$dataHttpLin3 = $a->getDataForTemplate($filtro, $subcategoriaHttpLin3,$statusHttpLin3);
 
+		$subcategoriaBdLin3 = "bd";
+		$statusBdLin3 = $a->verifyStatusIncidents($filtro, $clusterLin3,$subcategoriaBdLin3);
+		$dataBdLin3 = $a->getDataForTemplate($filtro, $subcategoriaBdLin3,$statusBdLin3);
 
-	$page->setTpl("tabledetails-hospedagem",array(
-		"incidentes"=>$incidentes
-	));
+		$clusterWin = "win";
+		$subcategoriaHttpWin = "http";
+		$statusHttpWin = $a->verifyStatusIncidents($filtro, $clusterWin,$subcategoriaHttpWin);
+		$dataHttpWin = $a->getDataForTemplate($filtro, $subcategoriaHttpWin,$statusHttpWin);
+
+		$subcategoriaBdWin = "bd";
+		$statusBdWin = $a->verifyStatusIncidents($filtro, $clusterWin,$subcategoriaBdWin);
+		$dataBdWin = $a->getDataForTemplate($filtro, $subcategoriaBdWin,$statusBdWin);
+
+		
+
+		
+		$page = new Page([			
+			"data"=>[
+						"servico" => "Hospedagem Web",
+						"dataHttpLin1" => $dataHttpLin1,
+						"dataBdLin1" => $dataBdLin1,
+
+						"dataHttpLin3" => $dataHttpLin3,
+						"dataBdLin3" => $dataBdLin3,
+
+						"dataHttpWin" => $dataHttpWin,
+						"dataBdWin" => $dataBdWin
+					]
+			]);
+
+		$page->setTpl("tabledetails-hospedagem");
+		
 
 });
 
@@ -635,8 +674,7 @@ $app->post('/admin/events/:id',function ($id) {
 	$_POST["category_email_mail03"] = (isset($_POST["category_email_mail03"]))?1:0;	
 	$_POST["category_hospedagem"] = (isset($_POST["category_hospedagem"]))?1:0;
 	$_POST["category_hospedagem_http"] = (isset($_POST["category_hospedagem_http"]))?1:0;
-	$_POST["category_hospedagem_apache"] = (isset($_POST["category_hospedagem_apache"]))?1:0;
-	$_POST["category_hospedagem_nginx"] = (isset($_POST["category_hospedagem_nginx"]))?1:0;
+	$_POST["category_hospedagem_bd"] = (isset($_POST["category_hospedagem_bd"]))?1:0;	
 	$_POST["category_hospedagem_lin1"] = (isset($_POST["category_hospedagem_lin1"]))?1:0;
 	$_POST["category_hospedagem_lin3"] = (isset($_POST["category_hospedagem_lin3"]))?1:0;
 	$_POST["category_hospedagem_win"] = (isset($_POST["category_hospedagem_win"]))?1:0;

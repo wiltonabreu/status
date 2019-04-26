@@ -19,23 +19,28 @@
                                 <td>
                                     <h5><span class="cluster-email">Linux 1</span></h5>
                                 </td>
+                                
                                 <td>
                                     <div class="d-flex justify-content-center">
-                                        <span class="badge badge-success">OK</span>
-                                        <a href="hospedagem">
-                                            <i class="fas fa-plus-circle fa-lg fa-lg" title="25/04/2019 15:00"
-                                                data-toggle="tooltip" data-placement="bottom"></i>
-                                        </a>
+                                            <span class="<?php echo htmlspecialchars( $dataHttpLin1['status'], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $dataHttpLin1['message'], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+                                            <a href="email">
+                                                    <i class="fas fa-plus-circle fa-lg"
+                                                            title="Previsão: <?php echo htmlspecialchars( $dataHttpLin1['previsao'], ENT_COMPAT, 'UTF-8', FALSE ); ?>"
+                                                            data-toggle="tooltip"
+                                                            data-placement="bottom"></i>
+                                            </a>
                                     </div>
                                 </td>
 
                                 <td>
                                     <div class="d-flex justify-content-center">
-                                        <span class="badge badge-success">OK</span>
-                                        <a href="hospedagem">
-                                            <i class="fas fa-plus-circle fa-lg fa-lg" title="25/04/2019 15:00"
-                                                data-toggle="tooltip" data-placement="bottom"></i>
-                                        </a>
+                                            <span class="<?php echo htmlspecialchars( $dataBdLin1['status'], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $dataBdLin1['message'], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+                                            <a href="email">
+                                                    <i class="fas fa-plus-circle fa-lg"
+                                                            title="Previsão: <?php echo htmlspecialchars( $dataBdLin1['previsao'], ENT_COMPAT, 'UTF-8', FALSE ); ?>"
+                                                            data-toggle="tooltip"
+                                                            data-placement="bottom"></i>
+                                            </a>
                                     </div>
                                 </td>
 
@@ -50,21 +55,25 @@
                                 </td>
                                 <td>
                                     <div class="d-flex justify-content-center">
-                                        <span class="badge badge-success">OK</span>
-                                        <a href="hospedagem">
-                                            <i class="fas fa-plus-circle fa-lg fa-lg" title="25/04/2019 15:00"
-                                                data-toggle="tooltip" data-placement="bottom"></i>
-                                        </a>
+                                            <span class="<?php echo htmlspecialchars( $dataHttpLin3['status'], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $dataHttpLin3['message'], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+                                            <a href="email">
+                                                    <i class="fas fa-plus-circle fa-lg"
+                                                            title="Previsão: <?php echo htmlspecialchars( $dataHttpLin3['previsao'], ENT_COMPAT, 'UTF-8', FALSE ); ?>"
+                                                            data-toggle="tooltip"
+                                                            data-placement="bottom"></i>
+                                            </a>
                                     </div>
                                 </td>
 
                                 <td>
                                     <div class="d-flex justify-content-center">
-                                        <span class="badge badge-success">OK</span>
-                                        <a href="hospedagem">
-                                            <i class="fas fa-plus-circle fa-lg fa-lg" title="25/04/2019 15:00"
-                                                data-toggle="tooltip" data-placement="bottom"></i>
-                                        </a>
+                                            <span class="<?php echo htmlspecialchars( $dataBdLin3['status'], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $dataBdLin3['message'], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+                                            <a href="email">
+                                                    <i class="fas fa-plus-circle fa-lg"
+                                                            title="Previsão: <?php echo htmlspecialchars( $dataBdLin3['previsao'], ENT_COMPAT, 'UTF-8', FALSE ); ?>"
+                                                            data-toggle="tooltip"
+                                                            data-placement="bottom"></i>
+                                            </a>
                                     </div>
                                 </td>
 
@@ -79,21 +88,25 @@
                                 </td>
                                 <td>
                                     <div class="d-flex justify-content-center">
-                                        <span class="badge badge-success">OK</span>
-                                        <a href="hospedagem">
-                                            <i class="fas fa-plus-circle fa-lg fa-lg" title="25/04/2019 15:00"
-                                                data-toggle="tooltip" data-placement="bottom"></i>
-                                        </a>
+                                            <span class="<?php echo htmlspecialchars( $dataHttpWin['status'], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $dataHttpWin['message'], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+                                            <a href="email">
+                                                    <i class="fas fa-plus-circle fa-lg"
+                                                            title="Previsão: <?php echo htmlspecialchars( $dataHttpWin['previsao'], ENT_COMPAT, 'UTF-8', FALSE ); ?>"
+                                                            data-toggle="tooltip"
+                                                            data-placement="bottom"></i>
+                                            </a>
                                     </div>
                                 </td>
 
                                 <td>
                                     <div class="d-flex justify-content-center">
-                                        <span class="badge badge-success">OK</span>
-                                        <a href="hospedagem">
-                                            <i class="fas fa-plus-circle fa-lg fa-lg" title="25/04/2019 15:00"
-                                                data-toggle="tooltip" data-placement="bottom"></i>
-                                        </a>
+                                            <span class="<?php echo htmlspecialchars( $dataBdWin['status'], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $dataBdWin['message'], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+                                            <a href="email">
+                                                    <i class="fas fa-plus-circle fa-lg"
+                                                            title="Previsão: <?php echo htmlspecialchars( $dataBdWin['previsao'], ENT_COMPAT, 'UTF-8', FALSE ); ?>"
+                                                            data-toggle="tooltip"
+                                                            data-placement="bottom"></i>
+                                            </a>
                                     </div>
                                 </td>
                             </tr>

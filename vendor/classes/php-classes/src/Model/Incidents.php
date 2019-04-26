@@ -352,18 +352,18 @@ use \Classes\Model;
             return $incidentes;
         }
 
-        public function verifyStatusMail($cluster, $subcategory){
+        public function verifyStatusIncidents($filtro, $cluster, $subcategory){
 
-           $filtro = "email";  
+            $category = $filtro;  
            
-           $sub = "category_email_".$subcategory;
-           $mail = "category_email_".$cluster;
+           $sub = "category_" . $filtro . "_".$subcategory;
+           $clusterBusca = "category_" . $filtro . "_".$cluster;
 
           
 
             $sql = new Sql();
-            $incidentes = $sql->select("SELECT * from tb_incidents where category = :category AND status_service=1 AND $sub=1 AND $mail=1", array(
-                ":category" => $filtro
+            $incidentes = $sql->select("SELECT * from tb_incidents where category = :category AND status_service=1 AND $sub=1 AND $clusterBusca=1", array(
+                ":category" => $category
             ));
 
             for ($i=0; $i < count($incidentes) ; $i++) { 
@@ -375,15 +375,22 @@ use \Classes\Model;
         }
 
 
-        public function getDataForTemplate($subcategoria,$status){
+        public function getDataForTemplate($filtro, $subcategoria,$status){
             $dataTemplate = [];
 
-            
+            if($filtro == "email"){
 
-            $previsao = "previsao_" . $subcategoria . "_email";
-            $category = "category_email_" .  $subcategoria;
+                $previsao = "previsao_" . $subcategoria . "_" . $filtro;
+                $category = "category_" . $filtro . "_" .  $subcategoria;
+            }else{
+
+                $previsao = "previsao_" . $subcategoria;
+                $category = "category_" . $filtro . "_" .  $subcategoria;
+            }
+
             
-            //print_r($status[0][$category]);exit;
+            
+            //print_r($previsao);exit;
 
             if(isset($status[0][$previsao])){
                 $previsaoMail = $status[0][$previsao];
