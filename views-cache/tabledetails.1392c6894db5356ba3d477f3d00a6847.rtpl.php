@@ -32,11 +32,10 @@
                 </td>
                 <td>
                         <div class="d-flex justify-content-center">
-                                <span
-                                        class="<?php echo htmlspecialchars( $statusImapMail01, ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $messageStatusImapMail01, ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+                                <span class="<?php echo htmlspecialchars( $dataImapMail01['status'], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $dataImapMail01['message'], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
                                 <a href="email">
                                         <i class="fas fa-plus-circle fa-lg"
-                                                title="Previsão: <?php echo htmlspecialchars( $previsaoImapMail01, ENT_COMPAT, 'UTF-8', FALSE ); ?>"
+                                                title="Previsão: <?php echo htmlspecialchars( $dataImapMail01['previsao'], ENT_COMPAT, 'UTF-8', FALSE ); ?>"
                                                 data-toggle="tooltip"
                                                 data-placement="bottom"></i>
                                 </a>
@@ -45,11 +44,10 @@
 
                 <td>
                         <div class="d-flex justify-content-center">
-                                <span
-                                        class="<?php echo htmlspecialchars( $statusPopMail01, ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $messageStatusPopMail01, ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+                                <span class="<?php echo htmlspecialchars( $dataPopMail01['status'], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $dataPopMail01['message'], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
                                 <a href="email">
                                         <i class="fas fa-plus-circle fa-lg"
-                                                title="Previsão: <?php echo htmlspecialchars( $previsaoPopMail01, ENT_COMPAT, 'UTF-8', FALSE ); ?>"
+                                                title="Previsão: <?php echo htmlspecialchars( $dataPopMail01['previsao'], ENT_COMPAT, 'UTF-8', FALSE ); ?>"
                                                 data-toggle="tooltip"
                                                 data-placement="bottom"></i>
                                 </a>
@@ -58,11 +56,10 @@
 
                 <td>
                         <div class="d-flex justify-content-center">
-                                <span
-                                        class="badge badge-success">OK</span>
+                                <span class="<?php echo htmlspecialchars( $dataSmtpMail01['status'], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $dataSmtpMail01['message'], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
                                 <a href="email">
                                         <i class="fas fa-plus-circle fa-lg"
-                                                title="25/04/2019 15:00"
+                                                title="Previsão: <?php echo htmlspecialchars( $dataSmtpMail01['previsao'], ENT_COMPAT, 'UTF-8', FALSE ); ?>"
                                                 data-toggle="tooltip"
                                                 data-placement="bottom"></i>
                                 </a>
@@ -71,11 +68,10 @@
 
                 <td>
                         <div class="d-flex justify-content-center">
-                                <span
-                                        class="badge badge-success">OK</span>
+                                <span class="<?php echo htmlspecialchars( $dataWebmailMail01['status'], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $dataWebmailMail01['message'], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
                                 <a href="email">
                                         <i class="fas fa-plus-circle fa-lg"
-                                                title="25/04/2019 15:00"
+                                                title="Previsão: <?php echo htmlspecialchars( $dataWebmailMail01['previsao'], ENT_COMPAT, 'UTF-8', FALSE ); ?>"
                                                 data-toggle="tooltip"
                                                 data-placement="bottom"></i>
                                 </a>
@@ -83,26 +79,24 @@
                 </td>
                 <td>
                         <div class="d-flex justify-content-center">
-                                <span
-                                        class="badge badge-success">OK</span>
+                                <span class="<?php echo htmlspecialchars( $dataEasMail01['status'], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $dataEasMail01['message'], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
                                 <a href="email">
                                         <i class="fas fa-plus-circle fa-lg"
-                                                title="25/04/2019 15:00"
+                                                title="Previsão: <?php echo htmlspecialchars( $dataEasMail01['previsao'], ENT_COMPAT, 'UTF-8', FALSE ); ?>"
                                                 data-toggle="tooltip"
                                                 data-placement="bottom"></i>
                                 </a>
                         </div>
                 </td>
-                <td>
+                <td>    
                         <div class="d-flex justify-content-center">
-                                <span
-                                        class="badge badge-success">OK</span>
-                                <a href="email">
-                                        <i class="fas fa-plus-circle fa-lg"
-                                                title="25/04/2019 15:00"
-                                                data-toggle="tooltip"
-                                                data-placement="bottom"></i>
-                                </a>
+                                        <span class="<?php echo htmlspecialchars( $dataFilaMail01['status'], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $dataFilaMail01['message'], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+                                        <a href="email">
+                                                <i class="fas fa-plus-circle fa-lg"
+                                                        title="Previsão: <?php echo htmlspecialchars( $dataFilaMail01['previsao'], ENT_COMPAT, 'UTF-8', FALSE ); ?>"
+                                                        data-toggle="tooltip"
+                                                        data-placement="bottom"></i>
+                                        </a>
                         </div>
                 </td>
         </tr>
@@ -114,11 +108,10 @@
                 </td>
                 <td>
                         <div class="d-flex justify-content-center">
-                                <span
-                                        class="badge badge-success">OK</span>
+                                <span class="<?php echo htmlspecialchars( $dataImapMail02['status'], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $dataImapMail02['message'], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
                                 <a href="email">
                                         <i class="fas fa-plus-circle fa-lg"
-                                                title="25/04/2019 15:00"
+                                                title="Previsão: <?php echo htmlspecialchars( $dataImapMail02['previsao'], ENT_COMPAT, 'UTF-8', FALSE ); ?>"
                                                 data-toggle="tooltip"
                                                 data-placement="bottom"></i>
                                 </a>
@@ -127,11 +120,10 @@
 
                 <td>
                         <div class="d-flex justify-content-center">
-                                <span
-                                        class="badge badge-success">OK</span>
+                                <span class="<?php echo htmlspecialchars( $dataPopMail02['status'], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $dataPopMail02['message'], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
                                 <a href="email">
                                         <i class="fas fa-plus-circle fa-lg"
-                                                title="25/04/2019 15:00"
+                                                title="Previsão: <?php echo htmlspecialchars( $dataPopMail02['previsao'], ENT_COMPAT, 'UTF-8', FALSE ); ?>"
                                                 data-toggle="tooltip"
                                                 data-placement="bottom"></i>
                                 </a>
@@ -140,11 +132,10 @@
 
                 <td>
                         <div class="d-flex justify-content-center">
-                                <span
-                                        class="badge badge-success">OK</span>
+                                <span class="<?php echo htmlspecialchars( $dataSmtpMail02['status'], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $dataSmtpMail02['message'], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
                                 <a href="email">
                                         <i class="fas fa-plus-circle fa-lg"
-                                                title="25/04/2019 15:00"
+                                                title="Previsão: <?php echo htmlspecialchars( $dataSmtpMail02['previsao'], ENT_COMPAT, 'UTF-8', FALSE ); ?>"
                                                 data-toggle="tooltip"
                                                 data-placement="bottom"></i>
                                 </a>
@@ -153,11 +144,10 @@
 
                 <td>
                         <div class="d-flex justify-content-center">
-                                <span
-                                        class="badge badge-success">OK</span>
+                                <span class="<?php echo htmlspecialchars( $dataWebmailMail02['status'], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $dataWebmailMail02['message'], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
                                 <a href="email">
                                         <i class="fas fa-plus-circle fa-lg"
-                                                title="25/04/2019 15:00"
+                                                title="Previsão: <?php echo htmlspecialchars( $dataWebmailMail02['previsao'], ENT_COMPAT, 'UTF-8', FALSE ); ?>"
                                                 data-toggle="tooltip"
                                                 data-placement="bottom"></i>
                                 </a>
@@ -165,26 +155,24 @@
                 </td>
                 <td>
                         <div class="d-flex justify-content-center">
-                                <span
-                                        class="badge badge-success">OK</span>
+                                <span class="<?php echo htmlspecialchars( $dataEasMail02['status'], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $dataEasMail02['message'], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
                                 <a href="email">
                                         <i class="fas fa-plus-circle fa-lg"
-                                                title="25/04/2019 15:00"
+                                                title="Previsão: <?php echo htmlspecialchars( $dataEasMail02['previsao'], ENT_COMPAT, 'UTF-8', FALSE ); ?>"
                                                 data-toggle="tooltip"
                                                 data-placement="bottom"></i>
                                 </a>
                         </div>
                 </td>
-                <td>
+                <td>    
                         <div class="d-flex justify-content-center">
-                                <span
-                                        class="badge badge-success">OK</span>
-                                <a href="email">
-                                        <i class="fas fa-plus-circle fa-lg"
-                                                title="25/04/2019 15:00"
-                                                data-toggle="tooltip"
-                                                data-placement="bottom"></i>
-                                </a>
+                                        <span class="<?php echo htmlspecialchars( $dataFilaMail02['status'], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $dataFilaMail02['message'], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+                                        <a href="email">
+                                                <i class="fas fa-plus-circle fa-lg"
+                                                        title="Previsão: <?php echo htmlspecialchars( $dataFilaMail02['previsao'], ENT_COMPAT, 'UTF-8', FALSE ); ?>"
+                                                        data-toggle="tooltip"
+                                                        data-placement="bottom"></i>
+                                        </a>
                         </div>
                 </td>
         </tr>
@@ -196,11 +184,10 @@
                 </td>
                 <td>
                         <div class="d-flex justify-content-center">
-                                <span
-                                        class="badge badge-success">OK</span>
+                                <span class="<?php echo htmlspecialchars( $dataImapMail03['status'], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $dataImapMail03['message'], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
                                 <a href="email">
                                         <i class="fas fa-plus-circle fa-lg"
-                                                title="25/04/2019 15:00"
+                                                title="Previsão: <?php echo htmlspecialchars( $dataImapMail03['previsao'], ENT_COMPAT, 'UTF-8', FALSE ); ?>"
                                                 data-toggle="tooltip"
                                                 data-placement="bottom"></i>
                                 </a>
@@ -209,11 +196,10 @@
 
                 <td>
                         <div class="d-flex justify-content-center">
-                                <span
-                                        class="badge badge-success">OK</span>
+                                <span class="<?php echo htmlspecialchars( $dataPopMail03['status'], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $dataPopMail03['message'], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
                                 <a href="email">
                                         <i class="fas fa-plus-circle fa-lg"
-                                                title="25/04/2019 15:00"
+                                                title="Previsão: <?php echo htmlspecialchars( $dataPopMail03['previsao'], ENT_COMPAT, 'UTF-8', FALSE ); ?>"
                                                 data-toggle="tooltip"
                                                 data-placement="bottom"></i>
                                 </a>
@@ -222,11 +208,10 @@
 
                 <td>
                         <div class="d-flex justify-content-center">
-                                <span
-                                        class="badge badge-success">OK</span>
+                                <span class="<?php echo htmlspecialchars( $dataSmtpMail03['status'], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $dataSmtpMail03['message'], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
                                 <a href="email">
                                         <i class="fas fa-plus-circle fa-lg"
-                                                title="25/04/2019 15:00"
+                                                title="Previsão: <?php echo htmlspecialchars( $dataSmtpMail03['previsao'], ENT_COMPAT, 'UTF-8', FALSE ); ?>"
                                                 data-toggle="tooltip"
                                                 data-placement="bottom"></i>
                                 </a>
@@ -235,11 +220,10 @@
 
                 <td>
                         <div class="d-flex justify-content-center">
-                                <span
-                                        class="badge badge-success">OK</span>
+                                <span class="<?php echo htmlspecialchars( $dataWebmailMail03['status'], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $dataWebmailMail03['message'], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
                                 <a href="email">
                                         <i class="fas fa-plus-circle fa-lg"
-                                                title="25/04/2019 15:00"
+                                                title="Previsão: <?php echo htmlspecialchars( $dataWebmailMail03['previsao'], ENT_COMPAT, 'UTF-8', FALSE ); ?>"
                                                 data-toggle="tooltip"
                                                 data-placement="bottom"></i>
                                 </a>
@@ -247,26 +231,24 @@
                 </td>
                 <td>
                         <div class="d-flex justify-content-center">
-                                <span
-                                        class="badge badge-success">OK</span>
+                                <span class="<?php echo htmlspecialchars( $dataEasMail03['status'], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $dataEasMail03['message'], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
                                 <a href="email">
                                         <i class="fas fa-plus-circle fa-lg"
-                                                title="25/04/2019 15:00"
+                                                title="Previsão: <?php echo htmlspecialchars( $dataEasMail03['previsao'], ENT_COMPAT, 'UTF-8', FALSE ); ?>"
                                                 data-toggle="tooltip"
                                                 data-placement="bottom"></i>
                                 </a>
                         </div>
                 </td>
-                <td>
+                <td>    
                         <div class="d-flex justify-content-center">
-                                <span
-                                        class="badge badge-success">OK</span>
-                                <a href="email">
-                                        <i class="fas fa-plus-circle fa-lg"
-                                                title="25/04/2019 15:00"
-                                                data-toggle="tooltip"
-                                                data-placement="bottom"></i>
-                                </a>
+                                        <span class="<?php echo htmlspecialchars( $dataFilaMail03['status'], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $dataFilaMail03['message'], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+                                        <a href="email">
+                                                <i class="fas fa-plus-circle fa-lg"
+                                                        title="Previsão: <?php echo htmlspecialchars( $dataFilaMail03['previsao'], ENT_COMPAT, 'UTF-8', FALSE ); ?>"
+                                                        data-toggle="tooltip"
+                                                        data-placement="bottom"></i>
+                                        </a>
                         </div>
                 </td>
         </tr>

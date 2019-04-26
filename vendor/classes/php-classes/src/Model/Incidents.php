@@ -352,16 +352,17 @@ use \Classes\Model;
             return $incidentes;
         }
 
-        public function verifyStatusMail01($subcategory){
+        public function verifyStatusMail($cluster, $subcategory){
 
            $filtro = "email";  
            
            $sub = "category_email_".$subcategory;
+           $mail = "category_email_".$cluster;
 
           
 
             $sql = new Sql();
-            $incidentes = $sql->select("SELECT * from tb_incidents where category = :category AND status_service=1 AND $sub=1 AND category_email_mail01=1", array(
+            $incidentes = $sql->select("SELECT * from tb_incidents where category = :category AND status_service=1 AND $sub=1 AND $mail=1", array(
                 ":category" => $filtro
             ));
 
@@ -371,6 +372,36 @@ use \Classes\Model;
             }
 
             return $incidentes;
+        }
+
+
+        public function getDataForTemplate($subcategoria,$status){
+            $dataTemplate = [];
+
+            
+
+            $previsao = "previsao_" . $subcategoria . "_email";
+            $category = "category_email_" .  $subcategoria;
+            
+            //print_r($status[0][$category]);exit;
+
+            if(isset($status[0][$previsao])){
+                $previsaoMail = $status[0][$previsao];
+            }else{
+                   $previsaoMail = "";
+            }
+       
+            if (isset($status[0][$category])) {				  	
+                $dataTemplate["status"] = "badge badge-danger";
+                $dataTemplate["message"] = "Problema";
+                $dataTemplate["previsao"] =  $previsaoMail;
+            }else {
+                $dataTemplate["status"] = "badge badge-success";
+                $dataTemplate["message"] = "Ok";
+                $dataTemplate["previsao"] = $previsaoMail;
+            }
+
+            return $dataTemplate;
         }
 
         

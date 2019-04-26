@@ -103,58 +103,115 @@ $app->get('/mail-details',function () {
 		$a = new Incidents();
 		
 		// Inicio ImapMail01
+		$clusterMail01 = "mail01";
 
-		$statusImapMail01 = $a->verifyStatusMail01("imap");
-	
-		if(isset($statusImapMail01[0]['previsao_imap_email'])){
-		 $prevImapMail01 = $statusImapMail01[0]['previsao_imap_email'];
-		}else{
-			$prevImapMail01 = "";
-		}
+		$subcategoriaImailMail01 = "imap";
+		$statusImapMail01 = $a->verifyStatusMail($clusterMail01,$subcategoriaImailMail01);
+		$dataImapMail01 = $a->getDataForTemplate($subcategoriaImailMail01,$statusImapMail01);
 
-		if (isset($statusImapMail01[0]["category_email_imap"])) {				  	
-			$statusImapMail01 = "badge badge-danger";
-			$messageStatusImapMail01 = "Problema";
-			$previsaoImapMail01 =  $prevImapMail01;
-		}else {
-			$statusImapMail01 = "badge badge-success";
-			$messageStatusImapMail01 = "Ok";
-			$previsaoImapMail01 = $prevImapMail01;
-		}
+		$subcategoriaPopMail01 = "pop";
+		$statusPopMail01 = $a->verifyStatusMail($clusterMail01,$subcategoriaPopMail01);
+		$dataPopMail01 = $a->getDataForTemplate($subcategoriaPopMail01,$statusPopMail01);
 
-		// Fim ImapMail01
-		
-		// Inicio PopMail01
-		$statusPopMail01 = $a->verifyStatusMail01("pop");
-	
-		if(isset($statusPopMail01[0]['previsao_pop_email'])){
-		 $prevPopMail01 = $statusPopMail01[0]['previsao_pop_email'];
-		}else{
-			$prevPopMail01 = "";
-		}
+		$subcategoriaSmtpMail01 = "smtp";
+		$statusSmtpMail01 = $a->verifyStatusMail($clusterMail01,$subcategoriaSmtpMail01);
+		$dataSmtpMail01 = $a->getDataForTemplate($subcategoriaSmtpMail01,$statusSmtpMail01);
 
-		if (isset($statusPopMail01[0]["category_email_pop"])) {				  	
-			$statusPopMail01 = "badge badge-danger";
-			$messageStatusPopMail01 = "Problema";
-			$previsaoPopMail01 =  $prevPopMail01;
-		}else {
-			$statusPopMail01 = "badge badge-success";
-			$messageStatusPopMail01 = "Ok";
-			$previsaoPopMail01 = $prevPopMail01;
-		}
+		$subcategoriaWebmailMail01 = "webmail";
+		$statusWebmailMail01 = $a->verifyStatusMail($clusterMail01,$subcategoriaWebmailMail01);
+		$dataWebmailMail01 = $a->getDataForTemplate($subcategoriaWebmailMail01,$statusWebmailMail01);
 
-		// Fim PopMail01
+		$subcategoriaEasMail01 = "eas";
+		$statusEasMail01 = $a->verifyStatusMail($clusterMail01,$subcategoriaEasMail01);
+		$dataEasMail01 = $a->getDataForTemplate($subcategoriaEasMail01,$statusEasMail01);
+
+		$subcategoriaFilaMail01 = "fila";
+		$statusFilaMail01 = $a->verifyStatusMail($clusterMail01,$subcategoriaFilaMail01);
+		$dataFilaMail01 = $a->getDataForTemplate($subcategoriaFilaMail01,$statusFilaMail01);
+
+// Fim ImapMail01
+
+	// Inicio ImapMail02
+	$clusterMail02 = "mail02";
+
+	$subcategoriaImailMail02 = "imap";
+	$statusImapMail02 = $a->verifyStatusMail($clusterMail02,$subcategoriaImailMail02);
+	$dataImapMail02 = $a->getDataForTemplate($subcategoriaImailMail02,$statusImapMail02);
+
+	$subcategoriaPopMail02 = "pop";
+	$statusPopMail02 = $a->verifyStatusMail($clusterMail02,$subcategoriaPopMail02);
+	$dataPopMail02 = $a->getDataForTemplate($subcategoriaPopMail02,$statusPopMail02);
+
+	$subcategoriaSmtpMail02 = "smtp";
+	$statusSmtpMail02 = $a->verifyStatusMail($clusterMail02,$subcategoriaSmtpMail02);
+	$dataSmtpMail02 = $a->getDataForTemplate($subcategoriaSmtpMail02,$statusSmtpMail02);
+
+	$subcategoriaWebmailMail02 = "webmail";
+	$statusWebmailMail02 = $a->verifyStatusMail($clusterMail02,$subcategoriaWebmailMail02);
+	$dataWebmailMail02 = $a->getDataForTemplate($subcategoriaWebmailMail02,$statusWebmailMail02);
+
+	$subcategoriaEasMail02 = "eas";
+	$statusEasMail02 = $a->verifyStatusMail($clusterMail02,$subcategoriaEasMail02);
+	$dataEasMail02 = $a->getDataForTemplate($subcategoriaEasMail02,$statusEasMail02);
+
+	$subcategoriaFilaMail02 = "fila";
+	$statusFilaMail02 = $a->verifyStatusMail($clusterMail02,$subcategoriaFilaMail02);
+	$dataFilaMail02 = $a->getDataForTemplate($subcategoriaFilaMail02,$statusFilaMail02);
+
+// Fim ImapMail02
+
+// Inicio ImapMail03
+$clusterMail03 = "mail03";
+
+$subcategoriaImailMail03 = "imap";
+$statusImapMail03 = $a->verifyStatusMail($clusterMail03,$subcategoriaImailMail03);
+$dataImapMail03 = $a->getDataForTemplate($subcategoriaImailMail03,$statusImapMail03);
+
+$subcategoriaPopMail03 = "pop";
+$statusPopMail03 = $a->verifyStatusMail($clusterMail03,$subcategoriaPopMail03);
+$dataPopMail03 = $a->getDataForTemplate($subcategoriaPopMail03,$statusPopMail03);
+
+$subcategoriaSmtpMail03 = "smtp";
+$statusSmtpMail03 = $a->verifyStatusMail($clusterMail03,$subcategoriaSmtpMail03);
+$dataSmtpMail03 = $a->getDataForTemplate($subcategoriaSmtpMail03,$statusSmtpMail03);
+
+$subcategoriaWebmailMail03 = "webmail";
+$statusWebmailMail03 = $a->verifyStatusMail($clusterMail03,$subcategoriaWebmailMail03);
+$dataWebmailMail03 = $a->getDataForTemplate($subcategoriaWebmailMail03,$statusWebmailMail03);
+
+$subcategoriaEasMail03 = "eas";
+$statusEasMail03 = $a->verifyStatusMail($clusterMail03,$subcategoriaEasMail03);
+$dataEasMail03 = $a->getDataForTemplate($subcategoriaEasMail03,$statusEasMail03);
+
+$subcategoriaFilaMail03 = "fila";
+$statusFilaMail03 = $a->verifyStatusMail($clusterMail03,$subcategoriaFilaMail03);
+$dataFilaMail03 = $a->getDataForTemplate($subcategoriaFilaMail03,$statusFilaMail03);
+
+// Fim ImapMail03
 
 		$page = new Page([			
 			"data"=>[
 						"servico" => "E-mail",
-						"statusImapMail01" => $statusImapMail01,
-						"messageStatusImapMail01" => $messageStatusImapMail01,
-						"previsaoImapMail01"=> $previsaoImapMail01,
-
-						"statusPopMail01" => $statusPopMail01,
-						"messageStatusPopMail01" => $messageStatusPopMail01,
-						"previsaoPopMail01"=> $previsaoPopMail01
+						"dataImapMail01" => $dataImapMail01,
+						"dataPopMail01" => $dataPopMail01,
+						"dataSmtpMail01" => $dataSmtpMail01,
+						"dataWebmailMail01" => $dataWebmailMail01,
+						"dataEasMail01" => $dataEasMail01,
+						"dataFilaMail01" => $dataFilaMail01,
+						
+						"dataImapMail02" => $dataImapMail02,
+						"dataPopMail02" => $dataPopMail02,
+						"dataSmtpMail02" => $dataSmtpMail02,
+						"dataWebmailMail02" => $dataWebmailMail02,
+						"dataEasMail02" => $dataEasMail02,
+						"dataFilaMail02" => $dataFilaMail02,
+						
+						"dataImapMail03" => $dataImapMail03,
+						"dataPopMail03" => $dataPopMail03,
+						"dataSmtpMail03" => $dataSmtpMail03,
+						"dataWebmailMail03" => $dataWebmailMail03,
+						"dataEasMail03" => $dataEasMail03,
+						"dataFilaMail03" => $dataFilaMail03
 					]
 			]);	
 
