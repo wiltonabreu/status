@@ -323,8 +323,39 @@ $app->get('/email/:id', function($id){
 
 	$result = $a->getIncident((int)$id);
 
+	if(!empty($result[0]["category_email_imap"])){
+		$previsao = $result[0]["previsao_imap_email"];
+	}
+
+	if(!empty($result[0]["category_email_pop"])){
+		$previsao = $result[0]["previsao_pop_email"];
+	}
+
+	if(!empty($result[0]["category_email_smtp"])){
+		$previsao = $result[0]["previsao_smtp_email"];
+	}
+
+	if(!empty($result[0]["category_email_webmail"])){
+		$previsao = $result[0]["previsao_webmail_email"];
+	}
+
+	if(!empty($result[0]["category_email_eas"])){
+		$previsao = $result[0]["previsao_eas_email"];
+	}
+
+	if(!empty($result[0]["category_email_fila"])){
+		$previsao = $result[0]["previsao_fila_email"];
+	}
+
+	if($result[0]["status_service"] == "Resolvido"){
+		$previsao = "Incidente Resolvido";
+	}
+
+	//print_r($result);exit;
+
 	$page->setTpl("index",array(
-		"result"=>$result
+		"result"=>$result,
+		"previsao"=> $previsao
 	));
 
 

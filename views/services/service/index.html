@@ -1,12 +1,12 @@
 <section id="about">
     <div class="container">
       <div class="row">
-        <div class="col-lg-8 mx-auto">
+        <div class="col-lg-8 mx-auto indidentesdetails">
           
           {loop="$result"}
             <div class="incidentes-email">
               <p class="titulo">
-                  <span>{$value.dt_criacao}</span>
+                  <span>Data de criação: {$value.dt_criacao}</span>
                   
                   <h3>{$value.title}</h3>  
                   
@@ -16,7 +16,13 @@
 
               <p class="lead text-left">                  
                   {$value.descricao}
-              </p>             
+              </p>
+
+              <p class="previsao">                  
+                  Previsão: <b>{$previsao}</b>
+              </p>
+              
+              
               
               <br>
             </div>
