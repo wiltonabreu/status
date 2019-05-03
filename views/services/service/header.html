@@ -82,7 +82,8 @@
 							<li><a data-toggle="tab" href="/">Início</a></li>                             
 							<li><a data-toggle="tab" href="/email">E-mail</a></li>
 							<li><a data-toggle="tab" href="/hospedagem">Hospedagem</a></li>
-							<li><a data-toggle="tab" href="/backup">Backup</a></li>					
+							<li><a data-toggle="tab" href="/backup">Backup</a></li>
+							<li><a data-toggle="tab" href="/painel">Painel de Controle</a></li>				
 					</ul>
 		  </div>
 
