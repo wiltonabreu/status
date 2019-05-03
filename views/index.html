@@ -56,6 +56,20 @@
 							</td>							
 							
 						</tr>
+
+						<tr>
+							<td><h5><span class="cluster-email d-flex justify-content-center">Painel de Controle</span></h5></td>
+							<td >
+								<div class="d-flex justify-content-center">
+									<span class="{$statusPainel}">{$messageStatusPainel}</span>
+									<a href="painel">
+										<!--<td><span class="badge badge-warning">Warning</span></td>-->
+										<i class="fas fa-plus-circle fa-lg" title="Previsão {$previsaoPainel}" data-toggle="tooltip" data-placement="bottom" ></i>
+									</a>
+								</div>
+							</td>							
+							
+						</tr>
 				  </table>  
 				</div>                                 					
 			  </li>
@@ -71,14 +85,14 @@
 <section>	  
 	<div class="container">
 		<div class="row fundo">
-			<div class="col-md-6 noticias">
-				<h2>Incidentes</h2>
+			<div class="col-md-6 noticias _timeline">
+				<h2 class="_text-center"><u>Incidentes</u></h2>
 				<ul class="timeline">
 
 					{loop="$incidentes"}
 						<li>
 
-							<a href="{$value.category}/{$value.id}">{$value.title}</a>
+							<a href="{$value.category}/{$value.id}"><u><b>{$value.title}</b></u></a>
 
 							<p>{$value.dt_criacao}</p>					
 							
@@ -88,16 +102,17 @@
 				  {/loop}
 										
 				</ul>
+				
 			</div>
 
-			<div class="col-md-6 avisos">
-				<h2>Comunicados</h2>
+			<div class="col-md-6 avisos _timeline">
+				<h2 class="_text-center"><u>Comunicados</u></h2>
 
 				<ul class="timeline">
 				
 					{loop="$comunicados"}
 						<li>
-							<a href="{$value.category}/{$value.id}">{$value.title}</a>
+							<a href="{$value.category}/{$value.id}"><u><b>{$value.title}</b></u></a>
 
 							<p>{$value.dt_criacao}</p>				
 							
@@ -107,9 +122,22 @@
 				  {/loop}
 					
 				</ul>
+				
 			</div>
 		</div>
+		
 	</div>
+	<div class="container ">
+		<div class="row fundo">
+			<div class="col-md-6 _text-center">
+					<a href="todos"><button type="button" class="btn btn-info">Todos Incidentes</button></a>
+			</div>
+			<div class="col-md-6 text-center">
+					<a href="comunicados"><button type="button" class="btn btn-info " >Todos comunicados</button></a>
+			</div>
+		</div>
+	</div>	
+
 </section>
 
 

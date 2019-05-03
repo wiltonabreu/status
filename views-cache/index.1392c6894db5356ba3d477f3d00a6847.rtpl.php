@@ -56,6 +56,20 @@
 							</td>							
 							
 						</tr>
+
+						<tr>
+							<td><h5><span class="cluster-email d-flex justify-content-center">Painel de Controle</span></h5></td>
+							<td >
+								<div class="d-flex justify-content-center">
+									<span class="<?php echo htmlspecialchars( $statusPainel, ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $messageStatusPainel, ENT_COMPAT, 'UTF-8', FALSE ); ?></span>
+									<a href="painel">
+										<!--<td><span class="badge badge-warning">Warning</span></td>-->
+										<i class="fas fa-plus-circle fa-lg" title="Previsão <?php echo htmlspecialchars( $previsaoPainel, ENT_COMPAT, 'UTF-8', FALSE ); ?>" data-toggle="tooltip" data-placement="bottom" ></i>
+									</a>
+								</div>
+							</td>							
+							
+						</tr>
 				  </table>  
 				</div>                                 					
 			  </li>
@@ -71,15 +85,15 @@
 <section>	  
 	<div class="container">
 		<div class="row fundo">
-			<div class="col-md-6 noticias">
-				<h2>Incidentes</h2>
+			<div class="col-md-6 noticias _timeline">
+				<h2 class="_text-center"><u>Incidentes</u></h2>
 				<ul class="timeline">
 
 					<?php $counter1=-1;  if( isset($incidentes) && ( is_array($incidentes) || $incidentes instanceof Traversable ) && sizeof($incidentes) ) foreach( $incidentes as $key1 => $value1 ){ $counter1++; ?>
 
 						<li>
 
-							<a href="<?php echo htmlspecialchars( $value1["category"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/<?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $value1["title"], ENT_COMPAT, 'UTF-8', FALSE ); ?></a>
+							<a href="<?php echo htmlspecialchars( $value1["category"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/<?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><u><b><?php echo htmlspecialchars( $value1["title"], ENT_COMPAT, 'UTF-8', FALSE ); ?></b></u></a>
 
 							<p><?php echo htmlspecialchars( $value1["dt_criacao"], ENT_COMPAT, 'UTF-8', FALSE ); ?></p>					
 							
@@ -90,17 +104,18 @@
 
 										
 				</ul>
+				
 			</div>
 
-			<div class="col-md-6 avisos">
-				<h2>Comunicados</h2>
+			<div class="col-md-6 avisos _timeline">
+				<h2 class="_text-center"><u>Comunicados</u></h2>
 
 				<ul class="timeline">
 				
 					<?php $counter1=-1;  if( isset($comunicados) && ( is_array($comunicados) || $comunicados instanceof Traversable ) && sizeof($comunicados) ) foreach( $comunicados as $key1 => $value1 ){ $counter1++; ?>
 
 						<li>
-							<a href="<?php echo htmlspecialchars( $value1["category"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/<?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $value1["title"], ENT_COMPAT, 'UTF-8', FALSE ); ?></a>
+							<a href="<?php echo htmlspecialchars( $value1["category"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/<?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><u><b><?php echo htmlspecialchars( $value1["title"], ENT_COMPAT, 'UTF-8', FALSE ); ?></b></u></a>
 
 							<p><?php echo htmlspecialchars( $value1["dt_criacao"], ENT_COMPAT, 'UTF-8', FALSE ); ?></p>				
 							
@@ -111,9 +126,22 @@
 
 					
 				</ul>
+				
 			</div>
 		</div>
+		
 	</div>
+	<div class="container ">
+		<div class="row fundo">
+			<div class="col-md-6 _text-center">
+					<a href="todos"><button type="button" class="btn btn-info">Todos Incidentes</button></a>
+			</div>
+			<div class="col-md-6 text-center">
+					<a href="comunicados"><button type="button" class="btn btn-info " >Todos comunicados</button></a>
+			</div>
+		</div>
+	</div>	
+
 </section>
 
 

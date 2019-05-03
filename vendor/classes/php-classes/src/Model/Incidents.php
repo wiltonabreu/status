@@ -61,6 +61,10 @@ use \Classes\Model;
             if((int)$this->getcategory_backup() === 1){
                 $category = "backup";
             }
+
+            if((int)$this->getcategory_painel() === 1){
+                $category = "painel";
+            }
             
             
             $sql = new Sql();
@@ -73,7 +77,7 @@ use \Classes\Model;
                             :category_email_mail03,:previsao_imap_email,:previsao_pop_email,:previsao_smtp_email,:previsao_webmail_email,:previsao_fila_email,
                             :previsao_eas_email,:category_hospedagem_http,:category_hospedagem_bd,:category_hospedagem_lin1,
                             :category_hospedagem_lin3,:category_hospedagem_win,:previsao_http,:previsao_bd,:previsao_backup,:category_email,
-                            :category_hospedagem,:category_backup,:dt_modified,:category)",
+                            :category_hospedagem,:category_backup,:dt_modified,:category,:category_painel,:previsao_painel)",
                             [
                                 ":title"=>$this->gettitle(),
                                 ":descricao"=>$this->getdescricao(),
@@ -105,7 +109,9 @@ use \Classes\Model;
                                 ":category_hospedagem"=>(int)$this->getcategory_hospedagem(),
                                 ":category_backup"=>(int)$this->getcategory_backup(),
                                 ":dt_modified"=>$this->getdt_modified(),
-                                ":category"=>$category
+                                ":category"=>$category,
+                                ":category_painel"=>$this->getcategory_painel(),
+                                ":previsao_painel"=>$this->getprevisao_painel()
                             ]
             );           
             //var_dump($results[0]); exit;
@@ -159,7 +165,9 @@ use \Classes\Model;
                 category_email = :category_email,
                 category_hospedagem = :category_hospedagem,
                 category_backup = :category_backup,
-                dt_modified = NOW()
+                dt_modified = NOW(),
+                category_painel = :category_painel,
+                previsao_painel = :previsao_painel
 
                 WHERE id = :id",array(
                 ":title"=>$this->gettitle(),
@@ -191,7 +199,9 @@ use \Classes\Model;
                 ":category_email"=>(int)$this->getcategory_email(),
                 ":category_hospedagem"=>(int)$this->getcategory_hospedagem(),
                 ":category_backup"=>(int)$this->getcategory_backup(),
-                ":id"=>$this->getid()                
+                ":id"=>$this->getid(),
+                ":category_painel"=>$this->getcategory_painel(),
+                ":previsao_painel"=>$this->getprevisao_painel()               
                 ));
 
 			$this->setData($results);
@@ -312,6 +322,9 @@ use \Classes\Model;
            elseif ($filtro === "backup") {
                 $category = "backup";
             }
+            elseif ($filtro === "painel") {
+                $category = "painel";
+            }
 
             $sql = new Sql();
             $incidentes = $sql->select("SELECT * from tb_incidents where category = :category ORDER BY dt_criacao desc", array(
@@ -337,6 +350,9 @@ use \Classes\Model;
             }
            elseif ($filtro === "backup") {
                 $category = "backup";
+            }
+            elseif ($filtro === "painel") {
+                $category = "painel";
             }
 
             $sql = new Sql();
@@ -423,6 +439,12 @@ use \Classes\Model;
                 if ( $incidentes[$i]['category_backup'] == 1 ) {
                     array_push($b,'category_backup');
                     array_push($b, $incidentes[$i]['previsao_backup']);
+                    continue;
+                }
+
+                if ( $incidentes[$i]['category_painel'] == 1 ) {
+                    array_push($b,'category_painel');
+                    array_push($b, $incidentes[$i]['previsao_painel']);
                     continue;
                 }
             

@@ -33,15 +33,14 @@
 
               <div class="form-group">
                   <label for="title"><h3>Titulo</h3></label>
-                  <input type="text" class="form-control" id="title" name="title" placeholder="Digite a Titulo">
+                  <input type="text" class="form-control" id="title" name="title" placeholder="Digite a Titulo" required>
               </div>
 
               <div class="form-group">
                 <label for="descricao"><h3>Descrição</h3></label>                      
-                <textarea class="form-control" rows="5" id="descricao" name="descricao" placeholder="Digite a descrição"></textarea>
+                <textarea class="form-control" rows="5" id="descricao" name="descricao" placeholder="Digite a descrição" required></textarea>
               </div>
-
-              
+             
 
                 <div class="form-group container container-categoria"><!-- CONTAINER CATEGORIA --> 
                     <label for="category"><h3>Categoria</h3></label>
@@ -54,6 +53,7 @@
                               <li><a onclick="desbloquearCheckBoxEmail()" data-toggle="tab" href="#tabEmail">E-mail</a></li>
                               <li><a onclick="desbloquearCheckBoxHospedagem()" data-toggle="tab" href="#tabHospedagem">Hospedagem</a></li>
                               <li><a onclick="desbloquearCheckBoxBackup()" data-toggle="tab" href="#tabBackup">Backup</a></li>
+                              <li><a onclick="desbloquearCheckBoxPainel()" data-toggle="tab" href="#tabPainel">Painel de Controle</a></li>
                             </ul>
                           
                             <div class="tab-content">
@@ -75,42 +75,42 @@
                                         <li class="list-group-item">
                                             IMAP
                                             <label class="switch ">
-                                            <input type="checkbox" class="primary primary_email" value="1" onclick="toggle('previsao_imap')"  id="category_email_imap" name="category_email_imap">
+                                            <input type="checkbox" class="primary primary_email" value="1" onclick="toggle('previsao_imap');desbloquearCheckBoxPopSmtpWebmailFilaEas()" id="category_email_imap" name="category_email_imap">
                                             <span class="slider round"></span>
                                             </label>
                                         </li>
                                         <li class="list-group-item">
                                             POP
                                             <label class="switch ">
-                                            <input type="checkbox" class="primary" value="1" onclick="toggle('previsao_pop')" id="category_email_pop" name="category_email_pop">
+                                            <input type="checkbox" class="primary" value="1" onclick="toggle('previsao_pop');desbloquearCheckBoxImapSmtpWebmailFilaEas()" id="category_email_pop" name="category_email_pop">
                                             <span class="slider round"></span>
                                             </label>
                                         </li>
                                         <li class="list-group-item">
                                             SMTP
                                             <label class="switch ">
-                                            <input type="checkbox" class="primary" value="1" onclick="toggle('previsao_smtp')" id="category_email_smtp" name="category_email_smtp">
+                                            <input type="checkbox" class="primary" value="1" onclick="toggle('previsao_smtp');desbloquearCheckBoxImapPopWebmailFilaEas()" id="category_email_smtp" name="category_email_smtp">
                                             <span class="slider round"></span>
                                             </label>
                                         </li>
                                         <li class="list-group-item">
                                             WEBMAIL
                                             <label class="switch ">
-                                            <input type="checkbox" class="primary" value="1" onclick="toggle('previsao_webmail')" id="category_email_webmail" name="category_email_webmail">
+                                            <input type="checkbox" class="primary" value="1" onclick="toggle('previsao_webmail');desbloquearCheckBoxImapPopSmtpFilaEas()" id="category_email_webmail" name="category_email_webmail">
                                             <span class="slider round"></span>
                                             </label>
                                         </li>
                                         <li class="list-group-item">
                                             FILA
                                             <label class="switch ">
-                                            <input type="checkbox" class="primary" value="1" onclick="toggle('previsao_fila')" id="category_email_fila" name="category_email_fila">
+                                            <input type="checkbox" class="primary" value="1" onclick="toggle('previsao_fila');desbloquearCheckBoxImapPopSmtpWebmailEas()" id="category_email_fila" name="category_email_fila">
                                             <span class="slider round"></span>
                                             </label>
                                         </li>
                                         <li class="list-group-item">
                                           Colaboração
                                           <label class="switch ">
-                                          <input type="checkbox" class="primary" value="1" onclick="toggle('previsao_eas')" id="category_email_eas" name="category_email_eas">
+                                          <input type="checkbox" class="primary" value="1" onclick="toggle('previsao_eas');desbloquearCheckBoxImapPopSmtpWebmailfila()" id="category_email_eas" name="category_email_eas">
                                           <span class="slider round"></span>
                                           </label>
                                       </li>
@@ -265,6 +265,28 @@
                                 </div>
                                 
                               </div>
+
+
+                              <div id="tabPainel" class="tab-pane fade col-md-4">
+                                <h3>Painel de Controle</h3>
+                                <ul class="list-group list-group-flush">
+
+                                    
+                                    <li class="list-group-item">
+                                        <label class="switch ">
+                                        <input type="checkbox" class="primary" value="1" onclick="toggle('painel')" id="category_painel" name="category_painel">
+                                        <span class="slider round"></span>
+                                        </label>
+                                    </li>
+                                </ul>
+
+                                <div class="form-group" id="painel" style="display:none;">
+                                    <label for="previsao">Previsão Painel</label>
+                                    <input type="text" class="form-control" id="previsao_painel" name="previsao_painel" placeholder="Digite a previsao" style="width: 150px">
+                                </div>
+                                
+                              </div>
+
                             </div>
                           </div>
                           
@@ -303,180 +325,4 @@
 </div>
         <!-- /.content-wrapper -->
 
-        <script>          
-          function toggle(sDivId) {
-                var oDiv = document.getElementById(sDivId);
-                oDiv.style.display = (oDiv.style.display == "none") ? "block" : "none";             
-                                
-          }       
-
-          function desbloquearCheckBoxEmail(){  
-            
-                          
-              document.getElementById('category_email').checked = true;
-                            
-              document.getElementById('category_hospedagem').checked = false;
-              document.getElementById('category_hospedagem_http').checked = false;
-              document.getElementById('category_hospedagem_bd').checked = false;            
-              document.getElementById('category_hospedagem_lin1').checked = false;
-              document.getElementById('category_hospedagem_lin3').checked = false;
-              document.getElementById('category_hospedagem_win').checked = false;
-
-              
-
-              document.getElementById('category_backup').checked = false;
-
-              var http = document.getElementById('http');
-              http.style.display = "none";
-              document.getElementById('previsao_http').value = "";
-
-              var bd = document.getElementById('bd');
-              bd.style.display = "none";
-              document.getElementById('previsao_bd').value = "";
-
-              
-
-              var backup = document.getElementById('backup');
-              backup.style.display = "none";
-              document.getElementById('previsao_backup').value = "";
-
-          }
-
-          function desbloquearCheckBoxlin3Win(){
-            document.getElementById('category_hospedagem_lin3').checked = false;
-            document.getElementById('category_hospedagem_win').checked = false;
-          }
-
-          function desbloquearCheckBoxlin1Win(){
-            document.getElementById('category_hospedagem_lin1').checked = false;
-            document.getElementById('category_hospedagem_win').checked = false;
-          }
-
-          function desbloquearCheckBoxlin1lin3(){
-            document.getElementById('category_hospedagem_lin3').checked = false;
-            document.getElementById('category_hospedagem_lin1').checked = false;
-          }
-          
-          function desbloquearCheckBoxMail02Mail03(){            
-            document.getElementById('category_email_mail02').checked = false;
-            document.getElementById('category_email_mail03').checked = false;
-          }
-
-          function desbloquearCheckBoxMail01Mail03(){
-            document.getElementById('category_email_mail01').checked = false;
-            
-            document.getElementById('category_email_mail03').checked = false;
-          }
-
-          function desbloquearCheckBoxMail01Mail02(){
-            document.getElementById('category_email_mail01').checked = false;
-            document.getElementById('category_email_mail02').checked = false;
-            
-          }
-
-          function desbloquearCheckBoxHospedagem(){ 
-                       
-            document.getElementById('category_hospedagem').checked = true;            
-
-            document.getElementById('category_email').checked = false;
-            document.getElementById('category_email_imap').checked = false;
-            document.getElementById('category_email_pop').checked = false;
-            document.getElementById('category_email_smtp').checked = false;
-            document.getElementById('category_email_webmail').checked = false;
-            document.getElementById('category_email_eas').checked = false;
-            document.getElementById('category_email_fila').checked = false;
-            document.getElementById('category_email_mail01').checked = false;
-            document.getElementById('category_email_mail02').checked = false;
-            document.getElementById('category_email_mail03').checked = false;
-
-            document.getElementById('category_backup').checked = false;            
-            
-
-            var imap = document.getElementById('previsao_imap');
-            imap.style.display = "none";
-            document.getElementById('previsao_imap_email').value = "";
-
-            var pop = document.getElementById('previsao_pop');
-            pop.style.display = "none";
-            document.getElementById('previsao_pop_email').value = "";
-
-            var smtp = document.getElementById('previsao_smtp');
-            smtp.style.display = "none";
-            document.getElementById('previsao_smtp_email').value = "";
-
-            var webmail = document.getElementById('previsao_webmail');
-            webmail.style.display = "none";
-            document.getElementById('previsao_webmail_email').value = "";
-
-            var fila = document.getElementById('previsao_fila');
-            fila.style.display = "none";
-            document.getElementById('previsao_fila_email').value = "";
-
-            var eas = document.getElementById('previsao_eas');
-            eas.style.display = "none";
-            document.getElementById('previsao_eas_email').value = "";
-
-            var backup = document.getElementById('backup');
-            backup.style.display = "none";
-            document.getElementById('previsao_backup').value = "";
-        }
-
-        function desbloquearCheckBoxBackup(){  
-          
-                       
-            document.getElementById('category_email').checked = false;          
-            
-            document.getElementById('category_email_imap').checked = false;
-            document.getElementById('category_email_pop').checked = false;
-            document.getElementById('category_email_smtp').checked = false;
-            document.getElementById('category_email_webmail').checked = false;
-            document.getElementById('category_email_fila').checked = false;
-            document.getElementById('category_email_eas').checked = false;
-            document.getElementById('category_email_mail01').checked = false;
-            document.getElementById('category_email_mail02').checked = false;
-            document.getElementById('category_email_mail03').checked = false;
-
-            document.getElementById('category_hospedagem').checked = false;
-            document.getElementById('category_hospedagem_http').checked = false;
-            document.getElementById('category_hospedagem_bd').checked = false;
-            
-            document.getElementById('category_hospedagem_lin1').checked = false;
-            document.getElementById('category_hospedagem_lin3').checked = false;
-            document.getElementById('category_hospedagem_win').checked = false;
-
-            var imap = document.getElementById('previsao_imap');
-            imap.style.display = "none";
-            document.getElementById('previsao_imap_email').value = "";
-
-            var pop = document.getElementById('previsao_pop');
-            pop.style.display = "none";
-            document.getElementById('previsao_pop_email').value = "";
-
-            var smtp = document.getElementById('previsao_smtp');
-            smtp.style.display = "none";
-            document.getElementById('previsao_smtp_email').value = "";
-
-            var webmail = document.getElementById('previsao_webmail');
-            webmail.style.display = "none";
-            document.getElementById('previsao_webmail_email').value = "";
-
-            var fila = document.getElementById('previsao_fila');
-            fila.style.display = "none";
-            document.getElementById('previsao_fila_email').value = "";
-
-            var eas = document.getElementById('previsao_eas');
-            eas.style.display = "none";
-            document.getElementById('previsao_eas_email').value = "";
-
-            var http = document.getElementById('http');
-            http.style.display = "none";
-            document.getElementById('previsao_http').value = "";
-
-            var bd = document.getElementById('bd');
-            bd.style.display = "none";
-            document.getElementById('previsao_bd').value = "";
-
-            
-        }
-
-        </script>
+        

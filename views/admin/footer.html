@@ -102,3 +102,262 @@
      fixed layout. -->    
 </body>
 </html>
+<script>          
+                
+  function toggle(sDivId) {
+        var oDiv = document.getElementById(sDivId);
+        oDiv.style.display = (oDiv.style.display == "none") ? "block" : "none";             
+                        
+  }       
+
+  function desbloquearCheckBoxEmail(){  
+    
+                  
+      document.getElementById('category_email').checked = true;
+                    
+      document.getElementById('category_hospedagem').checked = false;
+      document.getElementById('category_hospedagem_http').checked = false;
+      document.getElementById('category_hospedagem_bd').checked = false;            
+      document.getElementById('category_hospedagem_lin1').checked = false;
+      document.getElementById('category_hospedagem_lin3').checked = false;
+      document.getElementById('category_hospedagem_win').checked = false;
+
+      
+
+      document.getElementById('category_backup').checked = false;
+
+      var http = document.getElementById('http');
+      http.style.display = "none";
+      document.getElementById('previsao_http').value = "";
+
+      var bd = document.getElementById('bd');
+      bd.style.display = "none";
+      document.getElementById('previsao_bd').value = "";
+
+      
+
+      var backup = document.getElementById('backup');
+      backup.style.display = "none";
+      document.getElementById('previsao_backup').value = "";
+
+      document.getElementById('category_painel').checked = false;
+    var painel = document.getElementById('painel');
+    painel.style.display = "none";
+    document.getElementById('previsao_painel').value = "";
+
+  }
+
+  function desbloquearCheckBoxlin3Win(){
+    document.getElementById('category_hospedagem_lin3').checked = false;
+    document.getElementById('category_hospedagem_win').checked = false;
+  }
+
+  function desbloquearCheckBoxlin1Win(){
+    document.getElementById('category_hospedagem_lin1').checked = false;
+    document.getElementById('category_hospedagem_win').checked = false;
+  }
+
+  function desbloquearCheckBoxlin1lin3(){
+    document.getElementById('category_hospedagem_lin3').checked = false;
+    document.getElementById('category_hospedagem_lin1').checked = false;
+  }
+
+  
+  
+  function desbloquearCheckBoxMail02Mail03(){            
+    document.getElementById('category_email_mail02').checked = false;
+    document.getElementById('category_email_mail03').checked = false;
+  }
+
+  function desbloquearCheckBoxMail01Mail03(){
+    document.getElementById('category_email_mail01').checked = false;
+    
+    document.getElementById('category_email_mail03').checked = false;
+  }
+
+  function desbloquearCheckBoxMail01Mail02(){
+    document.getElementById('category_email_mail01').checked = false;
+    document.getElementById('category_email_mail02').checked = false;
+    
+  }
+
+  function desbloquearCheckBoxHospedagem(){ 
+               
+    document.getElementById('category_hospedagem').checked = true;            
+
+    document.getElementById('category_email').checked = false;
+    document.getElementById('category_email_imap').checked = false;
+    document.getElementById('category_email_pop').checked = false;
+    document.getElementById('category_email_smtp').checked = false;
+    document.getElementById('category_email_webmail').checked = false;
+    document.getElementById('category_email_eas').checked = false;
+    document.getElementById('category_email_fila').checked = false;
+    document.getElementById('category_email_mail01').checked = false;
+    document.getElementById('category_email_mail02').checked = false;
+    document.getElementById('category_email_mail03').checked = false;
+
+    document.getElementById('category_backup').checked = false;            
+    
+
+    var imap = document.getElementById('previsao_imap');
+    imap.style.display = "none";
+    document.getElementById('previsao_imap_email').value = "";
+
+    var pop = document.getElementById('previsao_pop');
+    pop.style.display = "none";
+    document.getElementById('previsao_pop_email').value = "";
+
+    var smtp = document.getElementById('previsao_smtp');
+    smtp.style.display = "none";
+    document.getElementById('previsao_smtp_email').value = "";
+
+    var webmail = document.getElementById('previsao_webmail');
+    webmail.style.display = "none";
+    document.getElementById('previsao_webmail_email').value = "";
+
+    var fila = document.getElementById('previsao_fila');
+    fila.style.display = "none";
+    document.getElementById('previsao_fila_email').value = "";
+
+    var eas = document.getElementById('previsao_eas');
+    eas.style.display = "none";
+    document.getElementById('previsao_eas_email').value = "";
+
+    var backup = document.getElementById('backup');
+    backup.style.display = "none";
+    document.getElementById('previsao_backup').value = "";
+
+    document.getElementById('category_painel').checked = false;
+    var painel = document.getElementById('painel');
+    painel.style.display = "none";
+    document.getElementById('previsao_painel').value = "";
+}
+
+function desbloquearCheckBoxBackup(){  
+  
+               
+    document.getElementById('category_email').checked = false;          
+    
+    document.getElementById('category_email_imap').checked = false;
+    document.getElementById('category_email_pop').checked = false;
+    document.getElementById('category_email_smtp').checked = false;
+    document.getElementById('category_email_webmail').checked = false;
+    document.getElementById('category_email_fila').checked = false;
+    document.getElementById('category_email_eas').checked = false;
+    document.getElementById('category_email_mail01').checked = false;
+    document.getElementById('category_email_mail02').checked = false;
+    document.getElementById('category_email_mail03').checked = false;
+
+    document.getElementById('category_hospedagem').checked = false;
+    document.getElementById('category_hospedagem_http').checked = false;
+    document.getElementById('category_hospedagem_bd').checked = false;
+    
+    document.getElementById('category_hospedagem_lin1').checked = false;
+    document.getElementById('category_hospedagem_lin3').checked = false;
+    document.getElementById('category_hospedagem_win').checked = false;
+
+    var imap = document.getElementById('previsao_imap');
+    imap.style.display = "none";
+    document.getElementById('previsao_imap_email').value = "";
+
+    var pop = document.getElementById('previsao_pop');
+    pop.style.display = "none";
+    document.getElementById('previsao_pop_email').value = "";
+
+    var smtp = document.getElementById('previsao_smtp');
+    smtp.style.display = "none";
+    document.getElementById('previsao_smtp_email').value = "";
+
+    var webmail = document.getElementById('previsao_webmail');
+    webmail.style.display = "none";
+    document.getElementById('previsao_webmail_email').value = "";
+
+    var fila = document.getElementById('previsao_fila');
+    fila.style.display = "none";
+    document.getElementById('previsao_fila_email').value = "";
+
+    var eas = document.getElementById('previsao_eas');
+    eas.style.display = "none";
+    document.getElementById('previsao_eas_email').value = "";
+
+    var http = document.getElementById('http');
+    http.style.display = "none";
+    document.getElementById('previsao_http').value = "";
+
+    var bd = document.getElementById('bd');
+    bd.style.display = "none";
+    document.getElementById('previsao_bd').value = "";
+
+    document.getElementById('category_painel').checked = false;
+    var painel = document.getElementById('painel');
+    painel.style.display = "none";
+    document.getElementById('previsao_painel').value = "";
+
+    
+}
+
+function desbloquearCheckBoxPainel(){  
+  
+  document.getElementById('category_backup').checked = false;
+  var backup = document.getElementById('backup');
+    backup.style.display = "none";
+    document.getElementById('previsao_backup').value = ""; 
+               
+  document.getElementById('category_email').checked = false;          
+  
+  document.getElementById('category_email_imap').checked = false;
+  document.getElementById('category_email_pop').checked = false;
+  document.getElementById('category_email_smtp').checked = false;
+  document.getElementById('category_email_webmail').checked = false;
+  document.getElementById('category_email_fila').checked = false;
+  document.getElementById('category_email_eas').checked = false;
+  document.getElementById('category_email_mail01').checked = false;
+  document.getElementById('category_email_mail02').checked = false;
+  document.getElementById('category_email_mail03').checked = false;
+
+  document.getElementById('category_hospedagem').checked = false;
+  document.getElementById('category_hospedagem_http').checked = false;
+  document.getElementById('category_hospedagem_bd').checked = false;
+  
+  document.getElementById('category_hospedagem_lin1').checked = false;
+  document.getElementById('category_hospedagem_lin3').checked = false;
+  document.getElementById('category_hospedagem_win').checked = false;
+
+  var imap = document.getElementById('previsao_imap');
+  imap.style.display = "none";
+  document.getElementById('previsao_imap_email').value = "";
+
+  var pop = document.getElementById('previsao_pop');
+  pop.style.display = "none";
+  document.getElementById('previsao_pop_email').value = "";
+
+  var smtp = document.getElementById('previsao_smtp');
+  smtp.style.display = "none";
+  document.getElementById('previsao_smtp_email').value = "";
+
+  var webmail = document.getElementById('previsao_webmail');
+  webmail.style.display = "none";
+  document.getElementById('previsao_webmail_email').value = "";
+
+  var fila = document.getElementById('previsao_fila');
+  fila.style.display = "none";
+  document.getElementById('previsao_fila_email').value = "";
+
+  var eas = document.getElementById('previsao_eas');
+  eas.style.display = "none";
+  document.getElementById('previsao_eas_email').value = "";
+
+  var http = document.getElementById('http');
+  http.style.display = "none";
+  document.getElementById('previsao_http').value = "";
+
+  var bd = document.getElementById('bd');
+  bd.style.display = "none";
+  document.getElementById('previsao_bd').value = "";
+
+  
+}
+
+
+
+</script>

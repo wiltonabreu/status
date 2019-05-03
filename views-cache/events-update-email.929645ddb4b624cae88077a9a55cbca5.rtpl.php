@@ -182,21 +182,3 @@
         <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
-<script>
-
-    function desbloquearCheckBoxMail02Mail03(){            
-        document.getElementById('category_email_mail02').checked = false;
-        document.getElementById('category_email_mail03').checked = false;
-    }
-
-    function desbloquearCheckBoxMail01Mail03(){
-        document.getElementById('category_email_mail01').checked = false;    
-        document.getElementById('category_email_mail03').checked = false;
-    }
-
-    function desbloquearCheckBoxMail01Mail02(){
-        document.getElementById('category_email_mail01').checked = false;
-        document.getElementById('category_email_mail02').checked = false;    
-    }
-
-</script>

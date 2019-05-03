@@ -26,7 +26,7 @@ $app->get('/',function () {
 		
 
 		if ( $statusEmail == 1  ) {
-			$statusEmail = "badge badge-danger";
+			$statusEmail = "badge badge-warning";
 			$messageStatusEmail = "Problema";
 		}else {
 			$statusEmail = "badge badge-success";
@@ -42,8 +42,8 @@ $app->get('/',function () {
 		$statusHospedagem = $a->verifyStatus($tableStatus);
 
 		if ( $statusHospedagem == 1  ) {
-			$statusHospedagem = "badge badge-danger";
-			$messageStatusHospedagem = "Problema";
+			$statusHospedagem = "badge badge-warning";
+			$messageStatusHospedagem = "Parcialmente operacional";
 		}else {
 			$statusHospedagem = "badge badge-success";
 			$messageStatusHospedagem = "Operacional";
@@ -74,6 +74,29 @@ $app->get('/',function () {
 			$previsaBackup[1] = ': Operação normal';
 		}
 
+		$filtro = "painel";
+
+		$tableStatus= $a->processesAllIncidents($filtro);		
+
+		$statusPainel = $a->verifyStatus($tableStatus);
+	
+
+		if ( $statusPainel == 1  ) {
+			$statusPainel = "badge badge-danger";
+			$messageStatusPainel = "Problema";
+		}else {
+			$statusPainel = "badge badge-success";
+			$messageStatusPainel = "Operacional";
+		}
+
+		$painel = $a->processesIncidentsWhithProblem($filtro);
+		
+		if(!empty($painel)){
+			$previsaoPainel = $a->getProblemSubcategory($painel);
+		}else{
+			$previsaoPainel[1] = ': Operação normal';
+		}
+
 		
 		
 
@@ -91,7 +114,10 @@ $app->get('/',function () {
 						"messageStatusHospedagem" => $messageStatusHospedagem,						
 						"statusBackup" => $statusBackup,
 						"messageStatusBackup" => $messageStatusBackup,
-						"previsaBackup" => $previsaBackup[1]					
+						"previsaBackup" => $previsaBackup[1],
+						"statusPainel" => $statusPainel,
+						"messageStatusPainel" => $messageStatusPainel,
+						"previsaoPainel" => $previsaoPainel[1]					
 					]
 		]);
 		$page->setTpl("index",array(
@@ -372,6 +398,7 @@ $app->get('/comunicado/:id', function($id){
 	$a = new Incidents();
 
 	$result = $a->getcommunicated((int)$id);
+	
 
 	$page->setTpl("communicated",array(
 		"result"=>$result
@@ -392,8 +419,38 @@ $app->get('/hospedagem/:id', function($id){
 
 	$result = $a->getIncident((int)$id);
 
+	if(!empty($result[0]["category_email_imap"])){
+		$previsao = $result[0]["previsao_imap_email"];
+	}
+
+	if(!empty($result[0]["category_email_pop"])){
+		$previsao = $result[0]["previsao_pop_email"];
+	}
+
+	if(!empty($result[0]["category_email_smtp"])){
+		$previsao = $result[0]["previsao_smtp_email"];
+	}
+
+	if(!empty($result[0]["category_email_webmail"])){
+		$previsao = $result[0]["previsao_webmail_email"];
+	}
+
+	if(!empty($result[0]["category_email_eas"])){
+		$previsao = $result[0]["previsao_eas_email"];
+	}
+
+	if(!empty($result[0]["category_email_fila"])){
+		$previsao = $result[0]["previsao_fila_email"];
+	}
+
+	if($result[0]["status_service"] == "Resolvido"){
+		$previsao = "Incidente Resolvido";
+	}
+	$previsao = "";
+
 	$page->setTpl("index",array(
-		"result"=>$result
+		"result"=>$result,
+		"previsao"=> $previsao
 	));
 
 
@@ -411,8 +468,16 @@ $app->get('/backup/:id', function($id){
 
 	$result = $a->getIncident((int)$id);
 
+	$previsao = $result[0]["previsao_backup"];
+
+	
+	if($result[0]["status_service"] == "Resolvido"){
+		$previsao = "Incidente Resolvido";
+	}
+
 	$page->setTpl("index",array(
-		"result"=>$result
+		"result"=>$result,
+		"previsao"=> $previsao
 	));
 
 
@@ -461,6 +526,54 @@ $app->get('/backup',function () {
 		
     }
 );
+
+$app->get('/painel',function () {
+	$page = new Page([
+		"data"=>[
+					"servico" => "Painel de Controle"
+				]
+	]);
+
+	$filtro = "painel";
+
+	$a = new Incidents();
+
+	$incidentes = $a->processesAllIncidents($filtro);
+
+	$page->setTpl("services",array(
+		"incidentes"=>$incidentes
+	));
+
+});
+
+$app->get('/painel/:id', function($id){
+
+	$page = new PageServices([			
+		"data"=>[
+					"servico" => "Painel de Controle"
+				]
+		]);
+	
+	$a = new Incidents();
+
+	$result = $a->getIncident((int)$id);
+
+	
+	$previsao = $result[0]["previsao_painel"];
+
+
+	if($result[0]["status_service"] == "Resolvido"){
+		$previsao = "Incidente Resolvido";
+	}
+
+	$page->setTpl("index",array(
+		"result"=>$result,
+		"previsao"=> $previsao
+	));
+
+
+});
+
 
 $app->get('/todos',function () {
 	$page = new Page([
@@ -668,7 +781,15 @@ $app->get('/admin/events/:id',function($id) {
 
 		$page->setTpl("events-update-backup", array(
 			"incidentes"=>$a->getValue()
-		));
+		));		
+	}
+
+	if($a->getcategory_painel() == 1) {
+		$page = new PageAdmin();
+
+		$page->setTpl("events-update-painel", array(
+			"incidentes"=>$a->getValue()
+		));		
 	}
 	
 	

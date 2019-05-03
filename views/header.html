@@ -68,7 +68,7 @@
 				<a href="/"><h1>Status de Seviços</h1></a>
 
 					<a href="/"><img id="logotipo" src="img/mav.png" alt="Logotipo"> </a>
-				
+			<!--	
 				<nav id="menu" class="float-right">
 						<ul>
 						<li><a href="/">HOME</a></li>
@@ -78,6 +78,15 @@
 						<li><a href="todos">TODOS</a></li>												
 						</ul>
 				</nav>
+-->
+				<ul id="menu" class="nav nav-tabs">
+					<li><a data-toggle="tab" href="/">Início</a></li>                             
+					<li><a data-toggle="tab" href="email">E-mail</a></li>
+					<li><a data-toggle="tab" href="hospedagem">Hospedagem</a></li>
+					<li><a data-toggle="tab" href="backup">Backup</a></li>					
+				</ul>
+			
+				
 				
 		  </div>
 
@@ -89,4 +98,5 @@
 			</div>
 
 
-	  </header>
+		</header>		
+	
