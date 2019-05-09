@@ -222,22 +222,6 @@ $app->post('/', function(){
 	Incidents::setMsgVerifyDomainEmail($resultVerifyDomainEmail[0]);	
 	Incidents::setColorMsgVerifyDomainEmail($resultVerifyDomainEmail[1]);
 
-	
-
-	//if($resultVerifyDomain[] == 0){
-		//Incidents::setMsgVerifyDomainHospedagemWeb($resultVerifyDomain[0]);
-		
-	// }
-
-	// if($resultVerifyDomain[2] == 1){
-		
-		//Incidents::setMsgVerifyDomainEmail($resultVerifyDomain[1]);
-	 //}
-
-	//if($resultVerifyDomain[2] == 2){
-	 //Incidents::setMsgVerifyDomainHospedagemWeb($resultVerifyDomain[0]);
-	 //Incidents::setMsgVerifyDomainEmail($resultVerifyDomain[1]);
-	//}
 
 	header("Location: /");exit;
 	

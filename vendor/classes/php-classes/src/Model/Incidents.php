@@ -901,7 +901,7 @@ use \Classes\Model;
                         
                         }else{
                             $returnEmail = $msgEmailSemProblemas;
-                            $returnColorAlertEmail = $$alert_primary;
+                            $returnColorAlertEmail = $alert_primary;
                         }
                     }
                     
