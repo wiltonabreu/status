@@ -16,13 +16,69 @@ $app = new \Slim\Slim();
 
 $app->get('/',function () {
 
+
 		$a = new Incidents();
+
+		
+		//$resultVerifyDomain = "";
+
+
+			//=== Será verificado qual cluter está com problema para que o cliente possa verificar se seu domínio está sendo afetado pelo problema.
+			$filtro = "";
+
+			$tableStatus= $a->processesAllIncidents($filtro);		
+	
+			$statusGeral = $a->verifyStatus($tableStatus,$filtro);
+
+			$showOrHidden = "_hiddenForm";
+			$showOrHiddenMsg = "_hiddenForm";
+			$showOrHiddenMsgEmail = "_hiddenForm";
+			$colorMsgHospedagemWeb = "alert-info";
+			$colorMsgEmail = "alert-info";
+
+
+			$msgVerifyDomainHospedagemWeb = Incidents::getMsgVerifyDomainHospedagemWeb();
+			$msgVerifyDomainEmail = Incidents::getMsgVerifyDomainEmail();
+
+			$colorMsgHospedagemWeb = Incidents::getColorMsgVerifyDomainHospedagemWeb();
+			$colorMsgEmail = Incidents::getColorMsgVerifyDomainEmail();
+		
+			
+				if (!isset($msgVerifyDomainHospedagemWeb) || $msgVerifyDomainHospedagemWeb == "" || $msgVerifyDomainHospedagemWeb == NULL ){
+					$showOrHiddenMsg = "_hiddenForm";
+				}else{			
+					$showOrHiddenMsg = "_showForm";
+				
+				}
+
+				if (!isset($msgVerifyDomainEmail) || $msgVerifyDomainEmail == "" || $msgVerifyDomainEmail == NULL ){
+					$showOrHiddenMsgEmail = "_hiddenForm";
+				}else{			
+					$showOrHiddenMsgEmail = "_showForm";
+				
+				}
+			
+			
+			
+		
+			for ($i=0; $i < count($statusGeral) ; $i++) { 
+	
+				if ($statusGeral[$i]["status_service"] == 1  ) {
+					$showOrHidden = "_showForm";			
+				}else {
+					$showOrHidden = "_hiddenForm";
+					
+				}
+			}		
+			
+
+			//===
 		
 		$filtro = "email";
 
 		$tableStatus= $a->processesAllIncidents($filtro);		
 
-		$statusEmail = $a->verifyStatus($tableStatus);
+		$statusEmail = $a->verifyStatus($tableStatus, $filtro);
 		
 
 		if ( $statusEmail == 1  ) {
@@ -33,13 +89,16 @@ $app->get('/',function () {
 			$messageStatusEmail = "Operacional";
 		}
 
+
+	
+
 		//---
 
 		$filtro = "hospedagem";
 
 		$tableStatus= $a->processesAllIncidents($filtro);		
 
-		$statusHospedagem = $a->verifyStatus($tableStatus);
+		$statusHospedagem = $a->verifyStatus($tableStatus, $filtro);
 
 		if ( $statusHospedagem == 1  ) {
 			$statusHospedagem = "badge badge-warning";
@@ -55,7 +114,7 @@ $app->get('/',function () {
 
 		$tableStatus= $a->processesAllIncidents($filtro);		
 
-		$statusBackup = $a->verifyStatus($tableStatus);
+		$statusBackup = $a->verifyStatus($tableStatus, $filtro);
 	
 
 		if ( $statusBackup == 1  ) {
@@ -78,7 +137,7 @@ $app->get('/',function () {
 
 		$tableStatus= $a->processesAllIncidents($filtro);		
 
-		$statusPainel = $a->verifyStatus($tableStatus);
+		$statusPainel = $a->verifyStatus($tableStatus, $filtro);
 	
 
 		if ( $statusPainel == 1  ) {
@@ -103,7 +162,7 @@ $app->get('/',function () {
 		$incidentes = $a->processesIncidents();
 		$b = new Incidents();
 		$comunicados = $b->processesCommunication();
-
+		
 			
 		$page = new Page([			
 			"data"=>[
@@ -117,7 +176,14 @@ $app->get('/',function () {
 						"previsaBackup" => $previsaBackup[1],
 						"statusPainel" => $statusPainel,
 						"messageStatusPainel" => $messageStatusPainel,
-						"previsaoPainel" => $previsaoPainel[1]					
+						"previsaoPainel" => $previsaoPainel[1],
+						"showOrHidden" => $showOrHidden,
+						"showOrHiddenMsg" => $showOrHiddenMsg,
+						"showOrHiddenMsgEmail" => $showOrHiddenMsgEmail, 
+						"resultVerifyDomainHospedagemWeb" => $msgVerifyDomainHospedagemWeb,
+						"resultVerifyDomainEmail" => $msgVerifyDomainEmail,
+						"colorMsgHospedagemWeb" => $colorMsgHospedagemWeb,
+						"colorMsgEmail" => $colorMsgEmail,			
 					]
 		]);
 		$page->setTpl("index",array(
@@ -125,8 +191,56 @@ $app->get('/',function () {
 			"comunicados"=>$comunicados
 		));
 		
+		
     }
 );
+
+$app->post('/', function(){
+
+	$a = new Incidents();
+
+	$filtro = "";
+
+	$tableStatus= $a->processesAllIncidents($filtro);		
+
+	$statusGeral = $a->verifyStatus($tableStatus,$filtro);
+
+	if( (isset($_POST['domain']))){
+		
+		$dominio = $_POST['domain'];
+		$resultVerifyDomain = $a->verifyDomain($statusGeral, $dominio );		
+		
+	}
+
+	//print_r($resultVerifyDomain);exit;
+	
+	Incidents::setMsgVerifyDomainHospedagemWeb($resultVerifyDomain[0]);
+	Incidents::setMsgVerifyDomainEmail($resultVerifyDomain[1]);
+	Incidents::setColorMsgVerifyDomainHospedagemWeb($resultVerifyDomain[2]);
+	Incidents::setColorMsgVerifyDomainEmail($resultVerifyDomain[3]);
+
+	
+
+	//if($resultVerifyDomain[] == 0){
+		//Incidents::setMsgVerifyDomainHospedagemWeb($resultVerifyDomain[0]);
+		
+	// }
+
+	// if($resultVerifyDomain[2] == 1){
+		
+		//Incidents::setMsgVerifyDomainEmail($resultVerifyDomain[1]);
+	 //}
+
+	//if($resultVerifyDomain[2] == 2){
+	 //Incidents::setMsgVerifyDomainHospedagemWeb($resultVerifyDomain[0]);
+	 //Incidents::setMsgVerifyDomainEmail($resultVerifyDomain[1]);
+	//}
+
+	header("Location: /");exit;
+	
+
+});
+
 
 $app->get('/mail-details',function () {
     

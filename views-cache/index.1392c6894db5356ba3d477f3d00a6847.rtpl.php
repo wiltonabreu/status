@@ -1,6 +1,8 @@
 <?php if(!class_exists('Rain\Tpl')){exit;}?><section>           
 
 <div class="row clearfix">
+
+	
 	<div class="col-md-12 column">
 		<div class="list-group">
       <ul class="list-group">
@@ -81,6 +83,45 @@
 
 </section>
 
+<section>
+		<div class="container <?php echo htmlspecialchars( $showOrHidden, ENT_COMPAT, 'UTF-8', FALSE ); ?>"  id="container_verifyDomain">
+				<form role="form" action="/" method="post" id="createincident"> <!-- form role="form" -->
+
+					
+					 <div class="label_verifyDomain _verifyDomain" >
+						<label for="title"><h3>Veja se seu domínio está sendo afetado</h3></label>
+					 </div>
+
+					  <div class="form-group _verifyDomain">
+						 
+						  <input type="text" class="form-control _input_verifyDomain" id="domain" name="domain" placeholder="Digite seu domínio" required>
+
+						  <button type="submit" class="btn btn-success btn_verifyDomain">Consultar</button>
+					  </div>
+
+					  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+					 
+					  
+
+					  <div class="alert alert1 <?php echo htmlspecialchars( $colorMsgHospedagemWeb, ENT_COMPAT, 'UTF-8', FALSE ); ?> alert-dismissible fade show <?php echo htmlspecialchars( $showOrHiddenMsg, ENT_COMPAT, 'UTF-8', FALSE ); ?> " role="alert">
+							<span style="margin: 300px" ><?php echo htmlspecialchars( $resultVerifyDomainHospedagemWeb, ENT_COMPAT, 'UTF-8', FALSE ); ?> </span>
+						<button type="button" class="close" onClick="selectorHospedagemWeb()" data-dismiss="alert" aria-label="Close">
+						  <span aria-hidden="true">&times;</span>
+						</button>
+					  </div>
+										  
+					  <div class="alert alert2 <?php echo htmlspecialchars( $colorMsgEmail, ENT_COMPAT, 'UTF-8', FALSE ); ?> alert-dismissible fade show <?php echo htmlspecialchars( $showOrHiddenMsgEmail, ENT_COMPAT, 'UTF-8', FALSE ); ?> " role="alert">
+							<span style="margin: 300px" ><?php echo htmlspecialchars( $resultVerifyDomainEmail, ENT_COMPAT, 'UTF-8', FALSE ); ?> </span>
+						<button type="button" class="close" onClick="selectorEmail()" data-dismiss="alert" aria-label="Close">
+						  <span aria-hidden="true">&times;</span>
+						</button>
+					  </div>
+					  
+
+				</form>
+		</div>
+
+</section>
 
 <section>	  
 	<div class="container">
@@ -143,5 +184,25 @@
 	</div>	
 
 </section>
+
+<script>
+function selectorEmail() {
+  $(".alert2").stop().fadeTo(1, 1).removeClass('hidden');
+  window.setTimeout(function() {
+    $(".alert2").fadeTo(500, 0).slideUp(500, function(){
+        $(".alert2").addClass('hidden');
+    });
+  }, 1000); 
+}
+
+function selectorHospedagemWeb() {
+  $(".alert1").stop().fadeTo(1, 1).removeClass('hidden');
+  window.setTimeout(function() {
+    $(".alert1").fadeTo(500, 0).slideUp(500, function(){
+        $(".alert1").addClass('hidden');
+    });
+  }, 1000); 
+}
+</script>
 
 

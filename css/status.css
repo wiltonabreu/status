@@ -462,6 +462,27 @@ section .mx-auto h2 {
     border-color: #ff6f00;
 }
 
+
+
+._verifyDomain {  
+   text-align: center;
+}
+.btn_verifyDomain{
+    margin-left: 3%;
+}
+._input_verifyDomain{
+    width: 30%;
+    display: inline-block;
+}
+
+._hiddenForm{
+    display:none;
+}
+
+._showForm{
+    display:block;
+}
+
 .primarytable{
     width: 50%;
     margin: auto;

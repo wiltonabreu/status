@@ -6,6 +6,13 @@ use \Classes\DB\Sql;
 use \Classes\Model;
 
 	class Incidents extends Model{
+        
+
+        const SESSION_VERIFY_DOMAIN_HOSPEDAGEM_WEB = "verifyDomain";
+        const SESSION_VERIFY_DOMAIN_EMAIL = "verifyDomainEmail";
+
+        const SESSION_VERIFY_COLOR_HOSPEDAGEM_WEB = "verifyColorHospedagemWeb";
+        const SESSION_VERIFY_COLOR_EMAIL = "verifyColorEmail";
 
 
         public function getIncident($id){
@@ -327,9 +334,17 @@ use \Classes\Model;
             }
 
             $sql = new Sql();
-            $incidentes = $sql->select("SELECT * from tb_incidents where category = :category ORDER BY dt_criacao desc", array(
-                ":category" => $category
-            ));
+
+            if ($filtro == "") {
+
+                $incidentes = $sql->select("SELECT * from tb_incidents ORDER BY dt_criacao desc");
+
+            }else{
+
+                $incidentes = $sql->select("SELECT * from tb_incidents where category = :category ORDER BY dt_criacao desc", array(
+                    ":category" => $category
+                ));
+            }
 
             for ($i=0; $i < count($incidentes) ; $i++) { 
                 $incidentes[$i]['dt_criacao'] = date("d-m-Y", strtotime($incidentes[$i]['dt_criacao']) );
@@ -561,22 +576,225 @@ use \Classes\Model;
             return $communicated;
         }
 
-        public function verifyStatus($tableStatus){
-           // print_r($tableStatus); exit;
+        public function verifyStatus($tableStatus, $filtro){
+           
+            $returnVerifyDomain = [];            
 
-            
-            for ($i=0; $i < count($tableStatus) ; $i++) { 
+                if ($filtro == "") {
+                    $j =0;
+
+                    for ($i=0; $i < count($tableStatus) ; $i++) {
+                   
+                        if ($tableStatus[$i]["status_service"] == 1) {
+
+                            if ($tableStatus[$i]["category"] == "hospedagem" || $tableStatus[$i]["category"] == "email") {
+
+                            
+                                
+                                    $returnVerifyDomain[$j]["status_service"]  =  $tableStatus[$i]["status_service"];
+                                    $returnVerifyDomain[$j]["category"] = $tableStatus[$i]["category"];
+                                    $returnVerifyDomain[$j]["category_email_mail01"] = $tableStatus[$i]["category_email_mail01"];
+                                    $returnVerifyDomain[$j]["category_email_mail02"] = $tableStatus[$i]["category_email_mail02"];
+                                    $returnVerifyDomain[$j]["category_email_mail03"] = $tableStatus[$i]["category_email_mail03"];
+                                    $returnVerifyDomain[$j]["category_email_mail03"] = $tableStatus[$i]["category_email_mail03"];
+                                    $returnVerifyDomain[$j]["category_hospedagem_lin1"] = $tableStatus[$i]["category_hospedagem_lin1"];
+                                    $returnVerifyDomain[$j]["category_hospedagem_lin3"] = $tableStatus[$i]["category_hospedagem_lin3"];
+                                    $returnVerifyDomain[$j]["category_hospedagem_win"] = $tableStatus[$i]["category_hospedagem_win"];  
+                                
+                                    $j++;
+                            
+                            }
+                        
+
+                        }
+                    }
+
+                    return $returnVerifyDomain;
+
+                }else{
+                    for ($i=0; $i < count($tableStatus) ; $i++) { 
                 
-                if ($tableStatus[$i]["status_service"] == 1) {
-
-                    return 1; exit;
-
+                        if ($tableStatus[$i]["status_service"] == 1) {
+                            return 1; exit;
+                        }
+                    }
                 }
-            }
+            
 
             
 
         }
+
+        public function verifyDomain($statusGeral, $domainReceived){
+
+            //print_r($statusGeral);exit;
+            
+            $domain = $domainReceived;
+            $mail = 'mail.' . $domainReceived;
+
+            $aaa = dns_get_record($domain, DNS_A);           
+            $ip = $aaa[0]['ip'];
+            //$hostname = gethostbyaddr($ip); 
+            
+            
+            $bbb = dns_get_record($mail, DNS_CNAME);              
+            $cname = $bbb[0]['target'];
+            $cname1 = explode(".",$cname);
+            
+            $msgEmailSemProblemas = "Serviço de e-mail do domínio " . strtoupper($domain) . " não é afetado";
+            $msgHospedagemSemProblemas = "Site do domínio " . strtoupper($domain) . " não é afetado";
+
+            $msgEmailComProblemas = "Serviço de e-mail do domínio " . strtoupper($domain) . " é afetado";
+            $msgHospedagemComProblemas = "Site do domínio " . strtoupper($domain) . " é afetado";
+
+            $returnHospedagem = $msgHospedagemSemProblemas;
+            $returnEmail = $msgEmailSemProblemas;
+
+            $alert_success = "alert-success";
+            $alert_danger = "alert-danger";
+            $alert_primary ="alert-primary";
+
+            $returnColorAlertEmail = $alert_primary;
+            $returnColorAlertHospedagemWeb = $alert_success;
+
+           
+          print_r($statusGeral);exit;
+                
+            for ($i=0; $i < count($statusGeral); $i++) { 
+                
+
+                if ($statusGeral[$i]["category"] == "hospedagem") {
+                    
+
+                    if ($statusGeral[$i]["category_hospedagem_lin1"] == 1) { 
+                    
+                        
+                        $lin1 = "149.56.175.201";
+                        
+                        
+                        if ($ip == $lin1) {
+                            $returnHospedagem =  $msgHospedagemComProblemas;
+                            $returnColorAlertHospedagemWeb = $alert_danger;
+                        
+                        
+                        }else{
+                            $returnHospedagem =  $msgHospedagemSemProblemas;                            
+                            $returnColorAlertHospedagemWeb = $alert_success;
+                        }
+                    }
+
+                    if($statusGeral[$i]["category_hospedagem_lin3"] == 1){
+                        
+                        $lin3 = "149.56.157.199";
+                        
+                        if ($ip == $lin3) {
+                            $returnHospedagem =  $msgHospedagemComProblemas;
+                            $returnColorAlertHospedagemWeb = $alert_danger;
+                            
+                        
+                        }else{
+                            $returnHospedagem =  $msgHospedagemSemProblemas;
+                            $returnColorAlertHospedagemWeb = $alert_success;
+                        }
+
+                    }
+                    
+
+                    if($statusGeral[$i]["category_hospedagem_win"] == 1){
+                        $win = "199.59.96.204";
+                        
+                        if ($ip == $win) {
+                            $returnHospedagem =  $msgHospedagemComProblemas;
+                            $returnColorAlertHospedagemWeb = $alert_danger;
+                        
+                        }else{
+                            $returnHospedagem =  $msgHospedagemSemProblemas;
+                            $returnColorAlertHospedagemWeb = $alert_success;
+                        }
+                    }
+                    
+                } 
+                
+
+                if ($statusGeral[$i]["category"] == "email") {
+                    
+
+                    if ($statusGeral[$i]["category_email_mail01"] == 1) { 
+                    
+                        
+                        $mail01 = $cname1[0];
+                        
+                        
+                        if ($mail01 == 'bhs1-mail01') {
+                            $returnEmail = $msgEmailComProblemas;
+                            $returnColorAlertEmail = $alert_danger;
+                        
+                        }else{
+                            $returnEmail = $msgEmailSemProblemas;
+                            $returnColorAlertEmail = $alert_primary;
+                        }
+
+                    }
+
+                    if($statusGeral[$i]["category_email_mail02"] == 1){
+                        
+                        $mail02 = $cname1[0];
+                        
+                        if ($mail02 == 'bhs1-mail02') {
+                            $returnEmail = $msgEmailComProblemas;
+                            $returnColorAlertEmail = $alert_danger;
+                        
+                        }else{
+                            $returnEmail = $msgEmailSemProblemas;
+                            $returnColorAlertEmail = $alert_primary;
+                        }
+
+                    }
+
+                    if($statusGeral[$i]["category_email_mail03"] == 1){
+
+                        $mail03 = $cname1[0];
+                        
+                        if ($mail03 == 'bhs1-mail03') {
+                            $returnEmail = $msgEmailComProblemas;
+                            $returnColorAlertEmail = $alert_danger;
+                        
+                        }else{
+                            $returnEmail = $msgEmailSemProblemas;
+                            $returnColorAlertEmail = $$alert_primary;
+                        }
+                    }
+                    
+                }
+            }
+
+            $returned = [
+                $returnHospedagem,
+                $returnEmail,                
+                $returnColorAlertHospedagemWeb,
+                $returnColorAlertEmail
+            ];
+            /*
+            if( $returnHospedagem == "" || $returnHospedagem == NULL) {
+
+                $returned = [$returnEmail, NULL, 0];
+
+            }
+            if($returnEmail == "" || $returnEmail == NULL){
+
+                $returned = [$returnHospedagem, NULL, 1];
+
+            }
+            if(($returnEmail != "" || $returnEmail != NULL) && ($returnHospedagem != "" || $returnHospedagem != NULL) ){ 
+
+                $returned = [$returnHospedagem,$returnEmail, 2];
+
+            } */
+            //print_r($returned); exit;
+           
+            return $returned;
+        }        
+
 
         public function verifyPrevisao($tableStatus){            
  
@@ -596,6 +814,74 @@ use \Classes\Model;
              
  
          }
+
+         public static function setMsgVerifyDomainHospedagemWeb($msg){
+            $_SESSION[Incidents::SESSION_VERIFY_DOMAIN_HOSPEDAGEM_WEB] = $msg;
+
+            //print_r($_SESSION[Incidents::SESSION_VERIFYDOMAIN]);exit;
+         }         
+
+         public static function getMsgVerifyDomainHospedagemWeb(){
+            $msg = (isset($_SESSION[Incidents::SESSION_VERIFY_DOMAIN_HOSPEDAGEM_WEB])) ? $_SESSION[Incidents::SESSION_VERIFY_DOMAIN_HOSPEDAGEM_WEB] : "";            
+            Incidents::clearMsgVerifyDomainHospedagemWeb();            
+            return $msg;
+         }
+         
+
+         public static function setMsgVerifyDomainEmail($msg){
+            $_SESSION[Incidents::SESSION_VERIFY_DOMAIN_EMAIL] = $msg;
+            //print_r($_SESSION[Incidents::SESSION_VERIFY_DOMAIN_EMAIL]);exit;
+         }
+
+         public static function getMsgVerifyDomainEmail(){
+            $msg = (isset($_SESSION[Incidents::SESSION_VERIFY_DOMAIN_EMAIL])) ? $_SESSION[Incidents::SESSION_VERIFY_DOMAIN_EMAIL] : "";            
+            Incidents::clearMsgVerifyDomainEmail();
+            
+            return $msg;
+         }
+
+         public static function clearMsgVerifyDomainHospedagemWeb(){
+            //isset($_SESSION[Incidents::SESSION_VERIFY_DOMAIN_HOSPEDAGEM_WEB]) ? NULL : "";
+            unset($_SESSION[Incidents::SESSION_VERIFY_DOMAIN_HOSPEDAGEM_WEB]); 
+         }
+
+         public static function clearMsgVerifyDomainEmail(){
+            //isset($_SESSION[Incidents::SESSION_VERIFY_DOMAIN_HOSPEDAGEM_WEB]) ? NULL : "";
+            unset($_SESSION[Incidents::SESSION_VERIFY_DOMAIN_EMAIL]); 
+         }
+
+
+         public static function setColorMsgVerifyDomainHospedagemWeb($color){
+            $_SESSION[Incidents::SESSION_VERIFY_COLOR_HOSPEDAGEM_WEB] = $color;
+         }
+
+         public static function getColorMsgVerifyDomainHospedagemWeb(){
+            $color = (isset($_SESSION[Incidents::SESSION_VERIFY_COLOR_HOSPEDAGEM_WEB])) ? $_SESSION[Incidents::SESSION_VERIFY_COLOR_HOSPEDAGEM_WEB] : "";            
+            Incidents::clearColorVerifyDomainHospedagemWeb();
+            return $color;            
+        }
+
+         public static function clearColorVerifyDomainHospedagemWeb(){
+            
+            unset($_SESSION[Incidents::SESSION_VERIFY_COLOR_HOSPEDAGEM_WEB]); 
+         }
+
+         public static function setColorMsgVerifyDomainEmail($color){
+            $_SESSION[Incidents::SESSION_VERIFY_COLOR_EMAIL] = $color;
+         }
+
+         public static function getColorMsgVerifyDomainEmail(){
+            $color = (isset($_SESSION[Incidents::SESSION_VERIFY_COLOR_EMAIL])) ? $_SESSION[Incidents::SESSION_VERIFY_COLOR_EMAIL] : "";            
+            Incidents::clearColorVerifyDomainEmail();
+            return $color;            
+        }
+
+         public static function clearColorVerifyDomainEmail(){            
+            unset($_SESSION[Incidents::SESSION_VERIFY_COLOR_EMAIL]); 
+         }
+
+
+         
 
         
 

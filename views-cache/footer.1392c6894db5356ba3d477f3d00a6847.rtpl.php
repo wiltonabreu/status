@@ -104,3 +104,7 @@
 
 </body>
 </html>
+<script>
+		
+		$('.alert').alert('close');
+</script>
