@@ -624,7 +624,7 @@ use \Classes\Model;
             
 
         }
-
+/*
         public function verifyDomain($statusGeral, $domainReceived){
 
             //print_r($statusGeral);exit;
@@ -789,11 +789,256 @@ use \Classes\Model;
 
                 $returned = [$returnHospedagem,$returnEmail, 2];
 
-            } */
+            } 
             //print_r($returned); exit;
            
             return $returned;
-        }        
+        } 
+*/
+        public function verifyDomainEmail($statusGeral, $domainReceived){
+
+           
+            
+            $domain = $domainReceived;
+            $mail = 'mail.' . $domainReceived;
+
+            $aaa = dns_get_record($domain, DNS_A);           
+            $ip = $aaa[0]['ip'];            
+            
+            
+            $bbb = dns_get_record($mail, DNS_CNAME);              
+            $cname = $bbb[0]['target'];
+            $cname1 = explode(".",$cname);
+            
+            $msgEmailSemProblemas = "Serviço de e-mail do domínio " . strtoupper($domain) . " não é afetado";
+            $msgHospedagemSemProblemas = "Site do domínio " . strtoupper($domain) . " não é afetado";
+
+            $msgEmailComProblemas = "Serviço de e-mail do domínio " . strtoupper($domain) . " é afetado";
+            $msgHospedagemComProblemas = "Site do domínio " . strtoupper($domain) . " é afetado";
+
+            $returnHospedagem = $msgHospedagemSemProblemas;
+            $returnEmail = $msgEmailSemProblemas;
+
+            $alert_success = "alert-success";
+            $alert_danger = "alert-danger";
+            $alert_primary ="alert-primary";
+
+            $returnColorAlertEmail = $alert_primary;
+            $returnColorAlertHospedagemWeb = $alert_success;
+
+           
+         // print_r($statusGeral);exit;
+                
+            for ($i=0; $i < count($statusGeral); $i++) {
+               
+
+                if ($statusGeral[$i]["category"] == "email") {
+                    
+
+                    if ($statusGeral[$i]["category_email_mail01"] == 1) { 
+                    
+                        
+                        $mail01 = $cname1[0];
+                        
+                        
+                        if ($mail01 == 'bhs1-mail01') {
+                            $returnEmail = $msgEmailComProblemas;
+                            $returnColorAlertEmail = $alert_danger;
+
+                            $returned = [
+                                $returnEmail,                                               
+                                $returnColorAlertEmail,
+                                
+                            ];
+                            
+                            return $returned;
+                        
+                        }else{
+                            $returnEmail = $msgEmailSemProblemas;
+                            $returnColorAlertEmail = $alert_primary;
+                        }
+
+                    }
+
+                    if($statusGeral[$i]["category_email_mail02"] == 1){
+                        
+                        $mail02 = $cname1[0];
+                        
+                        if ($mail02 == 'bhs1-mail02') {
+                            $returnEmail = $msgEmailComProblemas;
+                            $returnColorAlertEmail = $alert_danger;
+
+                            $returned = [
+                                $returnEmail,                                               
+                                $returnColorAlertEmail,
+                                
+                            ];
+                            
+                            return $returned;
+                        
+                        }else{
+                            $returnEmail = $msgEmailSemProblemas;
+                            $returnColorAlertEmail = $alert_primary;
+                        }
+
+                    }
+
+                    if($statusGeral[$i]["category_email_mail03"] == 1){
+
+                        $mail03 = $cname1[0];
+                        
+                        if ($mail03 == 'bhs1-mail03') {
+                            $returnEmail = $msgEmailComProblemas;
+                            $returnColorAlertEmail = $alert_danger;
+
+                            $returned = [
+                                $returnEmail,                                               
+                                $returnColorAlertEmail,
+                                
+                            ];
+                            
+                            return $returned;
+                        
+                        }else{
+                            $returnEmail = $msgEmailSemProblemas;
+                            $returnColorAlertEmail = $$alert_primary;
+                        }
+                    }
+                    
+                }
+            }
+
+            $returned = [                
+                $returnEmail,
+                $returnColorAlertEmail
+            ];
+                       
+            return $returned;
+        }
+        
+        public function verifyDomainHospedagem($statusGeral, $domainReceived){
+
+            
+            
+            $domain = $domainReceived;
+            $mail = 'mail.' . $domainReceived;
+
+            $aaa = dns_get_record($domain, DNS_A);           
+            $ip = $aaa[0]['ip'];
+           
+            
+            
+            $bbb = dns_get_record($mail, DNS_CNAME);              
+            $cname = $bbb[0]['target'];
+            $cname1 = explode(".",$cname);
+            
+            $msgEmailSemProblemas = "Serviço de e-mail do domínio " . strtoupper($domain) . " não é afetado";
+            $msgHospedagemSemProblemas = "Site do domínio " . strtoupper($domain) . " não é afetado";
+
+            $msgEmailComProblemas = "Serviço de e-mail do domínio " . strtoupper($domain) . " é afetado";
+            $msgHospedagemComProblemas = "Site do domínio " . strtoupper($domain) . " é afetado";
+
+            $returnHospedagem = $msgHospedagemSemProblemas;
+            $returnEmail = $msgEmailSemProblemas;
+
+            $alert_success = "alert-success";
+            $alert_danger = "alert-danger";
+            $alert_primary ="alert-primary";
+
+            $returnColorAlertEmail = $alert_primary;
+            $returnColorAlertHospedagemWeb = $alert_success;
+
+           
+          //print_r($statusGeral);exit;
+                
+            for ($i=0; $i < count($statusGeral); $i++) { 
+                
+
+                if ($statusGeral[$i]["category"] == "hospedagem") {
+                    
+
+                    if ($statusGeral[$i]["category_hospedagem_lin1"] == 1) { 
+                    
+                        
+                        $lin1 = "149.56.175.201";
+                        
+                        
+                        if ($ip == $lin1) {
+                            $returnHospedagem =  $msgHospedagemComProblemas;
+                            $returnColorAlertHospedagemWeb = $alert_danger;
+
+                            $returned = [
+                                $returnHospedagem,                                               
+                                $returnColorAlertHospedagemWeb,
+                                
+                            ];
+                            
+                            return $returned;
+                        
+                        }else{
+                            $returnHospedagem =  $msgHospedagemSemProblemas;                            
+                            $returnColorAlertHospedagemWeb = $alert_success;
+                        }
+                    }
+
+                    if($statusGeral[$i]["category_hospedagem_lin3"] == 1){
+                        
+                        $lin3 = "149.56.157.199";
+                        
+                        if ($ip == $lin3) {
+                            $returnHospedagem =  $msgHospedagemComProblemas;
+                            $returnColorAlertHospedagemWeb = $alert_danger;
+
+                            $returned = [
+                                $returnHospedagem,                                               
+                                $returnColorAlertHospedagemWeb,
+                                
+                            ];
+                            
+                            return $returned;
+                            
+                        
+                        }else{
+                            $returnHospedagem =  $msgHospedagemSemProblemas;
+                            $returnColorAlertHospedagemWeb = $alert_success;
+                        }
+
+                    }
+                    
+
+                    if($statusGeral[$i]["category_hospedagem_win"] == 1){
+                        $win = "199.59.96.204";
+                        
+                        if ($ip == $win) {
+                            $returnHospedagem =  $msgHospedagemComProblemas;
+                            $returnColorAlertHospedagemWeb = $alert_danger;
+
+                            $returned = [
+                                $returnHospedagem,                                               
+                                $returnColorAlertHospedagemWeb,
+                                
+                            ];
+                            
+                            return $returned;
+                        
+                        }else{
+                            $returnHospedagem =  $msgHospedagemSemProblemas;
+                            $returnColorAlertHospedagemWeb = $alert_success;
+                        }
+                    }
+                    
+                } 
+                
+            }
+
+            $returned = [
+                $returnHospedagem,                                               
+                $returnColorAlertHospedagemWeb,
+                
+            ];
+            
+            return $returned;
+        }
 
 
         public function verifyPrevisao($tableStatus){            

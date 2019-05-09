@@ -208,16 +208,19 @@ $app->post('/', function(){
 	if( (isset($_POST['domain']))){
 		
 		$dominio = $_POST['domain'];
-		$resultVerifyDomain = $a->verifyDomain($statusGeral, $dominio );		
+		//$resultVerifyDomain = $a->verifyDomain($statusGeral, $dominio );	
+		$resultVerifyDomainHospedagemWeb = $a->verifyDomainHospedagem($statusGeral, $dominio );
+		$resultVerifyDomainEmail = $a->verifyDomainEmail($statusGeral, $dominio );	
 		
 	}
 
-	//print_r($resultVerifyDomain);exit;
+	//print_r($resultVerifyDomainEmail);exit;
 	
-	Incidents::setMsgVerifyDomainHospedagemWeb($resultVerifyDomain[0]);
-	Incidents::setMsgVerifyDomainEmail($resultVerifyDomain[1]);
-	Incidents::setColorMsgVerifyDomainHospedagemWeb($resultVerifyDomain[2]);
-	Incidents::setColorMsgVerifyDomainEmail($resultVerifyDomain[3]);
+	Incidents::setMsgVerifyDomainHospedagemWeb($resultVerifyDomainHospedagemWeb[0]);
+	Incidents::setColorMsgVerifyDomainHospedagemWeb($resultVerifyDomainHospedagemWeb[1]);
+
+	Incidents::setMsgVerifyDomainEmail($resultVerifyDomainEmail[0]);	
+	Incidents::setColorMsgVerifyDomainEmail($resultVerifyDomainEmail[1]);
 
 	
 
