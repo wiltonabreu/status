@@ -802,21 +802,38 @@ use \Classes\Model;
             $domain = $domainReceived;
             $mail = 'mail.' . $domainReceived;
 
-            $aaa = dns_get_record($domain, DNS_A);           
-            $ip = $aaa[0]['ip'];            
+           // $aaa = dns_get_record($domain, DNS_A);           
+           // $ip = $aaa[0]['ip'];            
             
             
-            $bbb = dns_get_record($mail, DNS_CNAME);              
+            $bbb = dns_get_record($mail, DNS_CNAME);
+
+            $msgDomaiNotFound = "Não foi encontrado servidor de e-mail para o dominio " . strtoupper($domain);
+            $alert_warning = "alert-warning";
+
+            if(empty($bbb)){
+                
+                $returnEmail = $msgDomaiNotFound;
+                $returnColorAlertEmail = $alert_warning;                
+
+                $returned = [
+                    $returnEmail,                                               
+                    $returnColorAlertEmail
+                    
+                ];
+                
+                return $returned;
+            }
+            
+            
+
             $cname = $bbb[0]['target'];
             $cname1 = explode(".",$cname);
             
-            $msgEmailSemProblemas = "Serviço de e-mail do domínio " . strtoupper($domain) . " não é afetado";
-            $msgHospedagemSemProblemas = "Site do domínio " . strtoupper($domain) . " não é afetado";
+            $msgEmailSemProblemas = "Serviço de e-mail do domínio " . strtoupper($domain) . " não é afetado pelo incidente";
 
-            $msgEmailComProblemas = "Serviço de e-mail do domínio " . strtoupper($domain) . " é afetado";
-            $msgHospedagemComProblemas = "Site do domínio " . strtoupper($domain) . " é afetado";
+            $msgEmailComProblemas = "Serviço de e-mail do domínio " . strtoupper($domain) . " é afetado pelo incidente";
 
-            $returnHospedagem = $msgHospedagemSemProblemas;
             $returnEmail = $msgEmailSemProblemas;
 
             $alert_success = "alert-success";
@@ -824,7 +841,6 @@ use \Classes\Model;
             $alert_primary ="alert-primary";
 
             $returnColorAlertEmail = $alert_primary;
-            $returnColorAlertHospedagemWeb = $alert_success;
 
            
          // print_r($statusGeral);exit;
@@ -847,7 +863,7 @@ use \Classes\Model;
 
                             $returned = [
                                 $returnEmail,                                               
-                                $returnColorAlertEmail,
+                                $returnColorAlertEmail
                                 
                             ];
                             
@@ -870,7 +886,7 @@ use \Classes\Model;
 
                             $returned = [
                                 $returnEmail,                                               
-                                $returnColorAlertEmail,
+                                $returnColorAlertEmail
                                 
                             ];
                             
@@ -893,7 +909,7 @@ use \Classes\Model;
 
                             $returned = [
                                 $returnEmail,                                               
-                                $returnColorAlertEmail,
+                                $returnColorAlertEmail
                                 
                             ];
                             
@@ -916,36 +932,45 @@ use \Classes\Model;
             return $returned;
         }
         
-        public function verifyDomainHospedagem($statusGeral, $domainReceived){
-
-            
+        public function verifyDomainHospedagem($statusGeral, $domainReceived){            
             
             $domain = $domainReceived;
-            $mail = 'mail.' . $domainReceived;
+            //$mail = 'mail.' . $domainReceived;          
 
-            $aaa = dns_get_record($domain, DNS_A);           
+            $aaa = dns_get_record($domain, DNS_A); 
+
+            $msgDomaiNotFound = "Não foi encontrado servidor web para o dominio " . strtoupper($domain);;
+            $alert_warning = "alert-warning";
+            
+            if(empty($aaa)){
+
+                $returnHospedagem = $msgDomaiNotFound;
+                $returnColorAlertHospedagemWeb = $alert_warning;                
+
+                $returned = [
+                    $returnHospedagem,                                               
+                    $returnColorAlertHospedagemWeb
+                    
+                ];
+                
+                return $returned;
+            }
+
             $ip = $aaa[0]['ip'];
            
-            
-            
-            $bbb = dns_get_record($mail, DNS_CNAME);              
-            $cname = $bbb[0]['target'];
-            $cname1 = explode(".",$cname);
-            
-            $msgEmailSemProblemas = "Serviço de e-mail do domínio " . strtoupper($domain) . " não é afetado";
-            $msgHospedagemSemProblemas = "Site do domínio " . strtoupper($domain) . " não é afetado";
+            $msgHospedagemSemProblemas = "Site do domínio " . strtoupper($domain) . " não é afetado pelo incidente";
 
-            $msgEmailComProblemas = "Serviço de e-mail do domínio " . strtoupper($domain) . " é afetado";
-            $msgHospedagemComProblemas = "Site do domínio " . strtoupper($domain) . " é afetado";
+            
+            $msgHospedagemComProblemas = "Site do domínio " . strtoupper($domain) . " é afetado pelo incidente";
 
             $returnHospedagem = $msgHospedagemSemProblemas;
-            $returnEmail = $msgEmailSemProblemas;
+            
 
             $alert_success = "alert-success";
             $alert_danger = "alert-danger";
             $alert_primary ="alert-primary";
 
-            $returnColorAlertEmail = $alert_primary;
+            
             $returnColorAlertHospedagemWeb = $alert_success;
 
            
@@ -969,7 +994,7 @@ use \Classes\Model;
 
                             $returned = [
                                 $returnHospedagem,                                               
-                                $returnColorAlertHospedagemWeb,
+                                $returnColorAlertHospedagemWeb
                                 
                             ];
                             
@@ -991,7 +1016,7 @@ use \Classes\Model;
 
                             $returned = [
                                 $returnHospedagem,                                               
-                                $returnColorAlertHospedagemWeb,
+                                $returnColorAlertHospedagemWeb
                                 
                             ];
                             
@@ -1015,7 +1040,7 @@ use \Classes\Model;
 
                             $returned = [
                                 $returnHospedagem,                                               
-                                $returnColorAlertHospedagemWeb,
+                                $returnColorAlertHospedagemWeb
                                 
                             ];
                             
@@ -1033,7 +1058,7 @@ use \Classes\Model;
 
             $returned = [
                 $returnHospedagem,                                               
-                $returnColorAlertHospedagemWeb,
+                $returnColorAlertHospedagemWeb
                 
             ];
             
