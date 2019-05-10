@@ -97,9 +97,7 @@
 						  <input type="text" class="form-control _input_verifyDomain" id="domain" name="domain" placeholder="Digite seu domínio" required>
 
 						  <button type="submit" class="btn btn-success btn_verifyDomain">Consultar</button>
-					  </div>
-
-					  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+					  </div>					  
 					 
 					  
 

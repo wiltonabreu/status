@@ -14,6 +14,8 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
+	<script src="../js/jquery-2-1-1.min.js"></script>
+	
 	
 </head>
 
@@ -21,6 +23,8 @@
 	  <header> 
 
 	  	<div class="header-white-small">
+				
+					<button id="btn-bars" type="button" ><i class="fa fa-bars"></i></button>
 				
 				<div class="container container-white-small">
 					<div class="row row-cont">
@@ -55,11 +59,32 @@
 			   	</div>
 			  </div>					
 							
-	  	</div>	   
+			</div>	
+
+			<div id="menu-mobile-mask" class="d-xl-none">
+
+			</div>
+			
+			<div id="menu-mobile" class="d-xl-none">
+					<ul class="list-unstyled">
+						<li><a href="/">Início</a></li>                             
+						<li><a href="email">E-mail</a></li>
+						<li><a href="hospedagem">Hospedagem</a></li>
+						<li><a href="backup">Backup</a></li>
+						<li><a href="painel">Painel de Controle</a></li>
+						<li><a href="comunicados">Comunicados</a></li>					
+					</ul>
+
+					<div class="bar-close">
+						<button type="button" class="btn btn-close"><i class="fas fa-window-close"></i></button>
+					</div>
+
+			</div>
 		  
 			<div class="container">
 
-					<div class="row">	</div>				
+					<div class="row">	</div>
+								
 
 			</div>
 			
@@ -79,6 +104,9 @@
 						</ul>
 				</nav>
 -->
+				
+				
+
 				<ul id="menu" class="nav nav-tabs">
 					<li><a data-toggle="tab" href="/">Início</a></li>                             
 					<li><a data-toggle="tab" href="email">E-mail</a></li>
@@ -98,6 +126,19 @@
 			 </div>
 			</div>
 
+			<script>
+				$("#btn-bars").on("click", function(){
+			
+					$("header").toggleClass("open_menu");
+
+				});
+
+
+				$("#menu-mobile-mask, .btn-close").on("click", function(){
+					$("header").removeClass("open_menu");
+				});
+				
+			</script>
 
 		</header>		
 	

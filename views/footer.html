@@ -107,4 +107,6 @@
 <script>
 		
 		$('.alert').alert('close');
+
+		
 </script>

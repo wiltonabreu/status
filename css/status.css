@@ -25,6 +25,9 @@ header .header-white-small{
 
 }
 
+#btn-bars{
+    display: none ;
+}
 
 header #logotipo {   
     position: absolute;
