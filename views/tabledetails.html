@@ -5,22 +5,24 @@
 <div class="list-group">
 <ul class="list-group">
 <li class="list-group-item">
+
+<div class="table-responsive-sm">
 <table
-        class="table table-striped table-bordered table-condensed table-hover">
+        class="table table-sm table-striped table-bordered table-condensed table-hover">
         <tr>
 
-                <th>Servidores</th>
-                <th> <span class="d-flex justify-content-center">
+                <th scope="col">Servidores</th>
+                <th scope="col"> <span class="d-flex justify-content-center">
                                 IMAP</span></th>
-                <th> <span class="d-flex justify-content-center">
+                <th scope="col"> <span class="d-flex justify-content-center">
                                 POP</span></th>
-                <th> <span class="d-flex justify-content-center">
+                <th scope="col"> <span class="d-flex justify-content-center">
                                 SMTP</span></th>
-                <th> <span class="d-flex justify-content-center">
+                <th scope="col"> <span class="d-flex justify-content-center">
                                 Webmail</span></th>
-                <th> <span class="d-flex justify-content-center">
+                <th scope="col"> <span class="d-flex justify-content-center">
                                 Colaboração</span></th>
-                <th> <span class="d-flex justify-content-center">
+                <th scope="col"> <span class="d-flex justify-content-center">
                                 Fila</span></th>
         </tr>
 
@@ -253,6 +255,7 @@
                 </td>
         </tr>
 </table>
+</div>
 </li>
 </ul>
 

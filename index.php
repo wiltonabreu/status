@@ -16,7 +16,7 @@ $app = new \Slim\Slim();
 
 $app->get('/',function () {
 
-
+//	print_r(password_hash("123.qwe",PASSWORD_DEFAULT));exit;
 		$a = new Incidents();
 
 		
@@ -715,8 +715,18 @@ $app->get('/admin',function () {
       
 		User::verifylogin();
 
-		$page = new PageAdmin();
+		$user = new User();
+
+		$userLogin = $_SESSION[User::SESSION]; //Colocar essa função nas outras rotas do admin
+
+		$page = new PageAdmin([			
+			"data"=>[						
+						"userLogin" => $userLogin
+					]
+			]);
+
 		$page->setTpl("index");
+
     }
 );
 
@@ -750,12 +760,22 @@ $app->get('/admin/logout',function () {
 
 
 $app->get('/admin/users',function () {
+
+	
 	
 	User::verifylogin();
 
 	$users = User::listAll();
 
-	$page = new PageAdmin();
+	$userLogin = $_SESSION[User::SESSION]; //Colocar essa função nas outras rotas do admin
+
+		$page = new PageAdmin([			
+			"data"=>[						
+						"userLogin" => $userLogin
+					]
+			]);
+
+	
 	$page->setTpl("users", array(
 		"users"=>$users
 	));
@@ -767,8 +787,15 @@ $app->get('/admin/users',function () {
 $app->get('/admin/users/create',function () {
 	
 	User::verifylogin();
+	$userLogin = $_SESSION[User::SESSION]; //Colocar essa função nas outras rotas do admin
 
-	$page = new PageAdmin();
+		$page = new PageAdmin([			
+			"data"=>[						
+						"userLogin" => $userLogin
+					]
+			]);
+
+	
 	$page->setTpl("users-create");
 	
 });
@@ -799,7 +826,13 @@ $app->get('/admin/events',function () {
 
 	$incidentes = $a->getAllIncidents();
 
-	$page = new PageAdmin();
+	$userLogin = $_SESSION[User::SESSION]; //Colocar essa função nas outras rotas do admin
+
+		$page = new PageAdmin([			
+			"data"=>[						
+						"userLogin" => $userLogin
+					]
+			]);
 	
 	$page->setTpl("events", array(
 		"incidentes"=>$incidentes
@@ -820,7 +853,13 @@ $app->get('/admin/events/create',function () {
 
 //	var_dump($categories->getValue());exit;
 
-	$page = new PageAdmin();
+$userLogin = $_SESSION[User::SESSION]; //Colocar essa função nas outras rotas do admin
+
+$page = new PageAdmin([			
+	"data"=>[						
+				"userLogin" => $userLogin
+			]
+	]);
 	$page->setTpl("events-create",[
 		"categories"=>$categories->getValue()
 	
@@ -861,7 +900,13 @@ $app->get('/admin/events/:id',function($id) {
 
 	if($a->getcategory_email() == 1) {
 		
-		$page = new PageAdmin();
+		$userLogin = $_SESSION[User::SESSION]; //Colocar essa função nas outras rotas do admin
+
+		$page = new PageAdmin([			
+			"data"=>[						
+						"userLogin" => $userLogin
+					]
+			]);
 
 		$page->setTpl("events-update-email", array(
 			"incidentes"=>$a->getValue()
@@ -870,7 +915,13 @@ $app->get('/admin/events/:id',function($id) {
 	}
 
 	if($a->getcategory_hospedagem() == 1) {
-		$page = new PageAdmin();
+		$userLogin = $_SESSION[User::SESSION]; //Colocar essa função nas outras rotas do admin
+
+		$page = new PageAdmin([			
+			"data"=>[						
+						"userLogin" => $userLogin
+					]
+			]);
 
 		$page->setTpl("events-update-hospedagem", array(
 			"incidentes"=>$a->getValue()
@@ -878,7 +929,13 @@ $app->get('/admin/events/:id',function($id) {
 	}
 
 	if($a->getcategory_backup() == 1) {
-		$page = new PageAdmin();
+		$userLogin = $_SESSION[User::SESSION]; //Colocar essa função nas outras rotas do admin
+
+		$page = new PageAdmin([			
+			"data"=>[						
+						"userLogin" => $userLogin
+					]
+			]);
 
 		$page->setTpl("events-update-backup", array(
 			"incidentes"=>$a->getValue()
@@ -886,7 +943,13 @@ $app->get('/admin/events/:id',function($id) {
 	}
 
 	if($a->getcategory_painel() == 1) {
-		$page = new PageAdmin();
+		$userLogin = $_SESSION[User::SESSION]; //Colocar essa função nas outras rotas do admin
+
+		$page = new PageAdmin([			
+			"data"=>[						
+						"userLogin" => $userLogin
+					]
+			]);
 
 		$page->setTpl("events-update-painel", array(
 			"incidentes"=>$a->getValue()
@@ -973,7 +1036,13 @@ $app->get('/admin/communicated',function () {
 
 	$communicated = $a->getAllCommunicated();
 
-	$page = new PageAdmin();
+	$userLogin = $_SESSION[User::SESSION]; //Colocar essa função nas outras rotas do admin
+
+		$page = new PageAdmin([			
+			"data"=>[						
+						"userLogin" => $userLogin
+					]
+			]);
 	
 	$page->setTpl("communicated", array(
 		"communicated"=>$communicated
@@ -986,7 +1055,13 @@ $app->get('/admin/communicated/create',function () {
 	
 	User::verifylogin();
 
-	$page = new PageAdmin();
+	$userLogin = $_SESSION[User::SESSION]; //Colocar essa função nas outras rotas do admin
+
+		$page = new PageAdmin([			
+			"data"=>[						
+						"userLogin" => $userLogin
+					]
+			]);
 	$page->setTpl("communicated-create");
 	
 });
@@ -1018,7 +1093,13 @@ $app->get('/admin/communicated/:id',function($id) {
 
 	$a->getcommunicated((int)$id);
 
-	$page = new PageAdmin();
+	$userLogin = $_SESSION[User::SESSION]; //Colocar essa função nas outras rotas do admin
+
+		$page = new PageAdmin([			
+			"data"=>[						
+						"userLogin" => $userLogin
+					]
+			]);
 
 	$page->setTpl("communicated-update", array(
 		"communicated"=>$a->getValue()
@@ -1075,7 +1156,15 @@ $app->get('/admin/users/:iduser',function($iduser) {
 
 	$user->get((int)$iduser);
 
-	$page = new PageAdmin();
+	$userLogin = $_SESSION[User::SESSION]; //Colocar essa função nas outras rotas do admin
+
+		$page = new PageAdmin([			
+			"data"=>[						
+						"userLogin" => $userLogin
+					]
+			]);
+
+	
 
 	$page->setTpl("users-update", array(
 		"user"=>$user->getValue()
@@ -1092,6 +1181,12 @@ $app->post('/admin/users/create',function() {
 	$user = new User();
 
 	$_POST["inadmin"] = (isset($_POST["inadmin"]))?1:0;
+
+	$_POST['despassword'] = password_hash($_POST["despassword"], PASSWORD_DEFAULT, [
+		"cost"=>12
+	]);
+
+
 
 	$user->setData($_POST);
 
@@ -1205,7 +1300,15 @@ $app->get('/admin/categories',function () {
 
 //	$incidentes = $a->getAllIncidents();
 
-	$page = new PageAdmin();
+
+
+	$userLogin = $_SESSION[User::SESSION]; //Colocar essa função nas outras rotas do admin
+
+	$page = new PageAdmin([			
+	"data"=>[						
+				"userLogin" => $userLogin
+			]
+	]);
 	
 	$page->setTpl("categories",[
 		"categories"=>$categories
@@ -1217,7 +1320,13 @@ $app->get('/admin/categories/create',function () {
 	
 	User::verifylogin();	
 	
-	$page = new PageAdmin();
+	$userLogin = $_SESSION[User::SESSION]; //Colocar essa função nas outras rotas do admin
+
+		$page = new PageAdmin([			
+			"data"=>[						
+						"userLogin" => $userLogin
+					]
+			]);
 	
 	$page->setTpl("categories-create");
 	
@@ -1268,7 +1377,13 @@ $app->get('/admin/categories/:idcategory',function ($idcategory) {
 
 	//var_dump($result);exit;
 	
-	$page = new PageAdmin();
+	$userLogin = $_SESSION[User::SESSION]; //Colocar essa função nas outras rotas do admin
+
+		$page = new PageAdmin([			
+			"data"=>[						
+						"userLogin" => $userLogin
+					]
+			]);
 	
 	$page->setTpl("categories-update",[
 		"category"=>$category->getValue()

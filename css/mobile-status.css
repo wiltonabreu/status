@@ -10,6 +10,22 @@
 	font-size: 1em;	
 }
 
+@media only screen and (min-width: 768px){
+	.col_table_4 {
+		flex: 0 0 33.333333%;
+		max-width: 81.333333%;
+		left: 9%;
+	}
+
+}
+
+@media only screen and (min-width: 1400px){
+	.col_table_4 {
+		flex: 0 0 33.333333%;
+		max-width: 70.333333%;
+		left: 14%;
+	}
+}
 @media only screen and (max-width: 768px){
 
 	header.open_menu #menu-mobile-mask{
@@ -25,9 +41,9 @@
 	header.open_menu #logotipo {
 		position: fixed;
 		top: 70px;
-		height: 50px;
-		width: 150px;
-		left: calc(15% - 70px);
+		height: 45px;
+		width: 130px;
+		left: calc(17% - 70px);
 		z-index: 3;
 		transform: rotate(360deg);
 	}
@@ -67,21 +83,23 @@
 		position: fixed;
 		top: 40px;
 		background-color:  #fff;
-		width: 30%; 
-		left: -30%;
+		width: 37%; 
+		left: -50%;
 		height: 100%;
 		transition: 1s;
 		z-index: 3;
+		transition-property: transform; /* Essa linha evita que o Li percam a formatação ao fechar*/
+
 	}
 
-	header.open_menu .bar-close{
+	header .bar-close{
 		position: absolute;
 		bottom: 42px;
 		background-color: #ff7e00;
 		height: 61px;
 		width: 100%;
 	}
-	header.open_menu .bar-close .btn-close{
+	header .bar-close .btn-close{
 		background: none;
 		border: none;
 		color: #ffF;
@@ -102,10 +120,27 @@
 	header #logotipo {
 		position: absolute;
 		top: 20px;
-		left: 130px;
+		left: 5%;
 		transition: 1s;
 	}
 
+	footer .text-copyright {
+		
+		left: 10%;
+		
+	}
+
+	.col_table_4 {
+		flex: unset ;
+		max-width: unset;
+		left: unset;
+	}
+
+	.col-4 {
+		
+		 flex: unset; 
+		 max-width: unset; 
+	}
 	
 	
 
@@ -146,9 +181,7 @@
 		display: none;
 	}
 
-	.primarytable {
-		width: 90%;		
-	}
+
 
 	._showForm {		
 		margin-top: 30px;
@@ -157,7 +190,12 @@
 
 }
 
+
+
+
 @media only screen and (max-width: 480px){
+	
+	
 
 	.header-white-small ul, .client{
 		display: none;
@@ -167,6 +205,12 @@
 		left: 18px;		
 	}
 
+	header #menu-mobile {
+		
+		width: 70%;
+		left: -70%;	
+	}
+
 	header .container-logo h1 {
 		left: 34%;
 	}
@@ -174,12 +218,13 @@
 	header.open_menu #logotipo {		
 		height: 38px;
 		width: 115px;
-		left: calc(15% - 55px);		
+		left: calc(34% - 61px)	
 	}
 
 	header.open_menu #menu-mobile ul {
 		margin: 0px;
 		margin-top: 68px;
+		left: 92px;
 	}
 
 	header.open_menu #menu-mobile li a {		
@@ -206,252 +251,87 @@
 
 	}
 
-}
-/*
-@media (max-width: 1200px){
-
-	header .list-unstyled{
-		float: left;
-		position: absolute;
-		top: 10px;
-		left: 47%;
-	    
-	}
-
-	header .container-logo h1 {
+	header.open_menu #menu-mobile li a{
 		
-		left: 16%;
+		display: block;
+	}
+
+}
+
+
+@media only screen and (max-width: 560px){
+
+	header.open_menu #menu-mobile li a{
 		
+		display: block;
 	}
 
-	
-
-}
-
-@media (max-width: 991px){
-
-	header .list-unstyled{
-		float: left;
-		position: absolute;
-		top: 10px;
-		left: 29%;
-	    
+	header .list-unstyled {
+		display: block;
 	}
 
-	
-
-
-}
-
-@media (max-width: 768px){
-
-	header .list-unstyled{
-		float: left;
-		position: absolute;
-		top: 10px;
-		left: 5%;
-	    
-	}
-
-	header #logotipo {
-	    position: absolute;
-	    top: 15px;
-	    left: 200px;
-	}
-
-	html, body {
-		overflow-x:unset;
-	}
-
-}
-
-
-
-@media (max-width: 480px){
-
-	
-	header #logotipo {
-	    position: absolute;
-	    top: 20px;
-	    z-index: 3;
-	    left: 120px;
-	}
-
-	header .header h1 {
-	    text-align: center;
-	    margin-top: 73px;
-	    font-size: 25px;
-	}
-
-	.plesks{
-	    font-size: 15px;
-	    position: absolute;
-	    left: 24px;
-	}
-
-	.ipLin1 {
-	    
-	    top: 102px;
-	}
-
-	.ipLin3{
-	    
-	    top: 162px;
-	}
-	.ipWin{
-	    
-	    top: 222px;
-	}
-
-	.hospedagem p{
-		    position: absolute;
-	    left: 57px;
-	}
-
-	td .plesk{    
-		font-size: 16px;
-	    position: absolute;
-	    left: 28px;
-	    margin-top: -11px;
-	}
-
-	.plesk h5{    
-		font-size: 17px;
-	    
-	}
-
-	th, td {
-	  padding-bottom: 25px;
-	  text-align: left;
-	  width: 105px;    
-	}
-
-
-	footer .list-socials {
-	    top: 70px;
-	    position: absolute;
-	    font-size: 95px;
-
-	}
-
-	footer .row-fluid .email {
-	    position: absolute;
-	    left: 178px;
-	    padding-left: 0px;
-	    z-index: 2;
-	}
-
-	footer .telefone {
-	    top: 55px;
-	    position: absolute;
-	    z-index: 2;
-	}
-
-	footer .col-get-in-touch address {
-	    color: #666;
-	    font-family: Arial;
-	    font-size: 14px;
-	    margin-bottom: 0;
-	    top: 0px;
-	    position: inherit;
-	    z-index: 2;
-	}
-
-	footer .text-left{
-	    color: #666;
-	    font-family: 'OpenSans';
-	    font-size: 14px;
-	    position: absolute;
-	    left: 22%;
-	    margin: -5px;
-	    
-	}
-
-	footer .row p  {
-	        
-	    display: inherit;
-	    position: absolute;
-	    top: 103px;
-	}
-
-	footer .row .text-copyright{
-		position: inherit;
-	    color: #666;
-	    font-size: 14px;
-	        margin-bottom: 0;
-
-	}
-
-	header #logotipo {		
-		left: -19px;
-	}
-
-	header .container-logo h1 {
-		top: 39px;
-		left: 30%;
-		font-size: 27px;
-	}
-
-	#menu {
+	header .row-cont{
 		display: none;
 	}
 
-	header .row-gray {
+	header #logotipo {
+		
+		left: 34%;
+		
+	}
+
+	header .container-logo h1 {
 		display: none;
 	}
 
-	header .contact {
+	@media only screen and (max-width: 360px){
+		footer .row p {
+			display: block;
+			margin: 0;
+			font-size: 14px;
+			height: 50px;
+			left: 0px;
+		}
+
+		header #menu-mobile {
+			
+			width: 70%;
+			left: -70%;
+			
+		}
+	
+		header .list-unstyled {
+			
+			left: 20%;
+		}	
+	
+		header .container-logo h1 {
+			display: none;
+		}
+	
+		header #logotipo {
+			left: 80px !important;
+		}
+	
 		
-		right: 151px;
+	
+		header.open_menu #menu-mobile li {
+			
+			margin-top: 15px;
+		}
+	
+		header.open_menu #menu-mobile ul {
+			
+			left: 40px;
+		}
+
+		header.open_menu #logotipo {
+			
+			left: calc(34% - 61px)!important;
+		}
 		
 	}
 
-	header .client {
-		
-		right: 20px;
-		
-	}
-
-	header .vl-client {
-		right: 133px;
-	}
-
-	footer {
-		margin-top: 0px;
-	}
-
-	footer .horario {
-		top: -20px;
-		left: 201px;
-	}
-
-	footer .telefone {
-		left: -2px;
-		top: 31px;
-	}
-
-	footer .email {
-		
-		left: 179px;
-		
-		top: 31px;
-	}
-
-	footer .skype {
-		
-		top: 56px;
-		left: 179px;
-	}
-
-	footer .whatsapp {
-		position: absolute;
-		top: 56px;
-		left: -2px;
-	}
-
-	footer .row-cols h4 {
-		top: -20px;
-		left: 53px;
-	}
+	
 }
-*/
+

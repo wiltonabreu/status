@@ -7,13 +7,14 @@
 		<div class="list-group">
       <ul class="list-group">
 			  <li class="list-group-item">
-				<div class="primarytable">
+				<div class="primarytable table-responsive-sm">
 
+					<div class="col-4 col_table_4">
 				
-			  	<table class="table table-striped table-bordered table-condensed table-hover">
+			  	<table class="table table-sm table-striped table-bordered table-condensed table-hover">
 						<tr>
-							<th><span class="d-flex justify-content-center"> Serviço</span></th>
-							<th><span class="d-flex justify-content-center"> Status</span></th>
+							<th scope="col"><span class="d-flex justify-content-center"> Serviço</span></th>
+							<th scope="col"><span class="d-flex justify-content-center"> Status</span></th>
 							
 						</tr>
 						
@@ -72,7 +73,8 @@
 							</td>							
 							
 						</tr>
-				  </table>  
+					</table> 
+				</div> 
 				</div>                                 					
 			  </li>
 			</ul>
@@ -101,15 +103,15 @@
 					 
 					  
 
-					  <div class="alert alert1 <?php echo htmlspecialchars( $colorMsgHospedagemWeb, ENT_COMPAT, 'UTF-8', FALSE ); ?> alert-dismissible fade show <?php echo htmlspecialchars( $showOrHiddenMsg, ENT_COMPAT, 'UTF-8', FALSE ); ?> " role="alert">
-							<span style="margin: 300px" ><?php echo htmlspecialchars( $resultVerifyDomainHospedagemWeb, ENT_COMPAT, 'UTF-8', FALSE ); ?> </span>
+					  <div class="alert alert1 <?php echo htmlspecialchars( $colorMsgHospedagemWeb, ENT_COMPAT, 'UTF-8', FALSE ); ?> alert-dismissible fade show <?php echo htmlspecialchars( $showOrHiddenMsg, ENT_COMPAT, 'UTF-8', FALSE ); ?> col" role="alert">
+							<span ><?php echo htmlspecialchars( $resultVerifyDomainHospedagemWeb, ENT_COMPAT, 'UTF-8', FALSE ); ?> </span>
 						<button type="button" class="close" onClick="selectorHospedagemWeb()" data-dismiss="alert" aria-label="Close">
 						  <span aria-hidden="true">&times;</span>
 						</button>
 					  </div>
 										  
-					  <div class="alert alert2 <?php echo htmlspecialchars( $colorMsgEmail, ENT_COMPAT, 'UTF-8', FALSE ); ?> alert-dismissible fade show <?php echo htmlspecialchars( $showOrHiddenMsgEmail, ENT_COMPAT, 'UTF-8', FALSE ); ?> " role="alert">
-							<span style="margin: 300px" ><?php echo htmlspecialchars( $resultVerifyDomainEmail, ENT_COMPAT, 'UTF-8', FALSE ); ?> </span>
+					  <div class="alert alert2 <?php echo htmlspecialchars( $colorMsgEmail, ENT_COMPAT, 'UTF-8', FALSE ); ?> alert-dismissible fade show <?php echo htmlspecialchars( $showOrHiddenMsgEmail, ENT_COMPAT, 'UTF-8', FALSE ); ?> col" role="alert">
+							<span ><?php echo htmlspecialchars( $resultVerifyDomainEmail, ENT_COMPAT, 'UTF-8', FALSE ); ?> </span>
 						<button type="button" class="close" onClick="selectorEmail()" data-dismiss="alert" aria-label="Close">
 						  <span aria-hidden="true">&times;</span>
 						</button>
@@ -124,48 +126,57 @@
 <section>	  
 	<div class="container">
 		<div class="row fundo">
-			<div class="col-md-6 noticias _timeline">
+			<div class="col-md-6 noticias _timeline card">
+			<div class="card-body">
 				<h2 class="_text-center"><u>Incidentes</u></h2>
-				<ul class="timeline">
+				
+				<ul class="timeline list-unstyled">
 
 					<?php $counter1=-1;  if( isset($incidentes) && ( is_array($incidentes) || $incidentes instanceof Traversable ) && sizeof($incidentes) ) foreach( $incidentes as $key1 => $value1 ){ $counter1++; ?>
 
 						<li>
-
-							<a href="<?php echo htmlspecialchars( $value1["category"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/<?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><u><b><?php echo htmlspecialchars( $value1["title"], ENT_COMPAT, 'UTF-8', FALSE ); ?></b></u></a>
-
-							<p><?php echo htmlspecialchars( $value1["dt_criacao"], ENT_COMPAT, 'UTF-8', FALSE ); ?></p>					
+							<hr>
+							<h5 class="card-subtitle text-dark text-center"> <?php echo htmlspecialchars( $value1["title"], ENT_COMPAT, 'UTF-8', FALSE ); ?> </h5>
 							
-							<p><?php echo htmlspecialchars( $value1["descricao"], ENT_COMPAT, 'UTF-8', FALSE ); ?></p>
 
+							<p class="font-italic text-sm-left text-black-50">Criado: <?php echo htmlspecialchars( $value1["dt_criacao"], ENT_COMPAT, 'UTF-8', FALSE ); ?></p>					
+							
+							<p class="card-text"><?php echo htmlspecialchars( $value1["descricao"], ENT_COMPAT, 'UTF-8', FALSE ); ?></p>
+							<a href="<?php echo htmlspecialchars( $value1["category"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/<?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="btn btn-outline-primary">Leia mais...</a>
 						</li>
+						<br>
 				  <?php } ?>
 
 										
 				</ul>
-				
+			</div>
 			</div>
 
-			<div class="col-md-6 avisos _timeline">
+			<div class="col-md-6 avisos _timeline card">
+			<div class="card-body">
 				<h2 class="_text-center"><u>Comunicados</u></h2>
+				
 
-				<ul class="timeline">
+				<ul class="timeline list-unstyled">
 				
 					<?php $counter1=-1;  if( isset($comunicados) && ( is_array($comunicados) || $comunicados instanceof Traversable ) && sizeof($comunicados) ) foreach( $comunicados as $key1 => $value1 ){ $counter1++; ?>
 
+						<hr>
 						<li>
-							<a href="<?php echo htmlspecialchars( $value1["category"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/<?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><u><b><?php echo htmlspecialchars( $value1["title"], ENT_COMPAT, 'UTF-8', FALSE ); ?></b></u></a>
+							<h5 class="card-subtitle text-dark text-center"> <?php echo htmlspecialchars( $value1["title"], ENT_COMPAT, 'UTF-8', FALSE ); ?> </h5>							
 
-							<p><?php echo htmlspecialchars( $value1["dt_criacao"], ENT_COMPAT, 'UTF-8', FALSE ); ?></p>				
+							<p class="font-italic text-sm-right text-black-50">Criado: <?php echo htmlspecialchars( $value1["dt_criacao"], ENT_COMPAT, 'UTF-8', FALSE ); ?></p>				
 							
 							<p><?php echo htmlspecialchars( $value1["descricao"], ENT_COMPAT, 'UTF-8', FALSE ); ?></p>
+							<a href="<?php echo htmlspecialchars( $value1["category"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/<?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="btn btn-outline-primary ">Leia mais...</a>
 							
 						</li>
+						<br>
 				  <?php } ?>
 
 					
 				</ul>
-				
+			</div>	
 			</div>
 		</div>
 		

@@ -6,20 +6,18 @@
           
           <?php $counter1=-1;  if( isset($incidentes) && ( is_array($incidentes) || $incidentes instanceof Traversable ) && sizeof($incidentes) ) foreach( $incidentes as $key1 => $value1 ){ $counter1++; ?>
 
-            <div class="incidentes-email">
-              <p class="titulo">
-                  <span><?php echo htmlspecialchars( $value1["dt_criacao"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span>                      
-                  <h3><a href="<?php echo htmlspecialchars( $value1["category"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/<?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $value1["title"], ENT_COMPAT, 'UTF-8', FALSE ); ?></a></h3>                        
-              </p>
+						
+							<hr>
+							<h5 class="card-subtitle text-dark text-center"> <?php echo htmlspecialchars( $value1["title"], ENT_COMPAT, 'UTF-8', FALSE ); ?> </h5>
+							
 
-              <p class="lead text-left">                      
-                  <?php echo htmlspecialchars( $value1["descricao"], ENT_COMPAT, 'UTF-8', FALSE ); ?>
-
-              </p>
-              
-              <br>
-            </div>
-          <?php } ?>
+							<p class="font-italic text-sm-left text-black-50">Criado: <?php echo htmlspecialchars( $value1["dt_criacao"], ENT_COMPAT, 'UTF-8', FALSE ); ?></p>					
+							
+							<p class="card-text"><?php echo nl2br(str_replace("<br />","<br>\\r\\n",substr($value1["descricao"],0,400))); ?></p>
+							<a href="<?php echo htmlspecialchars( $value1["category"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/<?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="btn btn-outline-primary">Leia mais...</a>
+						
+						<br>
+				  <?php } ?>
 
           
         </div>

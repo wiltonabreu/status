@@ -26,7 +26,9 @@ use \Classes\Mailer;
 
 			$data = $results[0];
 
-			//var_dump($data); exit;
+			//var_dump(password_hash($password, PASSWORD_DEFAULT)); exit;
+
+			//var_dump(password_verify($password, $data["despassword"]));exit;
 
 			if (password_verify($password, $data["despassword"]) === true){
 				
@@ -202,7 +204,7 @@ use \Classes\Mailer;
 				DATE_ADD(a.dtregister, INTERVAL 1 HOUR) >= NOW()", array(
 					":idrecovery" => $idrecovery
 				));
-
+//print_r($result);exit;
 				if(count($result)===0){
 					throw new \Exception("Não foi possível recuperar a senha");
 				}else {

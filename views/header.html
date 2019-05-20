@@ -45,12 +45,12 @@
 							</li>
 						</ul>
 
-					    <div class="vl vl-list-socials"></div>
+					    <div class="vl vl-list-socials d-xl-block d-lg-none d-md-none"></div>
 						
-						<div class="contact">
+						<div class="contact d-xl-block d-lg-none d-md-none" >
 								<a href="comunicados">Comunicados</a>
 						</div>
-						<div class="vl vl-client"></div>
+						<div class="vl vl-client d-xl-block d-lg-none d-md-none"></div>
 
 						<div class="client">
 								<a href="https://clientes.mav.com.br" target="_blank">Area do Cliente</a>
@@ -61,11 +61,11 @@
 							
 			</div>	
 
-			<div id="menu-mobile-mask" class="d-xl-none">
+			<div id="menu-mobile-mask" class="d-xl-none d-lg-none d-md-none">
 
 			</div>
 			
-			<div id="menu-mobile" class="d-xl-none">
+			<div id="menu-mobile" class="d-xl-none d-lg-none d-md-none ">
 					<ul class="list-unstyled">
 						<li><a href="/">Início</a></li>                             
 						<li><a href="email">E-mail</a></li>
@@ -90,33 +90,42 @@
 			
 
 		  <div class="container container-logo">
-				<a href="/"><h1>Status de Seviços</h1></a>
-
-					<a href="/"><img id="logotipo" src="img/mav.png" alt="Logotipo"> </a>
-			<!--	
-				<nav id="menu" class="float-right">
-						<ul>
-						<li><a href="/">HOME</a></li>
-						<li><a href="email">E-MAIL</a></li>
-						<li><a href="hospedagem">HOSPEDAGEM WEB</a></li>
-						<li><a href="backup">BACKUP</a></li>
-						<li><a href="todos">TODOS</a></li>												
+				<div class="row row-logo">
+						
+						<div class="col col-menu ">
+							<a  href="/"><img id="logotipo" src="img/mav.png" alt="Logotipo"> </a>
+						</div>
+						
+						<div class="col d-md-none d-lg-block d-xl-block">
+								<a  href="/"><h1>Status de Seviços</h1></a>
+							</div>
+				<!--	
+					<nav id="menu" class="float-right">
+							<ul>
+							<li><a href="/">HOME</a></li>
+							<li><a href="email">E-MAIL</a></li>
+							<li><a href="hospedagem">HOSPEDAGEM WEB</a></li>
+							<li><a href="backup">BACKUP</a></li>
+							<li><a href="todos">TODOS</a></li>												
+							</ul>
+					</nav>
+	-->
+					
+					
+					<div class="col">
+						<ul id="menu" class="nav nav-tabs">
+							<li><a data-toggle="tab" href="/">Início</a></li>                             
+							<li><a data-toggle="tab" href="email">E-mail</a></li>
+							<li><a data-toggle="tab" href="hospedagem">Hospedagem</a></li>
+							<li><a data-toggle="tab" href="backup">Backup</a></li>
+							<li><a data-toggle="tab" href="painel">Painel de Controle</a></li>
+							<li><a href="comunicados">Comunicados</a></li>					
 						</ul>
-				</nav>
--->
-				
-				
-
-				<ul id="menu" class="nav nav-tabs">
-					<li><a data-toggle="tab" href="/">Início</a></li>                             
-					<li><a data-toggle="tab" href="email">E-mail</a></li>
-					<li><a data-toggle="tab" href="hospedagem">Hospedagem</a></li>
-					<li><a data-toggle="tab" href="backup">Backup</a></li>
-					<li><a data-toggle="tab" href="painel">Painel de Controle</a></li>					
-				</ul>
+					</div>
 			
 				
-				
+			
+				</div>
 		  </div>
 
 		  
@@ -125,6 +134,8 @@
 					<h2>{$servico}</h2>
 			 </div>
 			</div>
+
+	
 
 			<script>
 				$("#btn-bars").on("click", function(){

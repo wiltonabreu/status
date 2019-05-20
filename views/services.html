@@ -5,19 +5,18 @@
         <div class="col-lg-8 mx-auto">
           
           {loop="$incidentes"}
-            <div class="incidentes-email">
-              <p class="titulo">
-                  <span>{$value.dt_criacao}</span>                      
-                  <h3><a href="{$value.category}/{$value.id}">{$value.title}</a></h3>                        
-              </p>
+						
+							<hr>
+							<h5 class="card-subtitle text-dark text-center"> {$value.title} </h5>
+							
 
-              <p class="lead text-left">                      
-                  {$value.descricao}
-              </p>
-              
-              <br>
-            </div>
-          {/loop}
+							<p class="font-italic text-sm-left text-black-50">Criado: {$value.dt_criacao}</p>					
+							
+							<p class="card-text">{function="nl2br(str_replace("<br />","<br>\\r\\n",substr($value.descricao,0,400)))"}</p>
+							<a href="{$value.category}/{$value.id}" class="btn btn-outline-primary">Leia mais...</a>
+						
+						<br>
+				  {/loop}
           
         </div>
       </div>
