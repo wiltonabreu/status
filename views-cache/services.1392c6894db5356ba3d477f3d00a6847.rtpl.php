@@ -1,4 +1,6 @@
 <?php if(!class_exists('Rain\Tpl')){exit;}?>  <!-- Navigation -->
+
+  <!--
   <section id="about">
     <div class="container">
       <div class="row">
@@ -24,6 +26,37 @@
       </div>
     </div>
   </section>
+-->
+
+<section id="about">
+  
+    <div class="card-columns">
+      
+        
+        <?php $counter1=-1;  if( isset($incidentes) && ( is_array($incidentes) || $incidentes instanceof Traversable ) && sizeof($incidentes) ) foreach( $incidentes as $key1 => $value1 ){ $counter1++; ?>
+
+        <div class="card">
+            
+            <div class="card-body">
+            <h5 class="card-subtitle text-dark text-center"> <?php echo htmlspecialchars( $value1["title"], ENT_COMPAT, 'UTF-8', FALSE ); ?> </h5>
+            
+
+            <p class="font-italic text-sm-left text-black-50">Criado: <?php echo htmlspecialchars( $value1["dt_criacao"], ENT_COMPAT, 'UTF-8', FALSE ); ?></p>					
+            
+            <p class="card-text"><?php echo htmlspecialchars( $value1["descricao"], ENT_COMPAT, 'UTF-8', FALSE ); ?></p>
+            <a href="<?php echo htmlspecialchars( $value1["category"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/<?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="btn btn-outline-primary">Leia mais...</a>
+          </div>
+          <br>
+        </div>
+        <?php } ?>
+
+        
+      
+    </div>
+  
+</section>
+
+
     <!--
       <section id="services" class="bg-light">
         <div class="container">

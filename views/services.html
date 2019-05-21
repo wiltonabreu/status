@@ -1,4 +1,6 @@
   <!-- Navigation -->
+
+  <!--
   <section id="about">
     <div class="container">
       <div class="row">
@@ -22,6 +24,35 @@
       </div>
     </div>
   </section>
+-->
+
+<section id="about">
+  
+    <div class="card-columns">
+      
+        
+        {loop="$incidentes"}
+        <div class="card">
+            
+            <div class="card-body">
+            <h5 class="card-subtitle text-dark text-center"> {$value.title} </h5>
+            
+
+            <p class="font-italic text-sm-left text-black-50">Criado: {$value.dt_criacao}</p>					
+            
+            <p class="card-text">{$value.descricao}</p>
+            <a href="{$value.category}/{$value.id}" class="btn btn-outline-primary">Leia mais...</a>
+          </div>
+          <br>
+        </div>
+        {/loop}
+        
+      
+    </div>
+  
+</section>
+
+
     <!--
       <section id="services" class="bg-light">
         <div class="container">

@@ -130,7 +130,7 @@
 			<div class="card-body">
 				<h2 class="_text-center"><u>Incidentes</u></h2>
 				
-				<ul class="timeline list-unstyled">
+				<ul class="timeline list-unstyled ">
 
 					<?php $counter1=-1;  if( isset($incidentes) && ( is_array($incidentes) || $incidentes instanceof Traversable ) && sizeof($incidentes) ) foreach( $incidentes as $key1 => $value1 ){ $counter1++; ?>
 
